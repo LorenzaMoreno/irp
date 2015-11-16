@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="irp" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/irp" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/irp" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="src/Base.cpp" />
+		<Unit filename="src/Base.h" />
+		<Unit filename="src/CurrentSolution.cpp" />
+		<Unit filename="src/CurrentSolution.h" />
+		<Unit filename="src/Customer.cpp" />
+		<Unit filename="src/Customer.h" />
+		<Unit filename="src/Driver.cpp" />
+		<Unit filename="src/Driver.h" />
+		<Unit filename="src/InputData.cpp" />
+		<Unit filename="src/InputData.h" />
+		<Unit filename="src/Location.cpp" />
+		<Unit filename="src/Location.h" />
+		<Unit filename="src/Shift.cpp" />
+		<Unit filename="src/Shift.h" />
+		<Unit filename="src/Solution.cpp" />
+		<Unit filename="src/Solution.h" />
+		<Unit filename="src/Source.cpp" />
+		<Unit filename="src/Source.h" />
+		<Unit filename="src/Trailer.cpp" />
+		<Unit filename="src/Trailer.h" />
+		<Unit filename="src/main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

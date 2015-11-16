@@ -1,0 +1,101 @@
+# depslib dependency file v1.0
+1447267111 source:/home/joao/Área de trabalho/irp/main.cpp
+	<iostream>
+
+1447271115 source:/home/joao/Área de trabalho/irp/Driver.cpp
+	"Driver.h"
+
+1447269829 /home/joao/Área de trabalho/irp/Driver.h
+	<vector>
+
+1447698714 source:/home/joao/Área de trabalho/irp/src/Base.cpp
+	"Base.h"
+
+1447698588 /home/joao/Área de trabalho/irp/include/Base.h
+	"Location.h"
+
+1447271180 source:/home/joao/Área de trabalho/irp/src/Customer.cpp
+	"Customer.h"
+
+1447271180 /home/joao/Área de trabalho/irp/include/Customer.h
+
+1447271115 source:/home/joao/Área de trabalho/irp/src/Location.cpp
+	"Location.h"
+
+1447271334 /home/joao/Área de trabalho/irp/include/Location.h
+	<vector>
+
+1447271841 source:/home/joao/Área de trabalho/irp/src/Source.cpp
+	"Source.h"
+
+1447271877 /home/joao/Área de trabalho/irp/include/Source.h
+	"Location.h"
+
+1447271115 source:/home/joao/Área de trabalho/irp/src/Driver.cpp
+	"Driver.h"
+
+1447269829 /home/joao/Área de trabalho/irp/include/Driver.h
+	<vector>
+
+1447267111 source:/home/joao/Área de trabalho/irp/src/main.cpp
+	<iostream>
+
+1447702301 source:/home/joao/Área de trabalho/irp/src/Trailer.cpp
+	"Trailer.h"
+
+1447702302 /home/joao/Área de trabalho/irp/include/Trailer.h
+	"Driver.h"
+	"Location.h"
+
+1447702247 source:/home/joao/Área de trabalho/irp/src/InputData.cpp
+	"InputData.h"
+
+1447702476 /home/joao/Área de trabalho/irp/include/InputData.h
+	"Driver.h"
+	"Trailer.h"
+	"Location.h"
+	"Base.h"
+	"Customer.h"
+
+1447702103 source:/home/joao/Área de trabalho/irp/src/Shift.cpp
+	"Shift.h"
+
+1447702498 /home/joao/Área de trabalho/irp/include/Shift.h
+	"Driver.h"
+	"Trailer.h"
+
+1447698588 /home/joao/Área de trabalho/irp/src/Base.h
+	"Location.h"
+
+1447271334 /home/joao/Área de trabalho/irp/src/Location.h
+	<vector>
+
+1447271180 /home/joao/Área de trabalho/irp/src/Customer.h
+
+1447269829 /home/joao/Área de trabalho/irp/src/Driver.h
+	<vector>
+
+1447702476 /home/joao/Área de trabalho/irp/src/InputData.h
+	"Driver.h"
+	"Trailer.h"
+	"Location.h"
+	"Base.h"
+	"Customer.h"
+
+1447702302 /home/joao/Área de trabalho/irp/src/Trailer.h
+	"Driver.h"
+	"Location.h"
+
+1447702498 /home/joao/Área de trabalho/irp/src/Shift.h
+	"Driver.h"
+	"Trailer.h"
+
+1447702992 source:/home/joao/Área de trabalho/irp/src/Solution.cpp
+	"Solution.h"
+
+1447703025 /home/joao/Área de trabalho/irp/src/Solution.h
+	<vector>
+
+1447271877 /home/joao/Área de trabalho/irp/src/Source.h
+	"Location.h"
+
