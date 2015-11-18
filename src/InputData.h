@@ -12,18 +12,16 @@ class InputData
     public:
         InputData();
         virtual ~InputData();
-
     protected:
     private:
-        std::vector<Driver*> drivers_;
-        std::vector<Trailer*> trailers_;
-        std::vector<Location*> location_;
-        std::vector<Base*> bases_;
-        std::vector<Customer*> customers_;
+        std::vector<Driver*>* drivers_;
+        std::vector<Trailer*>* trailers_;
+        std::vector<Location*>* location_;
+        std::vector<Base*>* bases_;
+        std::vector<Customer*>* customers_;
         double** distance_;
         int** time_;
         int** windowSize_;
-
 };
 
 #endif // INPUTDATA_H
