@@ -4,18 +4,15 @@
 #include "Location.h"
 
 
-class Source : Location {
+class Source : public Location {
     public:
         Source();
-        Source(int index, std::vector<Base*> neighborsBases,
-                std::vector<Customer*> neighborsCustomers,
-                std::vector<Source*> neighborsSources,
-                int setupTime);
+        Source(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources, int setupTime);
         virtual ~Source();
 
-        void setSetupTime(int setupTime);
-        int getSetupTime();
+        int getSetupTime() const;
 
+        void setSetupTime(int setupTime);
 
     protected:
     private:

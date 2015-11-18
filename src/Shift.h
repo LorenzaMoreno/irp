@@ -3,25 +3,7 @@
 
 #include "Driver.h"
 #include "Trailer.h"
-
-class Stop{
-    public:
-        Stop();
-        Stop(double quantity, int arriveTime, Location* location):
-        quantity_(quantity), arriveTime_(arriveTime), location_(location){
-
-        };
-        virtual ~Stop();
-
-
-    private:
-        Location* location_;
-        int arriveTime_;
-        double quantity_;
-
-
-
-};
+#include "Stop.h"
 
 class Shift
 {
@@ -29,13 +11,16 @@ class Shift
         Shift();
         Shift(double cost, Driver* driver, Trailer* trailer);
         virtual ~Shift();
-        std::vector<Stop*> getStops();
-        void setStop(std::vector<Stop*> stops);
-        void setDriver(Driver* driver);
-        void setTrailer(Trailer* trailer);
-        void setCost(double cost);
 
+        std::vector<Stop*> getStop() const;
+        Driver* getDriver() const;
+        Trailer* getTrailer() const;
+        double getCost() const;
 
+        void setStops(std::vector<Stop*>);
+        void setDriver(Driver*);
+        void setTrailer(Trailer*);
+        void setCost(double);
 
     protected:
     private:

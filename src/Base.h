@@ -6,9 +6,7 @@ class Base : public Location
 {
     public:
         Base();
-        Base(int index, std::vector<Base*> neighborsBases,
-            std::vector<Customer*> neighborsCustomers,
-            std::vector<Source*> neighborsSources);
+        Base(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources);
         virtual ~Base();
     protected:
     private:

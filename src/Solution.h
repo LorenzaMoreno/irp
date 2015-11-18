@@ -9,9 +9,17 @@ class Solution
 {
     public:
         Solution();
-        Solution(double cost, std::vector<Shift*> shifts,
-                double infeasibilityCost);
+        Solution(double cost, std::vector<Shift*> &shifts, double infeasibilityCost);
         virtual ~Solution();
+
+        double getCost() const;
+        std::vector<Shift*> getShift() const;
+        double getInfreasivilityCost() const;
+
+        void setCost(double);
+        void setShift(std::vector<Shift*>);
+        void setInfreasibilityCost(double);
+
     protected:
     private:
         double cost_;

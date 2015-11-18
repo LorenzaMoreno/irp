@@ -1,9 +1,9 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
+#include "Location.h"
 
-class Customer
-{
+class Customer : public Location {
     public:
         Customer();
         virtual ~Customer();

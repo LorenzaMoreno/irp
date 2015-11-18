@@ -4,6 +4,5 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    return 0;
+   // Driver *d = new Driver(0, 10, new TimeWindow(10, 20), new Trailer());
 }

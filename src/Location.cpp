@@ -6,14 +6,8 @@ Location::Location(){
     neighborsSources_.clear();
 }
 
-Location::Location(int index, std::vector<Base*> neighborsBases,
-std::vector<Customer*> neighborsCustomers,
-std::vector<Source*> neighborsSources):
-index_(index),
-neighborsBases_(neighborsBases),
-neighborsCustomers_(neighborsCustomers),
-neighborsSources_(neighborsSources){
-    //ctor
+Location::Location(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources):
+                        index_(index), neighborsBases_(neighborsBases), neighborsCustomers_(neighborsCustomers), neighborsSources_(neighborsSources){
 }
 
 Location::~Location(){
@@ -26,14 +20,27 @@ int Location::getIndex(){
     return index_;
 }
 
-std::vector<Base*>* Location::getNeighborsBases(){
-    return &neighborsBases_;
+std::vector<Base*> Location::getNeighborsBases() const{
+    return neighborsBases_;
 }
 
-std::vector<Customer*>* Location::getNeighborsCustomers(){
-    return &neighborsCustomers_;
+std::vector<Customer*> Location::getNeighborsCustomers() const{
+    return neighborsCustomers_;
 }
 
-std::vector<Source*>* Location::getNeighborsSources(){
-    return &neighborsSources_;
+std::vector<Source*> Location::getNeighborsSources() const{
+    return neighborsSources_;
+}
+
+int Location::setIndex(int index){
+    index_ = index;
+}
+void Location::setNeighborsBases(std::vector<Base*> neighborsBases){
+    neighborsBases_ = neighborsBases;
+}
+void Location::setNeighborsCustomers(std::vector<Customer*> neighborsCustomers){
+    neighborsCustomers_ = neighborsCustomers;
+}
+void Location::setNeighborsSources(std::vector<Source*> neighborsSources){
+    neighborsSources_ = neighborsSources;
 }
