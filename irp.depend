@@ -99,3 +99,85 @@
 1447271877 /home/joao/Ãrea de trabalho/irp/src/Source.h
 	"Location.h"
 
+1447879938 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\base.cpp
+	"Base.h"
+
+1447879918 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\base.h
+	"Location.h"
+
+1447879341 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\location.h
+	<vector>
+
+1447880110 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\currentsolution.cpp
+	"CurrentSolution.h"
+
+1447879989 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\currentsolution.h
+	"Solution.h"
+
+1447879579 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\solution.h
+	<vector>
+
+1447846990 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\customer.cpp
+	"Customer.h"
+
+1447874721 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\customer.h
+	"Location.h"
+
+1447880433 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\driver.cpp
+	"Driver.h"
+
+1447880715 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\driver.h
+	"TimeWindow.h"
+	<vector>
+
+1447880626 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\inputdata.cpp
+	"InputData.h"
+
+1447880518 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\inputdata.h
+	"Driver.h"
+	"Trailer.h"
+	"Location.h"
+	"Base.h"
+	"Customer.h"
+
+1447879887 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\trailer.h
+	"Driver.h"
+	"Location.h"
+
+1447879323 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\location.cpp
+	"Location.h"
+
+1447876325 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\main.cpp
+	<iostream>
+
+1447879498 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\shift.cpp
+	"Shift.h"
+
+1447880819 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\shift.h
+	"Driver.h"
+	"Trailer.h"
+	"Stop.h"
+
+1447879599 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\solution.cpp
+	"Solution.h"
+
+1447879683 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\source.cpp
+	"Source.h"
+
+1447879644 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\source.h
+	"Location.h"
+
+1447879867 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\trailer.cpp
+	"Trailer.h"
+
+1447879712 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\stop.cpp
+	"Stop.h"
+
+1447879702 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\stop.h
+	"Location.h"
+
+1447879725 c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\timewindow.h
+
+1447879733 source:c:\users\héber marques\copy\facul\tópicos em inteligencia computacional ii\irp\src\timewindow.cpp
+	"TimeWindow.h"
+
