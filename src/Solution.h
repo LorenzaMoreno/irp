@@ -13,12 +13,12 @@ class Solution
         virtual ~Solution();
 
         double getCost() const;
-        std::vector<Shift*> getShift() const;
-        double getInfreasivilityCost() const;
+        std::vector<Shift*>* getShifts();
+        double getInfeasibilityCost() const;
 
         void setCost(double);
         void setShift(std::vector<Shift*>);
-        void setInfreasibilityCost(double);
+        void setInfeasibilityCost(double);
 
     protected:
     private:

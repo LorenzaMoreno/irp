@@ -99,3 +99,118 @@
 1447271877 /home/joao/Área de trabalho/irp/src/Source.h
 	"Location.h"
 
+1448419016 source:c:\users\lorenza\documents\github\irp\src\base.cpp
+	"Base.h"
+
+1448419016 c:\users\lorenza\documents\github\irp\src\base.h
+	"Location.h"
+
+1448419424 c:\users\lorenza\documents\github\irp\src\location.h
+	<vector>
+
+1448419016 source:c:\users\lorenza\documents\github\irp\src\currentsolution.cpp
+	"CurrentSolution.h"
+
+1448419016 c:\users\lorenza\documents\github\irp\src\currentsolution.h
+	"Solution.h"
+
+1448423647 c:\users\lorenza\documents\github\irp\src\solution.h
+	<vector>
+
+1448419016 source:c:\users\lorenza\documents\github\irp\src\customer.cpp
+	"Customer.h"
+
+1448419016 c:\users\lorenza\documents\github\irp\src\customer.h
+	"Location.h"
+
+1448419016 source:c:\users\lorenza\documents\github\irp\src\driver.cpp
+	"Driver.h"
+
+1448419016 c:\users\lorenza\documents\github\irp\src\driver.h
+	"TimeWindow.h"
+	<vector>
+
+1448419016 c:\users\lorenza\documents\github\irp\src\timewindow.h
+
+1448423254 source:c:\users\lorenza\documents\github\irp\src\inputdata.cpp
+	"InputData.h"
+	<stdio.h>
+
+1448422780 c:\users\lorenza\documents\github\irp\src\inputdata.h
+	"Driver.h"
+	"Trailer.h"
+	"Location.h"
+	"Base.h"
+	"Customer.h"
+
+1448419016 c:\users\lorenza\documents\github\irp\src\trailer.h
+	"Driver.h"
+	"Location.h"
+
+1448419424 source:c:\users\lorenza\documents\github\irp\src\location.cpp
+	"Location.h"
+
+1448419016 source:c:\users\lorenza\documents\github\irp\src\main.cpp
+	<iostream>
+
+1448419016 source:c:\users\lorenza\documents\github\irp\src\shift.cpp
+	"Shift.h"
+
+1448419016 c:\users\lorenza\documents\github\irp\src\shift.h
+	"Driver.h"
+	"Trailer.h"
+	"Stop.h"
+
+1448419016 c:\users\lorenza\documents\github\irp\src\stop.h
+	"Location.h"
+
+1448423647 source:c:\users\lorenza\documents\github\irp\src\solution.cpp
+	"Solution.h"
+
+1448419016 source:c:\users\lorenza\documents\github\irp\src\source.cpp
+	"Source.h"
+
+1448419016 c:\users\lorenza\documents\github\irp\src\source.h
+	"Location.h"
+
+1448419459 source:c:\users\lorenza\documents\github\irp\src\stop.cpp
+	<stdio.h>
+	"Stop.h"
+
+1448419016 source:c:\users\lorenza\documents\github\irp\src\timewindow.cpp
+	"TimeWindow.h"
+
+1448419016 source:c:\users\lorenza\documents\github\irp\src\trailer.cpp
+	"Trailer.h"
+
+1441341497 source:c:\users\lorenza\documents\github\irp\src\util\markup.cpp
+	<stdio.h>
+	"Markup.h"
+	<errno.h>
+	<iconv.h>
+	<windows.h>
+	<mbstring.h>
+
+1441259471 c:\users\lorenza\documents\github\irp\src\util\markup.h
+	<stdlib.h>
+	<string.h>
+	<string>
+	<afx.h>
+
+1448423198 source:c:\users\lorenza\documents\github\irp\src\xmldataloader.cpp
+	"XMLDataLoader.h"
+	"InputData.h"
+	"Location.h"
+	"Base.h"
+	"Customer.h"
+	"Driver.h"
+	"Trailer.h"
+	"TimeWindow.h"
+	<vector>
+	<map>
+	<math.h>
+
+1448420447 c:\users\lorenza\documents\github\irp\src\xmldataloader.h
+	<string>
+	"util/Markup.h"
+

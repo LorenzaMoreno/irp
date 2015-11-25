@@ -5,6 +5,7 @@
 		<Option title="irp" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="Input\;Solution\;Util\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/irp" prefix_auto="1" extension_auto="1" />
@@ -34,31 +35,91 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="src/Base.cpp" />
-		<Unit filename="src/Base.h" />
-		<Unit filename="src/CurrentSolution.cpp" />
-		<Unit filename="src/CurrentSolution.h" />
-		<Unit filename="src/Customer.cpp" />
-		<Unit filename="src/Customer.h" />
-		<Unit filename="src/Driver.cpp" />
-		<Unit filename="src/Driver.h" />
-		<Unit filename="src/InputData.cpp" />
-		<Unit filename="src/InputData.h" />
-		<Unit filename="src/Location.cpp" />
-		<Unit filename="src/Location.h" />
-		<Unit filename="src/Shift.cpp" />
-		<Unit filename="src/Shift.h" />
-		<Unit filename="src/Solution.cpp" />
-		<Unit filename="src/Solution.h" />
-		<Unit filename="src/Source.cpp" />
-		<Unit filename="src/Source.h" />
-		<Unit filename="src/Stop.cpp" />
-		<Unit filename="src/Stop.h" />
-		<Unit filename="src/TimeWindow.cpp" />
-		<Unit filename="src/TimeWindow.h" />
-		<Unit filename="src/Trailer.cpp" />
-		<Unit filename="src/Trailer.h" />
+		<Unit filename="src/Base.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Base.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/CurrentSolution.cpp">
+			<Option virtualFolder="Solution/" />
+		</Unit>
+		<Unit filename="src/CurrentSolution.h">
+			<Option virtualFolder="Solution/" />
+		</Unit>
+		<Unit filename="src/Customer.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Customer.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Driver.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Driver.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/InputData.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/InputData.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Location.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Location.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Shift.cpp">
+			<Option virtualFolder="Solution/" />
+		</Unit>
+		<Unit filename="src/Shift.h">
+			<Option virtualFolder="Solution/" />
+		</Unit>
+		<Unit filename="src/Solution.cpp">
+			<Option virtualFolder="Solution/" />
+		</Unit>
+		<Unit filename="src/Solution.h">
+			<Option virtualFolder="Solution/" />
+		</Unit>
+		<Unit filename="src/Source.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Source.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Stop.cpp">
+			<Option virtualFolder="Solution/" />
+		</Unit>
+		<Unit filename="src/Stop.h">
+			<Option virtualFolder="Solution/" />
+		</Unit>
+		<Unit filename="src/TimeWindow.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/TimeWindow.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Trailer.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Trailer.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/XMLDataLoader.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/XMLDataLoader.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/util/Markup.cpp">
+			<Option virtualFolder="Util/" />
+		</Unit>
+		<Unit filename="src/util/Markup.h">
+			<Option virtualFolder="Util/" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -18,7 +18,7 @@ class Location
         std::vector<Customer*> getNeighborsCustomers() const;
         std::vector<Source*> getNeighborsSources() const;
 
-        int setIndex(int);
+        void setIndex(int);
         void setNeighborsBases(std::vector<Base*>);
         void setNeighborsCustomers(std::vector<Customer*>);
         void setNeighborsSources(std::vector<Source*>);
