@@ -1,57 +1,67 @@
 #include "InputData.h"
 
-/*Modificação 18/11 por Gisele*/
+#include <stdio.h>
+
+InputData* InputData::instance = NULL;
+
 InputData::InputData(){
-    //ctor
-}
-
-InputData::InputData(std::vector<Driver*> &drivers, std::vector<Trailer*> &trailers, std::vector<Location*> &location, std::vector<Base*> &bases, std::vector<Customer*> &customers, double** distance, int** time, int** windowSize):
-                        drivers_(drivers), trailers_(trailers), location_(location), bases_(bases), customers_(customers), distance_(distance), time_(time), windowSize_(windowSize) {
-    //ctor
-}
-
-InputData::~InputData(){
     drivers_.clear();
     trailers_.clear();
     location_.clear();
     bases_.clear();
     customers_.clear();
-    //desalocar as matrizes!!!
-    //dtor
+    time_ = NULL;
+    distance_ = NULL;
 }
 
-std::vector<Driver*> InputData::getDrivers() const{
-    return drivers_;
-}
-std::vector<Trailer*> InputData::getTrailers() const{
-    return trailers_;
-}
-std::vector<Location*> InputData::getLocation() const{
-    return location_;
-}
-std::vector<Base*> InputData::getBases() const{
-    return bases_;
-}
-std::vector<Customer*> InputData::getCustomers() const{
-    return customers_;
+InputData::~InputData(){
+    int i;
+    int nLoc = (int)location_.size();
+    int nDrivers = (int)drivers_.size();
+    int nTrailers = (int)trailers_.size();
+
+
+    //Release matrices and locations
+    for(i=0;i<nLoc;i++){
+        delete[] time_[i];
+        delete[] distance_[i];
+        delete location_[i]; //Locations pointers
+    }
+    delete[] time_;
+    delete[] distance_;
+
+    //Release drivers and trailers
+    for(i=0;i<nDrivers;i++)
+        delete drivers_[i]; //Drivers pointers
+    for(i=0;i<nTrailers;i++)
+        delete trailers_[i];//Trailers pointers
+
+    //Clear vectors
+    drivers_.clear();
+    trailers_.clear();
+    location_.clear();
+    bases_.clear();
+    customers_.clear();
 }
 
-void InputData::setDrivers(std::vector<Driver*> drivers){
-    drivers_ = drivers;
+InputData* InputData::getInstance(){
+    if( instance == NULL )
+        instance = new InputData();
+    return instance;
 }
 
-void InputData::setTrailers(std::vector<Trailer*> trailers){
-   trailers_ = trailers;
+std::vector<Driver*>* InputData::getDrivers(){
+    return &(instance->drivers_);
 }
-
-void InputData::setLocation(std::vector<Location*> location){
-    location_ = location;
+std::vector<Trailer*>* InputData::getTrailers(){
+    return &(instance->trailers_);
 }
-
-void InputData::setBases(std::vector<Base*> bases){
-    bases_ = bases;
+std::vector<Location*>* InputData::getLocation(){
+    return &(instance->location_);
 }
-
-void InputData::setCustomers( std::vector<Customer*> customers){
-    customers_ = customers;
+std::vector<Base*>* InputData::getBases(){
+    return &(instance->bases_);
+}
+std::vector<Customer*>* InputData::getCustomers(){
+    return &(instance->customers_);
 }

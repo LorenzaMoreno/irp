@@ -1,11 +1,13 @@
+#include <stdio.h>
 #include "Stop.h"
 
-Stop::Stop()
+Stop::Stop(): location_(NULL)
 {
     //ctor
 }
 
-Stop::Stop(double quantity, int arriveTime, Location* location): quantity_(quantity), arriveTime_(arriveTime), location_(location){
+Stop::Stop(double quantity, int arriveTime, Location* location): location_(location), arriveTime_(arriveTime), quantity_(quantity)
+{
 
 };
 

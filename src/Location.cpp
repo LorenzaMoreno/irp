@@ -32,7 +32,7 @@ std::vector<Source*> Location::getNeighborsSources() const{
     return neighborsSources_;
 }
 
-int Location::setIndex(int index){
+void Location::setIndex(int index){
     index_ = index;
 }
 void Location::setNeighborsBases(std::vector<Base*> neighborsBases){

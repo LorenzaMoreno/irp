@@ -11,19 +11,14 @@ class InputData
 {
     public:
         InputData();
-        InputData(std::vector<Driver*> &drivers, std::vector<Trailer*> &trailers, std::vector<Location*> &location, std::vector<Base*> &bases, std::vector<Customer*> &customers, double** distance, int** time, int** windowSize);
 
-        std::vector<Driver*> getDrivers() const;
-        std::vector<Trailer*> getTrailers() const;
-        std::vector<Location*> getLocation() const;
-        std::vector<Base*> getBases() const;
-        std::vector<Customer*>  getCustomers() const;
+        static InputData* getInstance();
 
-        void setDrivers(std::vector<Driver*>);
-        void setTrailers(std::vector<Trailer*>);
-        void setLocation(std::vector<Location*>);
-        void setBases(std::vector<Base*>);
-        void setCustomers( std::vector<Customer*>);
+        static std::vector<Driver*>* getDrivers();
+        static std::vector<Trailer*>* getTrailers();
+        static std::vector<Location*>* getLocation();
+        static std::vector<Base*>* getBases();
+        static std::vector<Customer*>*  getCustomers();
 
         virtual ~InputData();
     protected:
@@ -36,5 +31,7 @@ class InputData
         double** distance_;
         int** time_;
         int** windowSize_;
+
+        static InputData* instance;
 };
 #endif // INPUTDATA_H
