@@ -15,6 +15,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
+					<Add directory="src" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -25,6 +26,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include" />
+					<Add directory="src" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -69,6 +71,12 @@
 			<Option virtualFolder="Input/" />
 		</Unit>
 		<Unit filename="src/Location.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Penalties.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Penalties.h">
 			<Option virtualFolder="Input/" />
 		</Unit>
 		<Unit filename="src/Shift.cpp">
