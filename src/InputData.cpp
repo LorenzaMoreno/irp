@@ -65,3 +65,44 @@ std::vector<Base*>* InputData::getBases(){
 std::vector<Customer*>* InputData::getCustomers(){
     return &(instance->customers_);
 }
+
+Driver* InputData::findDriver(int id){
+    //if it is sequencial
+    return instance->drivers_.at(id - 1);
+    //else
+//    for(Driver* d : drivers_){
+//        if(d->getIndex() == id){
+//            return d;
+//        }
+//    }
+}
+
+Trailer* InputData::findTrailer(int id){
+    //if it is sequencial
+    return instance->trailers_.at(id - 1);
+    //else
+//    for(Trailer* t : trailers_){
+//        if(t->getIndex() == id){
+//            return t;
+//        }
+//    }
+}
+
+Location* InputData::findLocation(int id){
+    //if it is sequencial
+    return instance->location_.at(id - 1);
+    //else
+//    for(Location* l : location_){
+//        if(l->getIndex() == id){
+//            return l;
+//        }
+//    }
+}
+
+double InputData::getDistance(int origin, int destination){
+    return instance->distance_[origin][destination];
+}
+
+int InputData::getTime(int origin, int destination){
+    return instance->time_[origin][destination];
+}
