@@ -20,6 +20,13 @@ class InputData
         static std::vector<Base*>* getBases();
         static std::vector<Customer*>*  getCustomers();
 
+        Driver* findDriver(int id);
+        Trailer* findTrailer(int id);
+        Location* findLocation(int id);
+
+        double getDistance(int origin, int destination);
+        int getTime(int origin, int destination);
+
         virtual ~InputData();
     protected:
     private:
@@ -30,7 +37,10 @@ class InputData
         std::vector<Customer*> customers_;
         double** distance_;
         int** time_;
-        int** windowSize_;
+        //int** windowSize_;
+
+        //find de cada um *
+        //acesso e criação de matriz
 
         static InputData* instance;
 };
