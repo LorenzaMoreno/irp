@@ -10,9 +10,9 @@ class Source : public Location {
         Source(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources, int setupTime);
         virtual ~Source();
 
-        int getSetupTime() const;
+        inline int getSetupTime() const{return setupTime_;}
 
-        void setSetupTime(int setupTime);
+        inline void setSetupTime(int setupTime){setupTime_ = setupTime;}
 
     protected:
     private:

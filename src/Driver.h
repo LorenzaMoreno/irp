@@ -11,19 +11,17 @@ class Driver{
         Driver(int index, int maxDriving, std::vector<TimeWindow*> timeWindows, std::vector<Trailer*>trailers, int minInterShift, double timeCost);
         virtual ~Driver();
 
-        int getIndex() const;
-        int getMaxDriving() const;
-        std::vector<TimeWindow*> getTimeWindow() const;
-        std::vector<Trailer*> getTrailers() const;
-        int getMinInterShift() const;
-        double getTimeCost() const;
+        inline int getIndex() const{return index_;}
+        inline int getMaxDriving() const{return maxDriving_;}
+        inline std::vector<TimeWindow*>* getTimeWindow(){return &timeWindows_;}
+        inline std::vector<Trailer*>* getTrailers(){return &trailers_;}
+        inline int getMinInterShift() const{return minInterShift_;}
+        double getTimeCost() const{return timeCost_;}
 
-        void setIndex(int);
-        void setMaxDriving(int);
-        void setTimeWindow(std::vector<TimeWindow*>);
-        void setTrailers(std::vector<Trailer*>);
-        void setMinInterShift(int);
-        void setTimeCost(double);
+        inline void setIndex(int index){index_ = index;}
+        inline void setMaxDriving(int maxDriving){maxDriving_ = maxDriving;}
+        inline void setMinInterShift(int minInterShift){minInterShift_ = minInterShift;}
+        inline void setTimeCost(double timeCost){timeCost_ = timeCost;}
 
     private:
 

@@ -12,19 +12,17 @@ class Trailer
         Trailer(int index, double capacity, double initialQuantity, double distanceCost, std::vector<Driver*> &drivers, std::vector<Location*> &locations);
         virtual ~Trailer();
 
-        std::vector<Driver*> getDrivers() const;
-        std::vector<Location*> getLocations() const;
-        double getDistanceCost() const;
-        double getInicialQuantity() const;
-        double getCapacity() const;
-        int getIndex() const;
+        inline std::vector<Driver*>* getDrivers(){return &drivers_;}
+        inline std::vector<Location*>* getLocations(){return &locations_;}
+        inline double getDistanceCost() const{return distanceCost_;}
+        inline double getInicialQuantity() const{return initialQuantity_;}
+        inline double getCapacity() const{return capacity_;}
+        inline int getIndex() const{return index_;}
 
-        void setIndex(int);
-        void setDistanceCost(double);
-        void setInitialQuantity(double);
-        void setDrivers(std::vector<Driver*>);
-        void setLocations(std::vector<Location*>);
-        void setCapacity(double);
+        inline void setIndex(int index){index_ = index;}
+        inline void setDistanceCost(double distanceCost){distanceCost_ = distanceCost;}
+        inline void setInitialQuantity(double initialQuantity){initialQuantity_ = initialQuantity;}
+        inline void setCapacity(double capacity){capacity_ = capacity;}
     protected:
     private:
         int index_;
