@@ -6,8 +6,8 @@ Location::Location(){
     neighborsSources_.clear();
 }
 
-Location::Location(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources):
-                        index_(index), neighborsBases_(neighborsBases), neighborsCustomers_(neighborsCustomers), neighborsSources_(neighborsSources){
+Location::Location(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources, Type type):
+                        index_(index), neighborsBases_(neighborsBases), neighborsCustomers_(neighborsCustomers), neighborsSources_(neighborsSources), type_(type){
 }
 
 Location::~Location(){

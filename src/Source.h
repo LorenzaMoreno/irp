@@ -7,7 +7,7 @@
 class Source : public Location {
     public:
         Source();
-        Source(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources, int setupTime);
+        Source(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources, int setupTime, Type type);
         virtual ~Source();
 
         inline int getSetupTime() const{return setupTime_;}
