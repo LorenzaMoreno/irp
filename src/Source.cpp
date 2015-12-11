@@ -15,12 +15,3 @@ Source::~Source()
 {
     //dtor
 }
-
-
-void Source::setSetupTime(int setupTime){
-    setupTime_= setupTime;
-}
-
-int Source::getSetupTime() const{
-    return setupTime_;
-}

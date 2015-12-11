@@ -13,15 +13,12 @@ class Location
         Location(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources);
         enum Type{BASE, CUSTOMER, SOURCE};
         virtual ~Location();
-        int getIndex();
-        std::vector<Base*> getNeighborsBases() const;
-        std::vector<Customer*> getNeighborsCustomers() const;
-        std::vector<Source*> getNeighborsSources() const;
+        inline int getIndex() const{return index_;}
+        inline std::vector<Base*>* getNeighborsBases(){return &neighborsBases_;}
+        inline std::vector<Customer*>* getNeighborsCustomers(){return &neighborsCustomers_;}
+        inline std::vector<Source*>* getNeighborsSources(){return &neighborsSources_;}
 
-        void setIndex(int);
-        void setNeighborsBases(std::vector<Base*>);
-        void setNeighborsCustomers(std::vector<Customer*>);
-        void setNeighborsSources(std::vector<Source*>);
+        inline void setIndex(int index){index_ = index;}
 
     protected:
         int index_;

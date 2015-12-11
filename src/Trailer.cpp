@@ -20,34 +20,3 @@ Trailer::~Trailer()
     locations_.clear();
     drivers_.clear();
 }
-
-int Trailer::getIndex() const{
-    return index_;
-}
-
-void Trailer::setIndex(int index){
-    index_ = index;
-}
-double Trailer::getCapacity() const{
-    return capacity_;
-}
-
-void Trailer::setCapacity(double capacity){
-    capacity_ = capacity;
-}
-
-double Trailer::getInicialQuantity() const{
-    return initialQuantity_;
-}
-
-void Trailer::setInitialQuantity(double initialQualtity){
-    initialQuantity_ = initialQualtity;
-}
-
-double Trailer::getDistanceCost() const{
-    return distanceCost_;
-}
-
-void Trailer::setDistanceCost(double distanceCost){
-    distanceCost_ = distanceCost;
-}
