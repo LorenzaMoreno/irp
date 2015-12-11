@@ -12,15 +12,15 @@ class Shift
         Shift(double cost, Driver* driver, Trailer* trailer);
         virtual ~Shift();
 
-        std::vector<Stop*> getStop() const;
-        Driver* getDriver() const;
-        Trailer* getTrailer() const;
-        double getCost() const;
+        inline std::vector<Stop*>* getStop(){return &stops_;}
+        inline Driver* getDriver(){return driver_;}
+        inline Trailer* getTrailer(){return trailer_;}
+        inline double getCost(){return cost_;}
 
-        void setStops(std::vector<Stop*>);
-        void setDriver(Driver*);
-        void setTrailer(Trailer*);
-        void setCost(double);
+        inline void setStops(std::vector<Stop*> stops){stops_ = stops;}
+        inline void setDriver(Driver* driver){driver_ = driver;}
+        inline void setTrailer(Trailer* trailer){trailer_ = trailer;}
+        inline void setCost(double cost){cost_ = cost;}
 
     protected:
     private:

@@ -214,3 +214,119 @@
 	<string>
 	"util/Markup.h"
 
+1447892685 source:/home/joao/irp/src/CurrentSolution.cpp
+	"CurrentSolution.h"
+
+1447892685 /home/joao/irp/src/CurrentSolution.h
+	"Solution.h"
+
+1448908159 /home/joao/irp/src/Solution.h
+	<vector>
+
+1447892685 source:/home/joao/irp/src/Shift.cpp
+	"Shift.h"
+
+1449690995 /home/joao/irp/src/Shift.h
+	"Driver.h"
+	"Trailer.h"
+	"Stop.h"
+
+1448908146 /home/joao/irp/src/Driver.h
+	"TimeWindow.h"
+	<vector>
+
+1447892685 /home/joao/irp/src/TimeWindow.h
+
+1447892685 /home/joao/irp/src/Trailer.h
+	"Driver.h"
+	"Location.h"
+
+1448908159 /home/joao/irp/src/Location.h
+	<vector>
+
+1449690710 /home/joao/irp/src/Stop.h
+	"Location.h"
+
+1447892685 source:/home/joao/irp/src/TimeWindow.cpp
+	"TimeWindow.h"
+
+1447892685 source:/home/joao/irp/src/Trailer.cpp
+	"Trailer.h"
+
+1448908146 source:/home/joao/irp/src/Base.cpp
+	"Base.h"
+
+1448908146 /home/joao/irp/src/Base.h
+	"Location.h"
+
+1448908146 source:/home/joao/irp/src/Customer.cpp
+	"Customer.h"
+
+1448908146 /home/joao/irp/src/Customer.h
+	"Location.h"
+
+1448908146 source:/home/joao/irp/src/Driver.cpp
+	"Driver.h"
+
+1449688386 source:/home/joao/irp/src/InputData.cpp
+	"InputData.h"
+	<stdio.h>
+
+1449687865 /home/joao/irp/src/InputData.h
+	"Driver.h"
+	"Trailer.h"
+	"Location.h"
+	"Base.h"
+	"Customer.h"
+
+1448908159 source:/home/joao/irp/src/Location.cpp
+	"Location.h"
+
+1449687925 source:/home/joao/irp/src/main.cpp
+	<iostream>
+	"InputData.h"
+
+1448908159 source:/home/joao/irp/src/Solution.cpp
+	"Solution.h"
+
+1448908146 source:/home/joao/irp/src/Source.cpp
+	"Source.h"
+
+1448908146 /home/joao/irp/src/Source.h
+	"Location.h"
+
+1449690728 source:/home/joao/irp/src/Stop.cpp
+	<stdio.h>
+	"Stop.h"
+
+1448908159 source:/home/joao/irp/src/util/Markup.cpp
+	<stdio.h>
+	"Markup.h"
+	<errno.h>
+	<iconv.h>
+	<windows.h>
+	<mbstring.h>
+
+1448908159 /home/joao/irp/src/util/Markup.h
+	<stdlib.h>
+	<string.h>
+	<string>
+	<afx.h>
+
+1448908159 source:/home/joao/irp/src/XMLDataLoader.cpp
+	"XMLDataLoader.h"
+	"InputData.h"
+	"Location.h"
+	"Base.h"
+	"Customer.h"
+	"Driver.h"
+	"Trailer.h"
+	"TimeWindow.h"
+	<vector>
+	<map>
+	<math.h>
+
+1448908159 /home/joao/irp/src/XMLDataLoader.h
+	<string>
+	"util/Markup.h"
+

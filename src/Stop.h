@@ -10,13 +10,13 @@ class Stop
         Stop(double quantity, int arriveTime, Location* location);
         virtual ~Stop();
 
-        Location* getLocation() const;
-        int getArriveTime() const;
-        double getQuantity() const;
+        inline Location* getLocation() const{return location_;}
+        inline int getArriveTime() const{return arriveTime_;}
+        inline double getQuantity() const{return quantity_;}
 
-        void setLocation(Location*);
-        void setArriveTime(int);
-        void setQuantity(double);
+        inline void setLocation(Location* location){location_ = location;}
+        void setArriveTime(int arriveTime){arriveTime_ = arriveTime;}
+        void setQuantity(double quantity){quantity_ = quantity;}
 
     private:
         Location* location_;
