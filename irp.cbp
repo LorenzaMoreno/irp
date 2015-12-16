@@ -72,6 +72,12 @@
 		<Unit filename="src/Location.h">
 			<Option virtualFolder="Input/" />
 		</Unit>
+		<Unit filename="src/Penalties.cpp">
+			<Option virtualFolder="Solution/" />
+		</Unit>
+		<Unit filename="src/Penalties.h">
+			<Option virtualFolder="Solution/" />
+		</Unit>
 		<Unit filename="src/Shift.cpp">
 			<Option virtualFolder="Solution/" />
 		</Unit>
