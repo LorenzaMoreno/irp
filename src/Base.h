@@ -9,7 +9,6 @@ class Trailer;
 class Base : public Location{
     public:
         Base();
-        Base(int index, std::vector<Base*> &neighborsBases, std::vector<Customer*> &neighborsCustomers, std::vector<Source*> &neighborsSources, Type type);
         virtual ~Base();
 
         inline std::vector<Driver*>* getDrivers() {return &drivers_;}

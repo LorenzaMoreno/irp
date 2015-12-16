@@ -7,6 +7,7 @@
 #include "TimeWindow.h"
 #include "Source.h"
 
+#include <cstdio>
 #include <utility>
 #include <vector>
 #include <map>
