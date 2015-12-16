@@ -29,6 +29,11 @@ class InputData
         double getDistance(int origin, int destination);
         int getTime(int origin, int destination);
 
+        inline static int getHorizon(){return instance->horizon;}
+        inline static int getUnit(){return instance->unit;}
+        inline static int getNumInst(){return instance->numInst;}
+
+
         virtual ~InputData();
     protected:
     private:
@@ -40,6 +45,7 @@ class InputData
         std::vector<Customer*> customers_;
         double** distance_;
         int** time_;
+        int horizon, unit, numInst;
         //int** windowSize_;
 
         //find de cada um *
