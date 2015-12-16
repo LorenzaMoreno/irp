@@ -1,24 +1,28 @@
 #ifndef XMLDATALOADER_H
 #define XMLDATALOADER_H
 
+#include <map>
 #include <string>
 #include "util/Markup.h"
+#include "Driver.h"
 
 class XMLDataLoader
 {
     public:
         XMLDataLoader();
         virtual ~XMLDataLoader();
-        void LoadInputData();
+        void loadInputData();
     protected:
     private:
-        void LoadTrailers(CMarkup xml);
-        void LoadDrivers(CMarkup xml);
-        void LoadBases(CMarkup xml);
-		void LoadSources(CMarkup xml);
-		void LoadCustomers(CMarkup xml);
-		void LoadTimeMatrix(CMarkup xml);
-		void LoadDistanceMatrix(CMarkup xml);
+        void loadTrailers(CMarkup xml);
+        void loadDrivers(CMarkup xml);
+        void loadBases(CMarkup xml);
+		void loadSources(CMarkup xml);
+		void loadCustomers(CMarkup xml);
+		void loadTimeMatrix(CMarkup xml);
+		void loadDistanceMatrix(CMarkup xml);
+
+		std::multimap<int,Driver*> trailerDrivers;
 };
 
 

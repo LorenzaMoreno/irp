@@ -5,6 +5,7 @@
 #include "Trailer.h"
 #include "Location.h"
 #include "Base.h"
+#include "Source.h"
 #include "Customer.h"
 
 class InputData
@@ -16,8 +17,9 @@ class InputData
 
         static std::vector<Driver*>* getDrivers();
         static std::vector<Trailer*>* getTrailers();
-        static std::vector<Location*>* getLocation();
+        static std::vector<Location*>* getLocations();
         static std::vector<Base*>* getBases();
+        static std::vector<Source*>* getSources();
         static std::vector<Customer*>*  getCustomers();
 
         Driver* findDriver(int id);
@@ -37,8 +39,9 @@ class InputData
     private:
         std::vector<Driver*> drivers_;
         std::vector<Trailer*> trailers_;
-        std::vector<Location*> location_;
+        std::vector<Location*> locations_;
         std::vector<Base*> bases_;
+        std::vector<Source*> sources_;
         std::vector<Customer*> customers_;
         double** distance_;
         int** time_;
