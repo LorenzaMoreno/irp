@@ -7,8 +7,9 @@ InputData* InputData::instance = NULL;
 InputData::InputData(){
     drivers_.clear();
     trailers_.clear();
-    location_.clear();
+    locations_.clear();
     bases_.clear();
+    sources_.clear();
     customers_.clear();
     time_ = NULL;
     distance_ = NULL;
@@ -16,7 +17,7 @@ InputData::InputData(){
 
 InputData::~InputData(){
     int i;
-    int nLoc = (int)location_.size();
+    int nLoc = (int)locations_.size();
     int nDrivers = (int)drivers_.size();
     int nTrailers = (int)trailers_.size();
 
@@ -25,7 +26,7 @@ InputData::~InputData(){
     for(i=0;i<nLoc;i++){
         delete[] time_[i];
         delete[] distance_[i];
-        delete location_[i]; //Locations pointers
+        delete locations_[i]; //Locations pointers
     }
     delete[] time_;
     delete[] distance_;
@@ -39,8 +40,9 @@ InputData::~InputData(){
     //Clear vectors
     drivers_.clear();
     trailers_.clear();
-    location_.clear();
+    locations_.clear();
     bases_.clear();
+    sources_.clear();
     customers_.clear();
 }
 
@@ -56,11 +58,14 @@ std::vector<Driver*>* InputData::getDrivers(){
 std::vector<Trailer*>* InputData::getTrailers(){
     return &(instance->trailers_);
 }
-std::vector<Location*>* InputData::getLocation(){
-    return &(instance->location_);
+std::vector<Location*>* InputData::getLocations(){
+    return &(instance->locations_);
 }
 std::vector<Base*>* InputData::getBases(){
     return &(instance->bases_);
+}
+std::vector<Source*>* InputData::getSources(){
+    return &(instance->sources_);
 }
 std::vector<Customer*>* InputData::getCustomers(){
     return &(instance->customers_);
@@ -90,9 +95,9 @@ Trailer* InputData::findTrailer(int id){
 
 Location* InputData::findLocation(int id){
     //if it is sequencial
-    return instance->location_.at(id - 1);
+    return instance->locations_.at(id - 1);
     //else
-//    for(Location* l : location_){
+//    for(Location* l : locations_){
 //        if(l->getIndex() == id){
 //            return l;
 //        }

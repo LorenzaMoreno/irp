@@ -13,6 +13,6 @@ Customer::Customer(double capacity, int setupTime, std::vector<double>& forecast
 Customer::~Customer()
 {
     forecast_.clear();
-    allowedTrailer_.clear();
+    allowedTrailers_.clear();
     totalLoadSafety_.clear();
 }
