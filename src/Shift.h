@@ -28,6 +28,8 @@ class Shift{
         inline void setInitialInstant(int initialInstant){initialInstant_ =initialInstant;}
         inline void setFinalInstant(int finalInstant){finalInstant_ =finalInstant;}
 
+        void calcCost();
+
     protected:
     private:
         std::vector<Stop*> stops_;
@@ -36,6 +38,7 @@ class Shift{
         Trailer* trailer_;
         Solution* solution_;
         int initialInstant_, finalInstant_;
+        int initialLoad_, remnantLoad;
 };
 
 #endif // SHIFT_H
