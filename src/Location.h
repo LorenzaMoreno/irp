@@ -6,6 +6,11 @@ class Base;
 class Customer;
 class Source;
 
+template<typename Classe, typename T>
+inline bool instanceof(const T *ptr) {
+    return dynamic_cast<const Classe*>(ptr) != nullptr;
+}
+
 class Location
 {
     public:
@@ -18,6 +23,7 @@ class Location
         inline std::vector<Customer*>* getNeighborsCustomers(){return &neighborsCustomers_;}
         inline std::vector<Source*>* getNeighborsSources(){return &neighborsSources_;}
         inline Type getType() const{return type_;}
+        inline virtual int getSetupTime(){return 0;}
 
         inline void setIndex(int index){index_ = index;}
         inline void setType(Type type){type_ = type;}
