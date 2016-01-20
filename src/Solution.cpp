@@ -268,14 +268,14 @@ void Solution::removeShift(Shift* shift){
             finalHourStop_ += ((Customer*)shift->getStop()->at(j)->getLocation())->getSetupTime();
 
             //Updating the Stock of the customer
-            for(int time=iniHourStop_;time<stockLevelInst_[locationIndex_]->size();time++){
-                if(stockLevelInst_[locationIndex_][k]==0)
+            for(int time=iniHourStop_;time<stockLevelInst_[locationIndex_].size();time++){
+                if(stockLevelInst_[locationIndex_][time]==0)
                     break;
 
-                stockLevelInst_[locationIndex_][k] -= shift->getStop()->at(j)->getQuantity();
+                stockLevelInst_[locationIndex_][time] -= shift->getStop()->at(j)->getQuantity();
 
-                if(stockLevelInst_[locationIndex_][k]<0){
-                    stockLevelInst_[locationIndex_][k]=0;
+                if(stockLevelInst_[locationIndex_][time]<0){
+                    stockLevelInst_[locationIndex_][time]=0;
                 }
             }
 
