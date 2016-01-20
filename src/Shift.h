@@ -34,8 +34,10 @@ class Shift{
         inline Trailer* getTrailer(){return trailer_;}
         inline double getCost(){return cost_;}
         inline Solution* getSolution(){return solution_;}
-        inline int getInitialInstant(){return initialInstant_;}
-        inline int getFinalInstant(){return finalInstant_;}
+        inline double getInitialInstant(){return initialInstant_;}
+        inline double getFinalInstant(){return finalInstant_;}
+        inline double getInitialLoad(){return initialLoad_;}
+        inline double getRemnantLoad(){return remnantLoad_;}
 
         inline void setStops(std::vector<Stop*> stops){stops_ = stops;}
         inline void setDriver(Driver* driver){driver_ = driver;}
@@ -44,6 +46,8 @@ class Shift{
         inline void setSolution(Solution* solution){solution_ = solution;}
         inline void setInitialInstant(int initialInstant){initialInstant_ = initialInstant;}
         inline void setFinalInstant(int finalInstant){finalInstant_ =finalInstant;}
+        inline void setInitialLoad(int initialLoad){initialLoad_ =initialLoad;}
+        inline void setRemnantLoad(int remnantLoad){remnantLoad_ =remnantLoad;}
 
         void calcCost();
         double getQuantityDelivered();
@@ -56,7 +60,7 @@ class Shift{
         Trailer* trailer_;
         Solution* solution_;
         double initialInstant_, finalInstant_;
-        double initialLoad_, remnantLoad;
+        double initialLoad_, remnantLoad_;
 };
 
 #endif // SHIFT_H
