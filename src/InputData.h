@@ -26,8 +26,8 @@ class InputData
         Trailer* findTrailer(int id);
         Location* findLocation(int id);
 
-        double getDistance(int origin, int destination);
-        int getTime(int origin, int destination);
+        static double getDistance(int origin, int destination);
+        static int getTime(int origin, int destination);
 
         inline static int getHorizon(){return instance->horizon;}
         inline static int getUnit(){return instance->unit;}

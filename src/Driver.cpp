@@ -1,4 +1,5 @@
 #include "Driver.h"
+#include "Trailer.h"
 
 
 Driver::Driver(){
@@ -20,4 +21,13 @@ Driver::~Driver(){
     timeWindows_.clear();
     trailers_.clear();
 
+}
+
+bool Driver::canDrive(Trailer* trailer){
+    for(Trailer* t: trailers_){
+        if(t->getIndex()== trailer->getIndex()){
+            return true;
+        }
+    }
+    return false;
 }

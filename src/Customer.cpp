@@ -16,3 +16,12 @@ Customer::~Customer()
     allowedTrailers_.clear();
     totalLoadSafety_.clear();
 }
+
+bool Customer::isTrailerAllowed(Trailer* trailer){
+    for(Trailer* t: allowedTrailers_){
+        if(t->getIndex()== trailer->getIndex()){
+            return true;
+        }
+    }
+    return false;
+}

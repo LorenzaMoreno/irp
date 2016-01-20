@@ -17,6 +17,7 @@ class Customer : public Location {
         inline double getInitialQuantity() const{return initialQuantity_;}
         inline double getSafetyLevel() const{return safetyLevel_;}
         inline std::vector<double>* getTotalLoadSafety(){return &totalLoadSafety_;}
+        bool isTrailerAllowed(Trailer* trailer);
 
         inline void setCapacity(double capacity){capacity_ = capacity;}
         inline void setSetupTime(int setupTime){setupTime_ = setupTime;}

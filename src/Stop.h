@@ -3,6 +3,9 @@
 
 #include "Location.h"
 
+#include <string>
+#include <sstream>
+
 class Shift;
 
 class Stop{
@@ -10,6 +13,14 @@ class Stop{
         Stop();
         Stop(double quantity, int arriveTime, Location* location);
         virtual ~Stop();
+
+        operator std::string(){
+            std::stringstream stream;
+            stream << "Location: " << location_->getIndex() << std::endl;
+            stream << "Quantity: " << quantity_ << std::endl;
+            stream << "Arrive Time: " << arriveTime_ << std::endl;
+            return stream.str();
+        }
 
         inline Location* getLocation() const{return location_;}
         inline int getArriveTime() const{return arriveTime_;}
@@ -23,7 +34,7 @@ class Stop{
 
     private:
         Location* location_;
-        int arriveTime_;
+        double arriveTime_;
         double quantity_;
         Shift* shift_;
 };

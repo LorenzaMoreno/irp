@@ -4,6 +4,14 @@
 #include "Driver.h"
 #include "Trailer.h"
 #include "Stop.h"
+#include "InputData.h"
+#include "Penalties.h"
+#include "Formatter.h"
+
+template<typename Base, typename T>
+inline bool instanceof(const T *ptr) {
+    return dynamic_cast<const Base*>(ptr) != nullptr;
+}
 
 class Solution;
 class Shift{
@@ -11,6 +19,15 @@ class Shift{
         Shift();
         Shift(double cost, Driver* driver, Trailer* trailer);
         virtual ~Shift();
+
+        operator std::string(){
+            std::stringstream stream;
+            stream << "Driver: " << driver_->getIndex() << std::endl;
+            stream << "Trailer: " << trailer_->getIndex() << std::endl;
+            stream << "Initial Instant: " << initialInstant_ << std::endl;
+            stream << "Final Instant: " << finalInstant_ << std::endl;
+            return stream.str();
+        }
 
         inline std::vector<Stop*>* getStop(){return &stops_;}
         inline Driver* getDriver(){return driver_;}
@@ -25,10 +42,11 @@ class Shift{
         inline void setTrailer(Trailer* trailer){trailer_ = trailer;}
         inline void setCost(double cost){cost_ = cost;}
         inline void setSolution(Solution* solution){solution_ = solution;}
-        inline void setInitialInstant(int initialInstant){initialInstant_ =initialInstant;}
+        inline void setInitialInstant(int initialInstant){initialInstant_ = initialInstant;}
         inline void setFinalInstant(int finalInstant){finalInstant_ =finalInstant;}
 
         void calcCost();
+        double getQuantityDelivered();
 
     protected:
     private:
@@ -37,8 +55,8 @@ class Shift{
         Driver* driver_;
         Trailer* trailer_;
         Solution* solution_;
-        int initialInstant_, finalInstant_;
-        int initialLoad_, remnantLoad;
+        double initialInstant_, finalInstant_;
+        double initialLoad_, remnantLoad;
 };
 
 #endif // SHIFT_H

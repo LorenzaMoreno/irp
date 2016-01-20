@@ -109,10 +109,81 @@ void Solution::reset(){
 }
 
 
-bool Solution::checkShift(Shift* shift){
-    /*
-        1º
-    */
+int Solution::checkShift(Shift* shift){
+    //    Shift* shift;
+    int i;
+    std::vector<Stop*>::iterator stopIt = shift->getStop()->begin();
+    Stop* stop=*(stopIt);
+
+    if(!shift->getDriver()->canDrive(shift->getTrailer())){
+        return Penalty::TRAILER_DRIVER_COMPATIBILITY;
+    }
+
+    //retrieve trailer quantity
+    double trailerQuant = shift->getTrailer()->getInicialQuantity();
+    for(i=shift->getInitialInstant()-1; i>=0; i--){
+        if(!getTrailerInst()->at(shift->getTrailer()->getIndex()).at(i).empty()){
+            Shift* lastShift = getTrailerInst()->at(shift->getTrailer()->getIndex()).at(i).at(0);
+//            trailerQuant = lastShift->getFinalQuantity();//TODO criar esse metodo
+        }
+    }
+//    TODO: criar getInitialQuantity
+//    if(trailerQuant!=shift->getInitialQuantity()){
+//        return Penalty::TRAILER_INITIAL_QUANTITY;
+//    }
+
+    //falta checar se na primeira hora tem um shift terminando
+    for(i= shift->getInitialInstant(); i<=shift->getFinalInstant(); ++i){
+        //check if driver is available
+        if(!getDriverInst()->at(shift->getDriver()->getIndex()).at(i).empty()){
+            return Penalty::DRIVER_INTERSHIFT_DURATION;
+        }
+        //check if trailer is available
+        if(!getTrailerInst()->at(shift->getTrailer()->getIndex()).at(i).empty()){
+            return Penalty::TRAILER_SHIFTS_OVERLAP;
+        }
+        //check if location is availble
+        if(stop!=NULL && stop->getArriveTime() >= i && stop->getArriveTime() < i+1){
+            for(int k=i; k<i+ stop->getLocation()->getSetupTime();k++){
+                if(!getLocationInstStop()->at(stop->getLocation()->getIndex()).at(i).empty()){
+                    return Penalty::STOP_ARRIVAL_TIME;
+                }
+            }
+            trailerQuant-=stop->getQuantity();
+            if(trailerQuant<0){
+                return Penalty::TRAILER_NON_NEGATIVE_QUANTITY;
+            }else if(trailerQuant > shift->getTrailer()->getCapacity()){
+                return Penalty::TRAILER_MAX_CAPACITY;
+            }
+            if(stop->getLocation()->getType()==Location::CUSTOMER){
+                Customer* customer= (Customer*) stop->getLocation();
+                if(!customer->isTrailerAllowed(shift->getTrailer())){
+                    return Penalty::CUSTOMER_TRAILER_COMPATIBILITY;
+                }
+                //check stockLevel
+                for(int k=i;k< (int)getStockLevelInst()->size();k++){
+                    if( getStockLevelInst()->at(customer->getIndex()).at(k)+
+                        stop->getQuantity() > customer->getCapacity() ){
+                        return Penalty::CUSTOMER_MAX_TANK_CAPACITY;
+                    }
+                }
+            }else if(stop->getLocation()->getType()==Location::SOURCE){
+                Source* source= (Source*) stop->getLocation();
+                for(int k=i;k< (int)getStockLevelInst()->size();k++){
+                    if( getStockLevelInst()->at(source->getIndex()).at(k)+
+                        stop->getQuantity() < 0 ){
+                        return Penalty::SOURCE_NON_NEGATIVE_CAPACITY;//TODO replace source_non by source
+                    }
+                }
+                if(stop->getQuantity()>0){
+                    printf("Stop deve ter quantidade negativa se location for source\n");
+                    return Penalty::SOURCE_MAX_TANK_CAPACITY;
+                }
+            }
+            stopIt++;
+            stop= (stopIt!=shift->getStop()->end()) ? *stopIt : NULL;
+        }
+    }
 }
 
 bool Solution::checkStop(Stop* stop){
@@ -135,4 +206,51 @@ void Solution::insertStopInShift(Shift* shift, Stop* stop){
 }
 
 void Solution::removeStopFromShift(Shift* shift, Stop* stop){
+}
+
+
+void Solution::calcCost(){
+    double totalQuantity = 0;
+    double cost  = 0;
+
+    int maxTankCapacity = 0;
+    int safetyLevel = 0;
+    int runOut = 0;
+
+    for(int i=0;i<trailerInst_.size();i++){
+        Shift* shift = NULL;
+        for(int j=0;j<trailerInst_.at(i).size();j++){
+            for(int k=0;k<trailerInst_.at(i).at(j).size();k++){
+                if(shift == NULL || shift != trailerInst_.at(i).at(j).at(k)){
+                    shift = trailerInst_.at(i).at(j).at(k);
+                    cost += shift->getCost();
+                    totalQuantity += shift->getQuantityDelivered();
+                }
+            }
+        }
+    }
+
+    cost_ = cost/totalQuantity;
+
+    //chegando se violou restrições
+    for(Customer* c: *InputData::getCustomers()){
+        for(double i: stockLevelInst_.at(c->getIndex())){
+            if(c->getCapacity() < i){
+                maxTankCapacity++;
+            }
+
+            if(c->getSafetyLevel() > i){
+                safetyLevel++;
+            }
+
+            if(0 >= i){
+                runOut++;
+            }
+        }
+    }
+
+    cost += maxTankCapacity * Penalties::getValue(CUSTOMER_MAX_TANK_CAPACITY) +
+            safetyLevel * Penalties::getValue(CUSTOMER_SAFETY_LEVEL) +
+            runOut * Penalties::getValue(CUSTOMER_RUN_OUT);
+
 }

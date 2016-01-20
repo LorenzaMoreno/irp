@@ -17,6 +17,7 @@ class Driver{
         inline std::vector<Trailer*>* getTrailers(){return &trailers_;}
         inline int getMinInterShift() const{return minInterShift_;}
         double getTimeCost() const{return timeCost_;}
+        bool canDrive(Trailer* trailer);
 
         inline void setIndex(int index){index_ = index;}
         inline void setMaxDriving(int maxDriving){maxDriving_ = maxDriving;}
