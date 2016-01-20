@@ -5,8 +5,7 @@
 #include <utility>
 #include <stdio.h>
 
-Solution::Solution()
-{
+Solution::Solution(){
     //ctor
 }
 
@@ -14,8 +13,7 @@ Solution::Solution(double cost, double infeasibilityCost):
                 cost_(cost), infeasibilityCost_(infeasibilityCost){
 }
 
-Solution::~Solution()
-{
+Solution::~Solution(){
     driverInst_.clear();
     trailerInst_.clear();
     stockLevelInst_.clear();
@@ -109,9 +107,8 @@ void Solution::reset(){
     }
 }
 
-
-int Solution::checkShift(Shift* shift){
-    //    Shift* shift;
+int Solution::checkShift(Shift* shift, double costDiff){
+//    Shift* shift;
     int i;
     std::vector<Stop*>::iterator stopIt = shift->getStop()->begin();
     Stop* stop=*(stopIt);
@@ -125,13 +122,13 @@ int Solution::checkShift(Shift* shift){
     for(i=shift->getInitialInstant()-1; i>=0; i--){
         if(!getTrailerInst()->at(shift->getTrailer()->getIndex()).at(i).empty()){
             Shift* lastShift = getTrailerInst()->at(shift->getTrailer()->getIndex()).at(i).at(0);
-//            trailerQuant = lastShift->getFinalQuantity();//TODO criar esse metodo
+            trailerQuant = lastShift->getRemnantLoad();
         }
     }
-//    TODO: criar getInitialQuantity
-//    if(trailerQuant!=shift->getInitialQuantity()){
-//        return Penalty::TRAILER_INITIAL_QUANTITY;
-//    }
+
+    if(trailerQuant!=shift->getInitialLoad()){
+        return Penalty::TRAILER_INITIAL_QUANTITY;
+    }
 
     //falta checar se na primeira hora tem um shift terminando
     for(i= shift->getInitialInstant(); i<=shift->getFinalInstant(); ++i){
@@ -173,7 +170,7 @@ int Solution::checkShift(Shift* shift){
                 for(int k=i;k< (int)getStockLevelInst()->size();k++){
                     if( getStockLevelInst()->at(source->getIndex()).at(k)+
                         stop->getQuantity() < 0 ){
-                        return Penalty::SOURCE_NON_NEGATIVE_CAPACITY;//TODO replace source_non by source
+                        return Penalty::SOURCE_NEGATIVE_CAPACITY;
                     }
                 }
                 if(stop->getQuantity()>0){
@@ -310,11 +307,9 @@ void Solution::insertStopInShift(Shift* shift, Stop* stop){
 void Solution::removeStopFromShift(Shift* shift, Stop* stop){
 }
 
-
 void Solution::calcCost(){
     double totalQuantity = 0;
     double cost  = 0;
-
     int maxTankCapacity = 0;
     int safetyLevel = 0;
     int runOut = 0;
@@ -331,7 +326,6 @@ void Solution::calcCost(){
             }
         }
     }
-
     cost_ = cost/totalQuantity;
 
     //chegando se violou restrições
