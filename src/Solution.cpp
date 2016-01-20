@@ -257,11 +257,12 @@ void Solution::removeShift(Shift* shift){
             }
         }
     }
+
     //locationInstStop_
     for(int j=0;j<shift->getStop()->size();j++){//j = stop
         int locationIndex_ = shift->getStop()->at(j)->getLocation()->getIndex();//Getting each location index
 
-        double iniHourStop_ = shift->getStop()->at(j)->getArriveTime();//initial our of arrival at location
+        double iniHourStop_ = shift->getStop()->at(j)->getArriveTime();//initial hour of arrival at location
         double finalHourStop_ = shift->getStop()->at(j)->getArriveTime();//setting up the final hour of arrival/ hour of departure from location
 
         if( instanceof<Customer>(shift->getStop()->at(j)->getLocation())){
@@ -295,11 +296,12 @@ void Solution::removeShift(Shift* shift){
         }
     }
     shift->setSolution(NULL);
+    calcCost();
     /**
 
-    TODO             -> VERIFICAR OS SHIFTS VIZINHOS DO TRAILER
-                        MODIFICAR OS ESTOQUES DE TODOS OS STOPS
-                        RETORNAR OS NOVO CUSTO
+    TODO             -> ( )VERIFICAR OS SHIFTS VIZINHOS DO TRAILER
+                        (x)MODIFICAR OS ESTOQUES DE TODOS OS STOPS
+                        (x)RETORNAR OS NOVOS CUSTO
     **/
 
 }
