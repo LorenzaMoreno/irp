@@ -58,8 +58,8 @@ std::string Penalties::toString(Penalty penalty){
     case SOURCE_MAX_TANK_CAPACITY:
         return "SOURCE_MAX_TANK_CAPACITY";
 
-    case SOURCE_NON_NEGATIVE_CAPACITY:
-        return "SOURCE_NON_NEGATIVE_CAPACITY";
+    case SOURCE_NEGATIVE_CAPACITY:
+        return "SOURCE_NEGATIVE_CAPACITY";
 
     case CUSTOMER_MAX_TANK_CAPACITY:
         return "CUSTOMER_MAX_TANK_CAPACITY";
