@@ -7,7 +7,7 @@
 
 Shift::Shift(){
     stops_.clear();
-    cost_ = DBL_MAX;
+    cost_ = INFINITY;
     driver_ = NULL;
     trailer_ = NULL;
     solution_ = NULL;
