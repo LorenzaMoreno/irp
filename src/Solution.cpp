@@ -1,5 +1,6 @@
 #include "Solution.h"
 #include "Location.h"
+#include "Trailer.h"
 #include <cmath>
 #include <cstdlib>
 #include <utility>
@@ -309,6 +310,7 @@ void Solution::removeStopFromShift(Shift* shift, Stop* stop){
 
 void Solution::calcCost(){
     double totalQuantity = 0;
+    double previousLoad;
     double cost  = 0;
     int maxTankCapacity = 0;
     int safetyLevel = 0;
@@ -316,36 +318,42 @@ void Solution::calcCost(){
 
     for(int i=0;i<trailerInst_.size();i++){
         Shift* shift = NULL;
+        previousLoad = InputData::getTrailers().at(i)->getInicialQuantity();
         for(int j=0;j<trailerInst_.at(i).size();j++){
             for(int k=0;k<trailerInst_.at(i).at(j).size();k++){
                 if(shift == NULL || shift != trailerInst_.at(i).at(j).at(k)){
                     shift = trailerInst_.at(i).at(j).at(k);
                     cost += shift->getCost();
                     totalQuantity += shift->getQuantityDelivered();
+                    if(abs(shift->getInitialLoad()-previousLoad) > 0.5){
+                        throw std::runtime_error(Formatter() << "Error: " <<
+                                                 Penalties::toString(TRAILER_INITIAL_QUANTITY));
+                    }
+                    previousLoad = shift->getRemnantLoad();
                 }
             }
         }
     }
     cost_ = cost/totalQuantity;
 
-    //chegando se violou restrições
+    //checando se violou restrições
     for(Customer* c: *InputData::getCustomers()){
         for(double i: stockLevelInst_.at(c->getIndex())){
             if(c->getCapacity() < i){
                 maxTankCapacity++;
             }
 
-            if(c->getSafetyLevel() > i){
+            else if(c->getSafetyLevel() > i){
                 safetyLevel++;
-            }
+                if(0 >= i){
+                    runOut++;
+                }
 
-            if(0 >= i){
-                runOut++;
             }
         }
     }
 
-    cost += maxTankCapacity * Penalties::getValue(CUSTOMER_MAX_TANK_CAPACITY) +
+    cost_ += maxTankCapacity * Penalties::getValue(CUSTOMER_MAX_TANK_CAPACITY) +
             safetyLevel * Penalties::getValue(CUSTOMER_SAFETY_LEVEL) +
             runOut * Penalties::getValue(CUSTOMER_RUN_OUT);
 
