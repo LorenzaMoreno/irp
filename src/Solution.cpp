@@ -3,6 +3,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <utility>
+#include <stdio.h>
 
 Solution::Solution()
 {
@@ -144,7 +145,7 @@ int Solution::checkShift(Shift* shift){
         }
         //check if location is availble
         if(stop!=NULL && stop->getArriveTime() >= i && stop->getArriveTime() < i+1){
-            for(int k=i; k<i+ stop->getLocation()->getSetupTime();k++){
+            for(int k=i; k<i+stop->getLocation()->getSetupTime();k++){
                 if(!getLocationInstStop()->at(stop->getLocation()->getIndex()).at(i).empty()){
                     return Penalty::STOP_ARRIVAL_TIME;
                 }
