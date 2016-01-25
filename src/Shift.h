@@ -45,7 +45,7 @@ class Shift{
         inline void setInitialLoad(int initialLoad){initialLoad_ =initialLoad;}
         inline void setRemnantLoad(int remnantLoad){remnantLoad_ =remnantLoad;}
 
-        void calcCost();
+        double calcCost(bool print = false);
         double getQuantityDelivered();
 
     protected:

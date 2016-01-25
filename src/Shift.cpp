@@ -34,7 +34,7 @@ Shift::~Shift(){
     stops_.clear();
 }
 
-void Shift::calcCost(){
+double Shift::calcCost(bool print){
     double trailerCost = trailer_->getDistanceCost();
     double driverCost = driver_->getTimeCost();
     double distance = 0;
@@ -48,17 +48,14 @@ void Shift::calcCost(){
     if(stops_.size() >= 2){
         for(int i=0;i<stops_.size() - 1;i++){
             distance = InputData::getDistance(stops_.at(i)->getLocation()->getIndex(),stops_.at(i+1)->getLocation()->getIndex());
-            time = InputData::getTime(stops_.at(i)->getLocation()->getIndex(),stops_.at(i+1)->getLocation()->getIndex());
         }
         distance = InputData::getDistance(stops_.at(stops_.size()-1)->getLocation()->getIndex(),stops_.at(0)->getLocation()->getIndex());
-        time = InputData::getTime(stops_.at(stops_.size()-1)->getLocation()->getIndex(),stops_.at(0)->getLocation()->getIndex());
     }
+    time = finalInstant_ - initialInstant_;
 
     //procurando inviabilidade na solução
 
     for(int i=0;i<stops_.size();i++){
-
-
         if(stops_.at(i)->getQuantity() > trailer_->getCapacity())
             maxCapacity++;
 
@@ -104,6 +101,25 @@ void Shift::calcCost(){
             negativeQuantity * Penalties::getValue(TRAILER_NON_NEGATIVE_QUANTITY) +
             arrivalTime * Penalties::getValue(STOP_ARRIVAL_TIME);
 
+    if(print){
+        if(trailerCost > 0){
+            Formatter() << Penalties::toString(TRAILER_COST_MULTIPLIER) <<": "<< trailerCost<<"\n";
+        }
+        if(driverCost > 0){
+            Formatter() << Penalties::toString(DRIVER_COST_MULTIPLIER) <<": "<< driverCost<<"\n";
+        }
+        if(maxCapacity > 0){
+            Formatter() << Penalties::toString(TRAILER_MAX_CAPACITY) <<": "<< maxCapacity<<"\n";
+        }
+        if(negativeQuantity > 0){
+            Formatter() << Penalties::toString(TRAILER_NON_NEGATIVE_QUANTITY) <<": "<< negativeQuantity<<"\n";
+        }
+        if(arrivalTime > 0){
+            Formatter() << Penalties::toString(STOP_ARRIVAL_TIME) <<": "<< arrivalTime<<"\n";
+        }
+    }
+
+    return cost_;
 
 }
 

@@ -14,6 +14,7 @@ class Driver{
         inline int getIndex() const{return index_;}
         inline int getMaxDriving() const{return maxDriving_;}
         inline std::vector<TimeWindow*>* getTimeWindow(){return &timeWindows_;}
+        inline std::vector<TimeWindow*>* getTimeWindowByHour(){return &timeWindowByHour_;}
         inline std::vector<Trailer*>* getTrailers(){return &trailers_;}
         inline int getMinInterShift() const{return minInterShift_;}
         double getTimeCost() const{return timeCost_;}
@@ -29,6 +30,7 @@ class Driver{
         int index_;
         int maxDriving_;
         std::vector<TimeWindow*> timeWindows_;
+        std::vector<TimeWindow*> timeWindowByHour_;
         std::vector<Trailer*> trailers_;
         int minInterShift_;
         double timeCost_;

@@ -38,7 +38,7 @@ class Solution
         bool checkStop(Stop*);
 
         void updateCost(/*Penalties penalties*/);
-        void calcCost();
+        void calcCost(bool print = false);
 
     protected:
     private:

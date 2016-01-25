@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <utility>
 #include <stdio.h>
+#include <stdexcept>
 
 Solution::Solution(){
     //ctor
@@ -310,28 +311,48 @@ void Solution::insertStopInShift(Shift* shift, Stop* stop){
 void Solution::removeStopFromShift(Shift* shift, Stop* stop){
 }
 
-void Solution::calcCost(){
+void Solution::calcCost(bool print){
     double totalQuantity = 0;
     double previousLoad;
     double cost  = 0;
     int maxTankCapacity = 0;
     int safetyLevel = 0;
     int runOut = 0;
+    int driverInnerShiftPenalty = 0;
+    int driverMaxDrivingPenalty = 0;
+    int driverTimeWindowPenalty = 0;
+    int sourceMaxTankPenalty = 0;
+    int sourceNegativeTankPenalty = 0;
+    int trailerShiftOverlapPenalty = 0;
 
     for(int i=0;i<trailerInst_.size();i++){
         Shift* shift = NULL;
-        previousLoad = InputData::getTrailers().at(i)->getInicialQuantity();
+        double previousLoad = InputData::getTrailers()->at(i)->getInicialQuantity();
         for(int j=0;j<trailerInst_.at(i).size();j++){
-            for(int k=0;k<trailerInst_.at(i).at(j).size();k++){
-                if(shift == NULL || shift != trailerInst_.at(i).at(j).at(k)){
-                    shift = trailerInst_.at(i).at(j).at(k);
-                    cost += shift->getCost();
-                    totalQuantity += shift->getQuantityDelivered();
-                    if(abs(shift->getInitialLoad()-previousLoad) > 0.5){
+            for(Shift *s: trailerInst_.at(i).at(j)){
+                if(shift == NULL){
+                    shift = s;
+                    cost += s->calcCost(print);
+                    totalQuantity += s->getQuantityDelivered();
+                    if(abs(s->getInitialLoad()-previousLoad) > 0.5){
                         throw std::runtime_error(Formatter() << "Error: " <<
                                                  Penalties::toString(TRAILER_INITIAL_QUANTITY));
                     }
-                    previousLoad = shift->getRemnantLoad();
+                    previousLoad = s->getRemnantLoad();
+                }else if(shift != s){
+                    cost += s->calcCost(print);
+                    totalQuantity += s->getQuantityDelivered();
+                    if(abs(s->getInitialLoad()-previousLoad) > 0.5){
+                        throw std::runtime_error(Formatter() << "Error: " <<
+                                                 Penalties::toString(TRAILER_INITIAL_QUANTITY));
+                    }
+                    previousLoad = s->getRemnantLoad();
+
+                    //confere se o mesmo caminhão está sendo usado ao mesmo tempo
+                    if(shift->getFinalInstant() > s->getInitialInstant()){
+                        trailerShiftOverlapPenalty++;
+                    }
+                    shift = s;
                 }
             }
         }
@@ -350,13 +371,87 @@ void Solution::calcCost(){
                 if(0 >= i){
                     runOut++;
                 }
-
             }
         }
     }
 
+
+    for(int i = 0;i<driverInst_.size();i++){
+        Driver *driver = NULL;
+        Shift *previousShift = NULL;
+
+        for(int j=0;j<driverInst_.at(i).size();j++){
+            for(Shift *s: driverInst_.at(i).at(j)){
+                if(driver == NULL){
+                    driver = s->getDriver();
+                    previousShift = s;
+                }else if(previousShift != s && s->getDriver() == driver){
+                    if(s->getInitialInstant() - previousShift->getFinalInstant() < driver->getMinInterShift()){
+                        driverInnerShiftPenalty++;
+                        previousShift = s;
+                    }
+                    if(previousShift->getFinalInstant() - previousShift->getInitialInstant() > driver->getMinInterShift()){
+                        driverMaxDrivingPenalty++;
+                    }
+                    if(driver->getTimeWindowByHour()->at(j)->getBegin() < s->getInitialInstant() && driver->getTimeWindowByHour()->at(j)->getEnd() < s->getFinalInstant()){
+                        driverTimeWindowPenalty++;
+                    }
+                }
+            }
+        }
+    }
+
+    //checa se o nível de estoque do source está violando alguma restrição
+    //como o nível de estoque é infinito nesta instancia, esta restrição não está sendo usada
+    /*for(Source s: InputData::getSources()){
+        for(int i=0; i<stockLevelInst_->at(s->getIndex())->size()){
+            if(stockLevelInst_->at(s->getIndex())->at(i) > s->getMaxTankCapacity()){
+                sourceMaxTankPenalty++;
+            }
+            if(stockLevelInst_->at(s->getIndex())->at(i) < 0){
+                sourceNegativeTankPenalty++;
+            }
+        }
+    }
+    */
+
     cost_ += maxTankCapacity * Penalties::getValue(CUSTOMER_MAX_TANK_CAPACITY) +
             safetyLevel * Penalties::getValue(CUSTOMER_SAFETY_LEVEL) +
-            runOut * Penalties::getValue(CUSTOMER_RUN_OUT);
+            runOut * Penalties::getValue(CUSTOMER_RUN_OUT) +
+            driverInnerShiftPenalty * Penalties::getValue(DRIVER_INTERSHIFT_DURATION) +
+            driverMaxDrivingPenalty * Penalties::getValue(DRIVER_MAX_DRIVING_TIME) +
+            driverTimeWindowPenalty * Penalties::getValue(DRIVER_TIME_WINDOWS) +
+            sourceMaxTankPenalty * Penalties::getValue(SOURCE_MAX_TANK_CAPACITY) +
+            sourceNegativeTankPenalty * Penalties::getValue(SOURCE_NEGATIVE_CAPACITY);
+
+    if(print){
+        if(maxTankCapacity > 0){
+            Formatter() << Penalties::toString(CUSTOMER_MAX_TANK_CAPACITY) <<": "<< maxTankCapacity<<"\n";
+        }
+        if(safetyLevel > 0){
+            Formatter() << Penalties::toString(CUSTOMER_SAFETY_LEVEL) <<": "<< safetyLevel<<"\n";
+        }
+        if(runOut > 0){
+            Formatter() << Penalties::toString(CUSTOMER_RUN_OUT) <<": "<< runOut<<"\n";
+        }
+        if(driverInnerShiftPenalty > 0){
+            Formatter() << Penalties::toString(DRIVER_INTERSHIFT_DURATION) <<": "<< driverInnerShiftPenalty<<"\n";
+        }
+        if(driverMaxDrivingPenalty > 0){
+            Formatter() << Penalties::toString(DRIVER_MAX_DRIVING_TIME) <<": "<< driverMaxDrivingPenalty<<"\n";
+        }
+        if(driverTimeWindowPenalty > 0){
+            Formatter() << Penalties::toString(DRIVER_TIME_WINDOWS) <<": "<< driverTimeWindowPenalty<<"\n";
+        }
+        if(sourceMaxTankPenalty > 0){
+            Formatter() << Penalties::toString(SOURCE_MAX_TANK_CAPACITY) <<": "<< sourceMaxTankPenalty<<"\n";
+        }
+        if(sourceNegativeTankPenalty > 0){
+            Formatter() << Penalties::toString(SOURCE_NEGATIVE_CAPACITY) <<": "<< sourceNegativeTankPenalty<<"\n";
+        }
+        if(trailerShiftOverlapPenalty > 0){
+            Formatter() << Penalties::toString(TRAILER_SHIFTS_OVERLAP) <<": "<< trailerShiftOverlapPenalty<<"\n";
+        }
+    }
 
 }
