@@ -24,26 +24,31 @@ XMLDataLoader::~XMLDataLoader()
     trailerDrivers.clear();
 }
 
-void XMLDataLoader::loadInputData()
+void XMLDataLoader::loadInputData(std::string file,std::string folder)
 {
+    std::string fileAddress = folder + "\\" + file;
+
     CMarkup xml;
-    if( !xml.Load("C:\\Users\\lorenza\\Documents\\GitHub\\irp\\input\\Instance_V_1.1.xml") )
-        printf("\nErro ao abrir o arquivo: %s\n\n",MCD_2PCSZ(xml.GetResult())); //Abre documento
+    if( !xml.Load(fileAddress) )
+        printf("\nErro ao abrir o arquivo \"%s\": %s\n\n",fileAddress.c_str(),
+               MCD_2PCSZ(xml.GetResult())); //Abre documento
 
     xml.FindElem();     //Encontra raiz do documento xml
     xml.IntoElem();
 
     loadDrivers(xml);
     loadTrailers(xml);
-/*    loadBases(xml);
+    loadBases(xml);
     loadSources(xml);
 	loadCustomers(xml);
-	loadTimeMatrix(xml);
-	loadDistanceMatrix(xml);*/
+	loadTimeAndDistanceMatrices(xml);
+
+    printf("\nFile \"%s\" loaded.\n\n",file.c_str());
 }
 
 void XMLDataLoader::loadDrivers(CMarkup xml)
 {
+    printf("\nLoading drivers...\n");
     Driver* driver = NULL;
 
     xml.FindElem("drivers");
@@ -99,6 +104,7 @@ void XMLDataLoader::loadDrivers(CMarkup xml)
         xml.OutOfElem();//out of driver
 
         InputData::getDrivers()->push_back(driver);
+        printf("%s\n",driver->toString().c_str());
     }
     xml.OutOfElem();//out of drivers
     xml.ResetMainPos();
@@ -106,6 +112,7 @@ void XMLDataLoader::loadDrivers(CMarkup xml)
 
 void XMLDataLoader::loadTrailers(CMarkup xml)
 {
+    printf("\nLoading trailers...\n");
     Trailer* trailer = NULL;
 
     xml.FindElem("trailers");
@@ -140,8 +147,10 @@ void XMLDataLoader::loadTrailers(CMarkup xml)
                 trailer->getDrivers()->push_back(it->second);
             }
         }
+        xml.OutOfElem();//out of trailer
 
         InputData::getTrailers()->push_back(trailer);
+        printf("%s\n",trailer->toString().c_str());
     }
     xml.OutOfElem();//out of trailers
     xml.ResetMainPos();
@@ -150,6 +159,7 @@ void XMLDataLoader::loadTrailers(CMarkup xml)
 
 void XMLDataLoader::loadBases(CMarkup xml)
 {
+    printf("\nLoading bases...\n");
     Base* base = new Base();
 
     xml.FindElem("bases");
@@ -167,6 +177,7 @@ void XMLDataLoader::loadBases(CMarkup xml)
 
     InputData::getBases()->push_back(base);
     InputData::getLocations()->push_back(base);
+    printf("%s\n",base->toString().c_str());
 
     xml.OutOfElem();//out of bases
     xml.ResetMainPos();
@@ -174,6 +185,7 @@ void XMLDataLoader::loadBases(CMarkup xml)
 
 void XMLDataLoader::loadSources(CMarkup xml)
 {
+    printf("\nLoading sources...\n");
     Source* source = NULL;
 
     xml.FindElem("sources");
@@ -197,6 +209,7 @@ void XMLDataLoader::loadSources(CMarkup xml)
 
         InputData::getSources()->push_back(source);
         InputData::getLocations()->push_back(source);
+        printf("%s\n",source->toString().c_str());
     }
     xml.OutOfElem();//out of sources
     xml.ResetMainPos();
@@ -204,6 +217,7 @@ void XMLDataLoader::loadSources(CMarkup xml)
 
 void XMLDataLoader::loadCustomers(CMarkup xml)
 {
+    printf("\nLoading customers...\n");
     Customer* customer = NULL;
     double value,totalLoad;
 
@@ -260,7 +274,48 @@ void XMLDataLoader::loadCustomers(CMarkup xml)
 
         InputData::getCustomers()->push_back(customer);
         InputData::getLocations()->push_back(customer);
+        printf("%s\n",customer->toString().c_str());
     }
     xml.OutOfElem();//out of customers
     xml.ResetMainPos();
+}
+
+void XMLDataLoader::loadTimeAndDistanceMatrices(CMarkup xml){
+    InputData* input = InputData::getInstance();
+
+    int numLocations = (int)input->getLocations()->size();
+    int orig,dest;
+    int* intValues;
+    double* values;
+
+    printf("\nResizing matrices...");
+    input->resizeTimeAndDistanceMatrices(numLocations);
+
+    printf("\nLoading time matrix...");
+    xml.FindElem("timeMatrices");
+    xml.IntoElem();
+    for(orig=0; orig<numLocations && xml.FindElem("ArrayOfInt"); orig++){
+        xml.IntoElem();
+        intValues = input->getTimeInMinutesFrom(orig);
+        values = input->getTimeFrom(orig);
+        for(dest=0; dest<numLocations && xml.FindElem("int"); dest++){
+            intValues[dest] = atoi(MCD_2PCSZ(xml.GetData()));
+            values[dest] = intValues[dest]/60.0;
+        }
+        xml.OutOfElem();
+    }
+    xml.OutOfElem();
+
+
+    printf("\nLoading distance matrix...");
+    xml.FindElem("DistMatrices");
+    xml.IntoElem();
+    for(orig=0; orig<numLocations && xml.FindElem("ArrayOfDouble"); orig++){
+        xml.IntoElem();
+        values = input->getDistancesFrom(orig);
+        for(dest=0; dest<numLocations && xml.FindElem("double"); dest++)
+            values[dest] = atof(MCD_2PCSZ(xml.GetData()));
+        xml.OutOfElem();
+    }
+    xml.OutOfElem();
 }

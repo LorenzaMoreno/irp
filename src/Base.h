@@ -2,6 +2,7 @@
 #define BASE_H
 
 #include "Location.h"
+#include <string>
 
 class Driver;
 class Trailer;
@@ -16,6 +17,8 @@ class Base : public Location{
 
         inline void setDrivers(std::vector<Driver*> drivers){drivers_ = drivers;}
         inline void setTrailers(std::vector<Trailer*> trailers){trailers_ = trailers;}
+
+        std::string toString() const;
 
     protected:
     private:

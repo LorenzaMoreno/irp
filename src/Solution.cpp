@@ -111,9 +111,13 @@ void Solution::reset(){
 
 int Solution::checkShift(Shift* shift, double costDiff){
 //    Shift* shift;
+    int time = shift->getFinalInstant() - shift->getInitialInstant();
+    int distance = 0;
+
     int i;
     std::vector<Stop*>::iterator stopIt = shift->getStop()->begin();
     Stop* stop=*(stopIt);
+    Stop* nextStop=*(stopIt + 1);
 
     if(!shift->getDriver()->canDrive(shift->getTrailer())){
         return Penalty::TRAILER_DRIVER_COMPATIBILITY;
@@ -180,10 +184,20 @@ int Solution::checkShift(Shift* shift, double costDiff){
                     return Penalty::SOURCE_MAX_TANK_CAPACITY;
                 }
             }
+
+            if(nextStop != NULL)
+                distance += InputData::getDistance(stop->getLocation()->getIndex(),nextStop->getLocation()->getIndex());
+
             stopIt++;
             stop= (stopIt!=shift->getStop()->end()) ? *stopIt : NULL;
+            nextStop= ((stopIt + 1) !=shift->getStop()->end()) ? *(stopIt + 1) : NULL;
         }
     }
+    costDiff = distance * shift->getTrailer()->getDistanceCost() +
+               time * shift->getDriver()->getTimeCost();
+
+    /// FALTA O RETORNO -------------------------------------------------------------------------------------------
+
 }
 
 bool Solution::checkStop(Stop* stop){
@@ -393,7 +407,7 @@ void Solution::calcCost(bool print){
                     if(previousShift->getFinalInstant() - previousShift->getInitialInstant() > driver->getMinInterShift()){
                         driverMaxDrivingPenalty++;
                     }
-                    if(driver->getTimeWindowByHour()->at(j)->getBegin() < s->getInitialInstant() && driver->getTimeWindowByHour()->at(j)->getEnd() < s->getFinalInstant()){
+                    if(driver->getTimeWindow()->at(j)->getBegin() < s->getInitialInstant() && driver->getTimeWindow()->at(j)->getEnd() < s->getFinalInstant()){
                         driverTimeWindowPenalty++;
                     }
                 }

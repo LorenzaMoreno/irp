@@ -12,6 +12,7 @@ InputData::InputData(){
     sources_.clear();
     customers_.clear();
     time_ = NULL;
+    timeInMinutes_ = NULL;
     distance_ = NULL;
 }
 
@@ -25,10 +26,12 @@ InputData::~InputData(){
     //Release matrices and locations
     for(i=0;i<nLoc;i++){
         delete[] time_[i];
+        delete[] timeInMinutes_[i];
         delete[] distance_[i];
         delete locations_[i]; //Locations pointers
     }
     delete[] time_;
+    delete[] timeInMinutes_;
     delete[] distance_;
 
     //Release drivers and trailers
@@ -72,42 +75,67 @@ std::vector<Customer*>* InputData::getCustomers(){
 }
 
 Driver* InputData::findDriver(int id){
-    //if it is sequencial
-    return instance->drivers_.at(id - 1);
-    //else
-//    for(Driver* d : drivers_){
-//        if(d->getIndex() == id){
-//            return d;
-//        }
-//    }
+    Driver* driver = instance->drivers_.at(id);
+    if( driver->getIndex() == id )
+        return driver;
+    else
+    for(Driver* d : drivers_){
+        if(d->getIndex() == id){
+            return d;
+        }
+    }
+    return NULL;
 }
 
 Trailer* InputData::findTrailer(int id){
-    //if it is sequencial
-    return instance->trailers_.at(id - 1);
-    //else
-//    for(Trailer* t : trailers_){
-//        if(t->getIndex() == id){
-//            return t;
-//        }
-//    }
+    Trailer* t = instance->trailers_.at(id);
+    if( t->getIndex() == id )
+        return t;
+    else
+    for(t : trailers_)
+        if(t->getIndex() == id)
+            return t;
+    return NULL;
 }
 
 Location* InputData::findLocation(int id){
-    //if it is sequencial
-    return instance->locations_.at(id - 1);
-    //else
-//    for(Location* l : locations_){
-//        if(l->getIndex() == id){
-//            return l;
-//        }
-//    }
+    Location* loc = instance->locations_.at(id);
+    if( loc->getIndex() == id )
+        return loc;
+    else
+    for(Location* l : locations_)
+        if(l->getIndex() == id)
+            return l;
+    return NULL;
 }
 
 double InputData::getDistance(int origin, int destination){
     return instance->distance_[origin][destination];
 }
 
-int InputData::getTime(int origin, int destination){
+double InputData::getTime(int origin, int destination){
     return instance->time_[origin][destination];
+}
+
+int InputData::getTimeInMinutes(int origin, int destination){
+    return instance->timeInMinutes_[origin][destination];
+}
+
+void InputData::resizeTimeAndDistanceMatrices(int numLocations){
+    int i;
+    if( distance_ == NULL ){
+        distance_ = new double*[numLocations];
+        for(i=0;i<numLocations;i++)
+            distance_[i] = new double[numLocations];
+    }
+    if( time_ == NULL ){
+        time_ = new double*[numLocations];
+        for(i=0;i<numLocations;i++)
+            time_[i] = new double[numLocations];
+    }
+    if( timeInMinutes_ == NULL ){
+        timeInMinutes_ = new int*[numLocations];
+        for(i=0;i<numLocations;i++)
+            timeInMinutes_[i] = new int[numLocations];
+    }
 }

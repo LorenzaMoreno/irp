@@ -2,6 +2,7 @@
 #define LOCATION_H
 
 #include <vector>
+#include <string>
 class Base;
 class Customer;
 class Source;
@@ -24,6 +25,8 @@ class Location
         inline std::vector<Source*>* getNeighborsSources(){return &neighborsSources_;}
         inline Type getType() const{return type_;}
         inline virtual int getSetupTime(){return 0;}
+        std::string getIndexStr() const;
+        virtual std::string toString() const = 0;
 
         inline void setIndex(int index){index_ = index;}
         inline void setType(Type type){type_ = type;}

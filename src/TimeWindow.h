@@ -12,8 +12,14 @@ class TimeWindow
         TimeWindow(int, int);
         ~TimeWindow();
 
-        int getBegin() const;
-        int getEnd() const;
+        int getBeginInMin() const;
+        int getEndInMin() const;
+
+        /* begin in hours */
+        double getBegin() const;
+
+        /* end in hours */
+        double getEnd() const;
 
         void setBegin(int);
         void setEnd(int);

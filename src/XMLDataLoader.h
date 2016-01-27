@@ -11,7 +11,7 @@ class XMLDataLoader
     public:
         XMLDataLoader();
         virtual ~XMLDataLoader();
-        void loadInputData();
+        void loadInputData(std::string file,std::string folder);
     protected:
     private:
         void loadTrailers(CMarkup xml);
@@ -19,8 +19,7 @@ class XMLDataLoader
         void loadBases(CMarkup xml);
 		void loadSources(CMarkup xml);
 		void loadCustomers(CMarkup xml);
-		void loadTimeMatrix(CMarkup xml);
-		void loadDistanceMatrix(CMarkup xml);
+		void loadTimeAndDistanceMatrices(CMarkup xml);
 
 		std::multimap<int,Driver*> trailerDrivers;
 };

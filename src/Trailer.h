@@ -18,6 +18,7 @@ class Trailer
         inline double getInicialQuantity() const{return initialQuantity_;}
         inline double getCapacity() const{return capacity_;}
         inline int getIndex() const{return index_;}
+        std::string toString() const;
 
         inline void setIndex(int index){index_ = index;}
         inline void setDistanceCost(double distanceCost){distanceCost_ = distanceCost;}

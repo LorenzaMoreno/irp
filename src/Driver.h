@@ -3,6 +3,7 @@
 
 #include "TimeWindow.h"
 #include <vector>
+#include <string>
 class Trailer;
 class Driver{
     public:
@@ -12,13 +13,13 @@ class Driver{
         virtual ~Driver();
 
         inline int getIndex() const{return index_;}
-        inline int getMaxDriving() const{return maxDriving_;}
+        inline double getMaxDriving() const{return maxDriving_/60.0;}
         inline std::vector<TimeWindow*>* getTimeWindow(){return &timeWindows_;}
-        inline std::vector<TimeWindow*>* getTimeWindowByHour(){return &timeWindowByHour_;}
         inline std::vector<Trailer*>* getTrailers(){return &trailers_;}
-        inline int getMinInterShift() const{return minInterShift_;}
+        inline double getMinInterShift() const{return minInterShift_/60.0;}
         double getTimeCost() const{return timeCost_;}
         bool canDrive(Trailer* trailer);
+        std::string toString() const;
 
         inline void setIndex(int index){index_ = index;}
         inline void setMaxDriving(int maxDriving){maxDriving_ = maxDriving;}
@@ -30,7 +31,6 @@ class Driver{
         int index_;
         int maxDriving_;
         std::vector<TimeWindow*> timeWindows_;
-        std::vector<TimeWindow*> timeWindowByHour_;
         std::vector<Trailer*> trailers_;
         int minInterShift_;
         double timeCost_;

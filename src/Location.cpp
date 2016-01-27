@@ -15,3 +15,11 @@ Location::~Location(){
     neighborsCustomers_.clear();
     neighborsSources_.clear();
 }
+
+std::string Location::getIndexStr() const{
+    char idx[10];
+    sprintf(idx,"%c%02d",
+            (type_==BASE?'B':(type_==SOURCE?'S':'C')),
+            index_);
+    return idx;
+}

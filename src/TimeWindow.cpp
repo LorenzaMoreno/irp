@@ -23,10 +23,18 @@ void TimeWindow::setEnd(int end){
     end_ = end;
 }
 
-int TimeWindow::getBegin() const{
+int TimeWindow::getBeginInMin() const{
     return begin_;
 }
 
-int TimeWindow::getEnd() const{
+int TimeWindow::getEndInMin() const{
     return end_;
+}
+
+double TimeWindow::getBegin() const{
+    return begin_/60.0;
+}
+
+double TimeWindow::getEnd() const{
+    return end_/60.0;
 }

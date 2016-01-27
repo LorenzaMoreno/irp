@@ -11,13 +11,15 @@ class Customer : public Location {
         virtual ~Customer();
 
         inline double getCapacity() const{return capacity_;}
-        inline int getSetupTime() const{return setupTime_;}
+        inline int getSetupTimeInMin() const{return setupTime_;}
+        inline double getSetupTime() const{return setupTime_/60.0;}
         inline std::vector<Trailer*>* getAllowedTrailers(){return &allowedTrailers_;}
         inline std::vector<double>* getForecast(){return &forecast_;}
         inline double getInitialQuantity() const{return initialQuantity_;}
         inline double getSafetyLevel() const{return safetyLevel_;}
         inline std::vector<double>* getTotalLoadSafety(){return &totalLoadSafety_;}
         bool isTrailerAllowed(Trailer* trailer);
+        std::string toString() const;
 
         inline void setCapacity(double capacity){capacity_ = capacity;}
         inline void setSetupTime(int setupTime){setupTime_ = setupTime;}

@@ -27,12 +27,17 @@ class InputData
         Location* findLocation(int id);
 
         static double getDistance(int origin, int destination);
-        static int getTime(int origin, int destination);
+        static double getTime(int origin, int destination);
+        static int getTimeInMinutes(int origin, int destination);
 
         inline static int getHorizon(){return instance->horizon;}
         inline static int getUnit(){return instance->unit;}
         inline static int getNumInst(){return instance->numInst;}
 
+        void resizeTimeAndDistanceMatrices(int numLocations);
+        inline double* getDistancesFrom(int orig) {return distance_[orig];}
+        inline double* getTimeFrom(int orig) {return time_[orig];}
+        inline int* getTimeInMinutesFrom(int orig) {return timeInMinutes_[orig];}
 
         virtual ~InputData();
     protected:
@@ -44,7 +49,8 @@ class InputData
         std::vector<Source*> sources_;
         std::vector<Customer*> customers_;
         double** distance_;
-        int** time_;
+        double** time_;
+        int** timeInMinutes_;
         int horizon, unit, numInst;
         //int** windowSize_;
 
