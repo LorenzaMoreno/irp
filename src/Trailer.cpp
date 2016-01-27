@@ -1,4 +1,5 @@
 #include "Trailer.h"
+#include <stdio.h>
 
 Trailer::Trailer()
 {

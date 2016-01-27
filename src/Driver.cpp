@@ -1,6 +1,6 @@
 #include "Driver.h"
 #include "Trailer.h"
-
+#include <stdio.h>
 
 Driver::Driver(){
     timeWindows_.clear();

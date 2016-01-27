@@ -1,4 +1,5 @@
 #include "Customer.h"
+#include <stdio.h>
 
 Customer::Customer()
 {

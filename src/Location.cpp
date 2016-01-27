@@ -1,4 +1,5 @@
 #include "Location.h"
+#include <stdio.h>
 
 Location::Location(){
     neighborsBases_.clear();

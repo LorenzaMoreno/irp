@@ -1,5 +1,6 @@
 #include "Base.h"
 #include "Trailer.h"
+#include <stdio.h>
 
 Base::Base() : Location() {
     setType(Location::BASE);

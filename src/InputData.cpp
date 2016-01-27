@@ -92,9 +92,9 @@ Trailer* InputData::findTrailer(int id){
     if( t->getIndex() == id )
         return t;
     else
-    for(t : trailers_)
-        if(t->getIndex() == id)
-            return t;
+    for(Trailer* t2 : trailers_)
+        if(t2->getIndex() == id)
+            return t2;
     return NULL;
 }
 
