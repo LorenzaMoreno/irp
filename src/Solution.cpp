@@ -109,7 +109,7 @@ void Solution::reset(){
     }
 }
 
-int Solution::checkShift(Shift* shift, double costDiff){
+int Solution::checkShift(Shift* shift, double* costDiff){
 //    Shift* shift;
     int time = shift->getFinalInstant() - shift->getInitialInstant();
     int distance = 0;
@@ -193,20 +193,82 @@ int Solution::checkShift(Shift* shift, double costDiff){
             nextStop= ((stopIt + 1) !=shift->getStop()->end()) ? *(stopIt + 1) : NULL;
         }
     }
-    costDiff = distance * shift->getTrailer()->getDistanceCost() +
+    (*costDiff) = distance * shift->getTrailer()->getDistanceCost() +
                time * shift->getDriver()->getTimeCost();
 
     /// FALTA O RETORNO -------------------------------------------------------------------------------------------
 
 }
 
-bool Solution::checkStop(Stop* stop){
-    /*
-        1º Does the Shift Fits?
-            Verify if there is not another Stop at the instant
-        2º Conflict with another driver/trailer
-            Verify if there is another Stop in the same location at the same instant
-    */
+int Solution::checkStop(Stop* stop, double* costDiff){
+    //check if the stop fits among the others
+    Shift* shift = stop->getShifts();
+
+    std::vector<Stop*>::iterator sIt = shift->getStop()->begin();
+    Stop* s = *sIt;
+    double stopFinalTime = 0;
+
+    if(s != NULL){// if the list is not empty
+        while(s != NULL || s->getArriveTime() < stop->getArriveTime()){
+            sIt++;
+            s = (sIt!= shift->getStop()->end()) ? *sIt : NULL;
+        }
+        std::vector<Stop*>::iterator sIt2 = sIt + 1;
+        if(s != NULL){// if it is not the last stop
+            if(sIt2 != shift->getStop()->end()){ // if there is another stop after
+                double finalTime = s->getArriveTime() + s->getLocation()->getSetupTime() +
+                            InputData::getInstance()->getTime(s->getLocation()->getIndex(), (*sIt2)->getLocation()->getIndex());
+                stopFinalTime = stop->getArriveTime() + stop->getLocation()->getSetupTime() +
+                            InputData::getInstance()->getTime(stop->getLocation()->getIndex(), (*sIt2)->getLocation()->getIndex());
+                if(stop->getArriveTime() < finalTime)
+                    return Penalty::STOP_ARRIVAL_TIME;
+                else{
+                    //verificar se estoura o trailer ou motorista(tempo de trabalho)
+                  /*  for(int i = stop->getArriveTime(); i < stopFinalTime; i++){
+                        //driver
+                        for(Shift* sDriver : getDriverInst()->at(stop->getShifts()->getDriver()->getIndex()).at(i)){
+                            if(sDriver->getArriveTime() < stopFinalTime)
+                                return Penalty::STOP_ARRIVAL_TIME;
+                        }
+                        //trailer
+                        for(Shift* sTrailer : getTrailerInst()->at(stop->getShifts()->getDriver()->getIndex()).at(i)){
+                            if(sTrailer->getArriveTime() < stopFinalTime)
+                                return Penalty::STOP_ARRIVAL_TIME;
+                        }
+                    }*/ //TODO: checar se trailer e driver tem tempo disponivel para aumentar o shift
+                }
+            }
+        }
+    }
+
+    if(stopFinalTime == 0)
+        stopFinalTime = InputData::getInstance()->getTime(stop->getLocation()->getIndex(),
+                                                          stop->getShifts()->getTrailer()->getBase()->getIndex());
+
+    //check if the stops's location on the given time is already busy
+    for(int time = stop->getArriveTime(); time < stop->getArriveTime() + stop->getLocation()->getSetupTime() + stopFinalTime; time++){
+        for(Stop* s : getLocationInstStop()->at(stop->getLocation()->getIndex()).at(time)){
+            double initialTime = s->getArriveTime();
+            double finalTime = s->getArriveTime() + s->getLocation()->getSetupTime();
+            double stopFinalTime = stop->getArriveTime() + stop->getLocation()->getSetupTime();
+            if((stop->getArriveTime() < finalTime && stop->getArriveTime() > initialTime) ||
+                (stopFinalTime > initialTime && stopFinalTime < finalTime)){
+                return Penalty::STOP_ARRIVAL_TIME;
+            }
+        }
+    }
+
+    //check if the stop's location levels are ok after the unload
+    if(instanceof<Customer>(stop->getLocation())){
+        Customer* customer = (Customer*)stop->getLocation();
+        for(int i = stop->getArriveTime(); i < getStockLevelInst()->at(stop->getLocation()->getIndex()).size(); i++){
+            double stockLevel = getStockLevelInst()->at(stop->getLocation()->getIndex()).at(i);
+            if(stockLevel + stop->getQuantity() > customer->getCapacity()){
+                return Penalty::CUSTOMER_MAX_TANK_CAPACITY;
+            }
+        }
+    }
+
 }
 
 void Solution::insertShift(Shift* shift){

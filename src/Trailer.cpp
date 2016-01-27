@@ -3,7 +3,7 @@
 
 Trailer::Trailer()
 {
-    //ctor
+    base_ = NULL;
 }
 
 Trailer::Trailer(int index, double capacity, double initialQuantity, double distanceCost):
@@ -27,8 +27,9 @@ std::string Trailer::toString() const{
     char data[2048];
     std::string str;
 
-    sprintf(data,"Trailer %2d)  Cap=%-5.0f  IniQty=%-5.0f  DistCost=%-7.2f ",
-            index_,capacity_,initialQuantity_,distanceCost_);
+    sprintf(data,"Trailer %2d)  Cap=%-5.0f  IniQty=%-5.0f  DistCost=%-7.2f  Base=%s ",
+            index_,capacity_,initialQuantity_,distanceCost_,
+            (base_==NULL?"---":base_->getIndexStr().c_str()));
 
     sprintf(data,"%s Drivers=[",data);
     bool first=true;

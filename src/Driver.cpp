@@ -36,8 +36,8 @@ std::string Driver::toString() const{
     char data[2048],twstr[10];
     std::string str;
 
-    sprintf(data,"Driver %2d)  MaxDriv=%-3d  MinInterShft=%-3d  TimeCost=%-7.2f ",
-            index_,maxDriving_,minInterShift_,timeCost_);
+    sprintf(data,"Driver %2d)  MaxDriv=%-4.1f  MinInterShft=%-4.1f  TimeCost=%-7.2f ",
+            index_,getMaxDriving(),getMinInterShift(),timeCost_);
 
     sprintf(data,"%s Trailers=[",data);
     bool first=true;

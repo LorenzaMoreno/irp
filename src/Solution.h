@@ -34,8 +34,8 @@ class Solution
         void insertStopInShift(Shift* shift, Stop* stop);
         void removeStopFromShift(Shift* shift, Stop* stop);
 
-        int checkShift(Shift* shift, double costDiff);
-        bool checkStop(Stop*);
+        int checkShift(Shift* shift, double* costDiff);
+        int checkStop(Stop*,double* costDiff);
 
         void updateCost(/*Penalties penalties*/);
         void calcCost(bool print = false);

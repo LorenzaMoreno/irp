@@ -6,6 +6,7 @@
 #include "Trailer.h"
 #include "TimeWindow.h"
 #include "Source.h"
+#include "Formatter.h"
 
 #include <cstdio>
 #include <utility>
@@ -30,8 +31,9 @@ void XMLDataLoader::loadInputData(std::string file,std::string folder)
 
     CMarkup xml;
     if( !xml.Load(fileAddress) )
-        printf("\nErro ao abrir o arquivo \"%s\": %s\n\n",fileAddress.c_str(),
-               MCD_2PCSZ(xml.GetResult())); //Abre documento
+        throw std::runtime_error(Formatter() << "\n\nFile not found: \""
+                                             << fileAddress << "\" \n"
+                                             << MCD_2PCSZ(xml.GetResult()) << "\n\n");
 
     xml.FindElem();     //Encontra raiz do documento xml
     xml.IntoElem();
@@ -42,8 +44,6 @@ void XMLDataLoader::loadInputData(std::string file,std::string folder)
     loadSources(xml);
 	loadCustomers(xml);
 	loadTimeAndDistanceMatrices(xml);
-
-    printf("\nFile \"%s\" loaded.\n\n",file.c_str());
 }
 
 void XMLDataLoader::loadDrivers(CMarkup xml)
@@ -172,8 +172,10 @@ void XMLDataLoader::loadBases(CMarkup xml)
     for(Driver* driver : *(InputData::getDrivers()))
         base->getDrivers()->push_back(driver);
 
-    for(Trailer* trailer : *(InputData::getTrailers()))
+    for(Trailer* trailer : *(InputData::getTrailers())){
         base->getTrailers()->push_back(trailer);
+        trailer->setBase(base);
+    }
 
     InputData::getBases()->push_back(base);
     InputData::getLocations()->push_back(base);

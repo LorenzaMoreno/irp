@@ -3,6 +3,7 @@
 
 #include "Driver.h"
 #include "Location.h"
+#include "Base.h"
 
 class Trailer
 {
@@ -12,6 +13,7 @@ class Trailer
         Trailer(int index, double capacity, double initialQuantity, double distanceCost, std::vector<Driver*> &drivers, std::vector<Location*> &locations);
         virtual ~Trailer();
 
+        inline Base* getBase() const {return base_;}
         inline std::vector<Driver*>* getDrivers(){return &drivers_;}
         inline std::vector<Location*>* getLocations(){return &locations_;}
         inline double getDistanceCost() const{return distanceCost_;}
@@ -20,6 +22,7 @@ class Trailer
         inline int getIndex() const{return index_;}
         std::string toString() const;
 
+        inline void setBase(Base* base){base_ = base;}
         inline void setIndex(int index){index_ = index;}
         inline void setDistanceCost(double distanceCost){distanceCost_ = distanceCost;}
         inline void setInitialQuantity(double initialQuantity){initialQuantity_ = initialQuantity;}
@@ -32,6 +35,7 @@ class Trailer
         double distanceCost_;
         std::vector<Driver*> drivers_;
         std::vector<Location*> locations_;
+        Base* base_;
 };
 
 #endif // TRAILER_H
