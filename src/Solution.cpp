@@ -20,6 +20,7 @@ Solution::~Solution(){
     trailerInst_.clear();
     stockLevelInst_.clear();
     safetyLevelInst_.clear();
+    trailersShifts_.clear();
 }
 
 void Solution::clear(){
@@ -52,6 +53,11 @@ void Solution::clear(){
     locationInstStop_.clear();
 
     safetyLevelInst_.clear();
+
+    for(std::vector<Shift*> a : trailersShifts_){
+        a.clear();
+    }
+    trailerInst_.clear();
 
     infeasibilityCost_=-1;
     cost_=-1;
@@ -107,6 +113,8 @@ void Solution::reset(){
     for(std::vector<std::vector<Stop*> > a : locationInstStop_){
         a.resize(InputData::getNumInst(),s);
     }
+
+    trailersShifts_.resize(InputData::getTrailers()->size());
 }
 
 int Solution::checkShift(Shift* shift, double* costDiff){
@@ -305,6 +313,9 @@ void Solution::insertShift(Shift* shift){
             locationInstStop_[locationIndex_][i].push_back(shift->getStop()->at(j));//Adding the stop on the Instant list
         }
     }
+
+    //trailersShifts_
+    trailersShifts_.at(trailerIndex_).push_back(shift);
     shift->setSolution(this);
 }
 
@@ -370,6 +381,13 @@ void Solution::removeShift(Shift* shift){
             }
         }
     }
+
+    for(int j=0;j<trailersShifts_.at(trailerIndex_).size();j++){
+        if(trailersShifts_.at(trailerIndex_).at(j)==shift){//Checking to see if the shift is present on that position
+            trailersShifts_.at(trailerIndex_).erase(trailersShifts_.at(trailerIndex_).begin()+j);//If it is, remove it.
+        }
+    }
+
     shift->setSolution(NULL);
     calcCost();
     /**
