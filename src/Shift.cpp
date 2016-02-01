@@ -136,23 +136,23 @@ std::string Shift::toString(std::string tab) const {
     char data[4096], info[100];
 
     sprintf(info,"Trailer=%02d",trailer_->getIndex());
-    sprintf(data,"%sShift %22sStops:  ",tab,info);
+    sprintf(data,"%sShift %22sStops:  ",tab.c_str(),info);
     toString_appendStop(data,i++);
 
     sprintf(info,"Driver=%02d",driver_->getIndex());
-    sprintf(data,"%s\n%s      %30s",data,tab,info);
+    sprintf(data,"%s\n%s      %30s",data,tab.c_str(),info);
     toString_appendStop(data,i++);
 
     sprintf(info,"Load=%.0f-%.0f",initialLoad_,remnantLoad_);
-    sprintf(data,"%s\n%s      %30s",data,tab,info);
+    sprintf(data,"%s\n%s      %30s",data,tab.c_str(),info);
     toString_appendStop(data,i++);
 
     sprintf(info,"Time=%.0f-%.0f",initialInstant_,finalInstant_);
-    sprintf(data,"%s\n%s      %30s",data,tab,info);
+    sprintf(data,"%s\n%s      %30s",data,tab.c_str(),info);
     toString_appendStop(data,i++);
 
     for(; i<(int)stops_.size(); i++){
-        sprintf(data,"%s\n%s      %30s",data,tab," ");
+        sprintf(data,"%s\n%s      %30s",data,tab.c_str()," ");
         toString_appendStop(data,i++);
     }
 
