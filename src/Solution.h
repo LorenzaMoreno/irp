@@ -25,6 +25,7 @@ class Solution
         inline std::vector<std::vector<double> >* getStockLevelInst(){return &stockLevelInst_;}
         inline std::vector<std::vector<std::vector<Stop*> > >* getLocationInstStop() {return &locationInstStop_;}
         inline std::multimap<int, Customer*>* getSafetyLevelInst(){return &safetyLevelInst_;}
+        inline std::vector<std::vector<Shift*> >* getTrailersShifts(){return &trailersShifts_;}
         inline double getInfeasibilityCost() const{return infeasibilityCost_;}
         void reset();
         void clear();
@@ -61,6 +62,9 @@ class Solution
 
          //instant where the stock reaches the safety level
         std::multimap<int, Customer*> safetyLevelInst_;
+
+        //line = trailer, column = next shift form the current trailer
+        std::vector<std::vector<Shift*> > trailersShifts_;
 
         double infeasibilityCost_;
 
