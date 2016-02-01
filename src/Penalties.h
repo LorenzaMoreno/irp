@@ -29,6 +29,8 @@ enum Penalty {
     STOP_ARRIVAL_TIME,
     STOP_LOAD_LEVEL_CHANGED,
 
+    NO_PENALTIES,
+
     NUMBER_OF
 };
 
