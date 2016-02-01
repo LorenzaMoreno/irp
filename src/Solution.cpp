@@ -526,12 +526,146 @@ void Solution::removeShift(Shift* shift){
     **/
 
 }
+/**
+    Stop Sorter
+**/
+bool stopSorter (Stop* i, Stop* j){
+    return (i->getArriveTime() < j->getArriveTime());
+}
 
 void Solution::insertStopInShift(Shift* shift, Stop* stop){
+    shift->getStop()->push_back(stop);//Adding the Stop on the vector
+    std::sort(shift->getStop()->begin(),shift->getStop()->end(),stopSorter);//Sorting the stops
+
+    if( instanceof<Customer>(stop->getLocation())){
+        for(int i = stop->getArriveTime();i<stockLevelInst_.size();i++){
+            if(stockLevelInst_[stop->getLocation()->getIndex()][i] > 0 || i==0)
+                stockLevelInst_[stop->getLocation()->getIndex()][i] += stop->getQuantity();
+            else if(i!=0){
+                double val = stockLevelInst_[stop->getLocation()->getIndex()][i-1] - ((Customer*)stop->getLocation())->getForecast()->at(i);
+                val += stop->getQuantity();
+                if(val >0)
+                    stockLevelInst_[stop->getLocation()->getIndex()][i] = val;
+                else
+                    break;
+            }
+        }
+    }
+    calcCost();
 }
 
 void Solution::removeStopFromShift(Shift* shift, Stop* stop){
+    //finding the stop on the shift ( index )
+    int index_ = 0;
+    for(int i=0;shift->getStop()->size();i++){
+        if(shift->getStop()->at(i) == stop){
+            index_ = i;
+            break;
+        }
+    }
+    //If
+    if( instanceof<Customer>(stop->getLocation())){
+        for(int j = shift->getInitialInstant();j<trailerInst_[shift->getTrailer()->getIndex()].size();j++){
+                for(int i=0;i<trailerInst_[shift->getTrailer()->getIndex()][j].size();i++){
+                    if(trailerInst_[shift->getTrailer()->getIndex()][j][i]!=shift){
+                    //-------------------------------------------------
+                        for(int k = 0;k<trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->size();k++){
+                            if(instanceof<Source>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                                break;
+                            }else if (instanceof<Customer>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                                stockLevelInst_[trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation()->getIndex()][j] +=
+                                trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getQuantity();
+                            }
+                        }
+                    }
+                }
+        }
+    }else if(instanceof<Source>(stop->getLocation())){
+        double tank_ = shift->getInitialLoad();
+        //Getting the value of the trailer tank in the instant that the stop happens - OK
+        for(int i = 0;i<shift->getStop()->size();i++){
+            if(shift->getStop()->at(i) == stop){
+                break;
+            }
+            tank_ -= shift->getStop()->at(i)->getQuantity();
+        }
+        // Verify if the shift is correct by looking at the trailer cargo level of this shift - OK
+
+        for(int i = index_+1;i<shift->getStop()->size();i++){
+            if(instanceof<Source>(shift->getStop()->at(i)->getLocation())){
+                break;
+            }else if (instanceof<Customer>(shift->getStop()->at(i)->getLocation())){
+                if(tank_ + shift->getStop()->at(i)->getQuantity() <0){
+                    throw std::runtime_error(Formatter() << "Error: " << "Invalid remove of a stop. Non-legal trailer tank cargo ( tried to give more than it had ).");
+                }
+                tank_ += shift->getStop()->at(i)->getQuantity();
+            }
+        }
+        // Verify if the shift is correct by looking at the trailer cargo level in every shift after this one
+        /**TODO**/
+        bool flag = false;
+        for(int j = shift->getInitialInstant();j<trailerInst_[shift->getTrailer()->getIndex()].size();j++){
+            if (flag)break;
+            for(int i=0;i<trailerInst_[shift->getTrailer()->getIndex()][j].size();i++){
+                if(flag)break;
+                if(trailerInst_[shift->getTrailer()->getIndex()][j][i]!=shift){
+                //-------------------------------------------------
+                    for(int k = 0;k<trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->size();k++){
+                        if(instanceof<Source>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                            flag = true;
+                            break;
+                        }else if (instanceof<Customer>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                            if(tank_ + trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getQuantity() <0){
+                                throw std::runtime_error(Formatter() << "Error: " << "Invalid remove of a stop. Non-legal trailer tank cargo ( tried to give more than it had ).");
+                            }
+                            tank_ += trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getQuantity();
+                        }
+                    }
+                }
+                //-------------------------------------------------
+            }
+        }
+
+        for(int i = index_+1;i<shift->getStop()->size();i++){
+            if(instanceof<Source>(shift->getStop()->at(i)->getLocation())){
+                break;
+            }else if (instanceof<Customer>(shift->getStop()->at(i)->getLocation())){
+                if(tank_ - shift->getStop()->at(i)->getQuantity() <0){
+                    throw std::runtime_error(Formatter() << "Error: " << "Invalid remove of a stop. Non-legal trailer tank cargo ( tried to give more than it had ).");
+                }
+                tank_ += shift->getStop()->at(i)->getQuantity();
+            }
+        }
+    }
+        /**TODO END**/
+
+    for(int j = shift->getInitialInstant();j<trailerInst_[shift->getTrailer()->getIndex()].size();j++){
+            for(int i=0;i<trailerInst_[shift->getTrailer()->getIndex()][j].size();i++){
+                if(trailerInst_[shift->getTrailer()->getIndex()][j][i]!=shift){
+                //-------------------------------------------------
+                    for(int k = 0;k<trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->size();k++){
+                        if(instanceof<Source>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                            break;
+                        }else if (instanceof<Customer>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                            stockLevelInst_[trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation()->getIndex()][j] -=
+                            trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getQuantity();
+                        }
+                    }
+                }
+            }
+    }
+
+    //Removing the stop
+    shift->getStop()->erase(shift->getStop()->begin()+index_);
+    for(int i =0;locationInstStop_[stop->getLocation()->getIndex()][stop->getArriveTime()].size();i++){
+        if(locationInstStop_[stop->getLocation()->getIndex()][stop->getArriveTime()].at(i) == stop){
+            locationInstStop_[stop->getLocation()->getIndex()][stop->getArriveTime()].
+                erase(locationInstStop_[stop->getLocation()->getIndex()][stop->getArriveTime()].begin()+i);
+            break;
+        }
+    }
 }
+
 
 void Solution::calcCost(bool print){
     double totalQuantity = 0;
