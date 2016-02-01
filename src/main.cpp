@@ -3,6 +3,7 @@
 #include "XMLDataLoader.h"
 #include "Solution.h"
 
+
 using namespace std;
 
 int main()
@@ -12,4 +13,7 @@ int main()
 
     Solution* solution = new Solution();
     printf("\n\n%s",solution->toString(true).c_str());
+    solution->calcCost();
+    printf("\n\nCost = %f\n",solution->getCost());
+
 }

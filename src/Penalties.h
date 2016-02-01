@@ -37,6 +37,7 @@ class Penalties
     public:
         Penalties();
         virtual ~Penalties();
+        static void reset(int option);
         static void setValue(Penalty penalty,double value);
         static double getValue(Penalty penalty);
         static std::string toString(Penalty penalty);

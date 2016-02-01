@@ -1,1 +1,4 @@
 *.o
+bin/Debug/irp.exe
+*.exe
+irp.depend

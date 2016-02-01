@@ -12,6 +12,12 @@ Penalties::~Penalties()
     value_.clear();
 }
 
+void Penalties::reset(int option)
+{
+    value_.clear();
+    value_.resize(Penalty::NUMBER_OF,1.0);
+}
+
 
 void Penalties::setValue(Penalty penalty,double value)
 {

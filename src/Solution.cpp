@@ -432,6 +432,8 @@ void Solution::calcCost(bool print){
         previousLoad = InputData::getTrailers()->at(i)->getInicialQuantity();
         for(int j=0;j<(int)trailerInst_.at(i).size();j++){
             for(Shift *s: trailerInst_.at(i).at(j)){
+                if(s == NULL)
+                    continue;
                 if(shift == NULL){
                     shift = s;
                     cost += s->calcCost(print);
@@ -484,6 +486,8 @@ void Solution::calcCost(bool print){
 
         for(int j=0;j<(int)driverInst_.at(i).size();j++){
             for(Shift *s: driverInst_.at(i).at(j)){
+                if(s == NULL)
+                    continue;
                 if(driver == NULL){
                     driver = s->getDriver();
                     previousShift = s;
@@ -495,9 +499,10 @@ void Solution::calcCost(bool print){
                     if(previousShift->getFinalInstant() - previousShift->getInitialInstant() > driver->getMinInterShift()){
                         driverMaxDrivingPenalty++;
                     }
-                    if(driver->getTimeWindow()->at(j)->getBegin() < s->getInitialInstant() && driver->getTimeWindow()->at(j)->getEnd() < s->getFinalInstant()){
-                        driverTimeWindowPenalty++;
-                    }
+                    //TODO corrigir o acesso a TimeWindows
+                    //if(driver->getTimeWindow()->at(j)->getBegin() < s->getInitialInstant() && driver->getTimeWindow()->at(j)->getEnd() < s->getFinalInstant()){
+                    //    driverTimeWindowPenalty++;
+                    //}
                 }
             }
         }

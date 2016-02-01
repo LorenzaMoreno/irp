@@ -1,4 +1,5 @@
 #include "InputData.h"
+#include "Penalties.h"
 
 #include <stdio.h>
 
@@ -14,6 +15,7 @@ InputData::InputData(){
     time_ = NULL;
     timeInMinutes_ = NULL;
     distance_ = NULL;
+    Penalties::reset(1);
 }
 
 InputData::~InputData(){
