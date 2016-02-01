@@ -14,6 +14,7 @@ class XMLDataLoader
         void loadInputData(std::string file,std::string folder);
     protected:
     private:
+        void loadParameters(CMarkup xml);
         void loadTrailers(CMarkup xml);
         void loadDrivers(CMarkup xml);
         void loadBases(CMarkup xml);

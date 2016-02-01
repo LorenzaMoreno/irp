@@ -11,7 +11,7 @@ class Shift;
 class Stop{
     public:
         Stop();
-        Stop(double quantity, int arriveTime, Location* location);
+        Stop(double quantity, double arriveTime, Location* location);
         virtual ~Stop();
 
         operator std::string(){
@@ -23,12 +23,13 @@ class Stop{
         }
 
         inline Location* getLocation() const{return location_;}
-        inline int getArriveTime() const{return arriveTime_;}
+        inline double getArriveTime() const{return arriveTime_;}
         inline double getQuantity() const{return quantity_;}
         inline Shift* getShifts() {return shift_;}
+        std::string toString() const;
 
         inline void setLocation(Location* location){location_ = location;}
-        inline void setArriveTime(int arriveTime){arriveTime_ = arriveTime;}
+        inline void setArriveTime(double arriveTime){arriveTime_ = arriveTime;}
         inline void setQuantity(double quantity){quantity_ = quantity;}
         inline void setShift(Shift* shift){shift_ = shift;}
 

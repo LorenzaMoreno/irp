@@ -38,6 +38,7 @@ void XMLDataLoader::loadInputData(std::string file,std::string folder)
     xml.FindElem();     //Encontra raiz do documento xml
     xml.IntoElem();
 
+    loadParameters(xml);
     loadDrivers(xml);
     loadTrailers(xml);
     loadBases(xml);
@@ -46,6 +47,21 @@ void XMLDataLoader::loadInputData(std::string file,std::string folder)
 	loadTimeAndDistanceMatrices(xml);
 }
 
+void XMLDataLoader::loadParameters(CMarkup xml)
+{
+    printf("\nLoading parameters...\n");
+
+    xml.FindElem("unit");
+    InputData::getInstance()->setUnit(atoi(MCD_2PCSZ(xml.GetData())));
+    xml.ResetMainPos();
+
+    xml.FindElem("horizon");
+    InputData::getInstance()->setHorizon(atoi(MCD_2PCSZ(xml.GetData())));
+    xml.ResetMainPos();
+
+    InputData::getInstance()->setNumInst(InputData::getInstance()->getHorizon());
+    xml.ResetMainPos();
+}
 void XMLDataLoader::loadDrivers(CMarkup xml)
 {
     printf("\nLoading drivers...\n");

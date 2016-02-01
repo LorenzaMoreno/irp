@@ -24,7 +24,7 @@ class Location
         inline std::vector<Customer*>* getNeighborsCustomers(){return &neighborsCustomers_;}
         inline std::vector<Source*>* getNeighborsSources(){return &neighborsSources_;}
         inline Type getType() const{return type_;}
-        inline virtual int getSetupTime(){return 0;}
+        inline virtual double getSetupTime(){return 0.0;}
         std::string getIndexStr() const;
         virtual std::string toString() const = 0;
 

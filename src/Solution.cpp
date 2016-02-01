@@ -8,7 +8,7 @@
 #include <stdexcept>
 
 Solution::Solution(){
-    //ctor
+    reset();
 }
 
 Solution::Solution(double cost, double infeasibilityCost):
@@ -58,29 +58,36 @@ void Solution::clear(){
 }
 
 void Solution::reset(){
-    std::vector<Shift*> v;
-    v.resize(2,NULL);
-    v.clear();
+    int i,j;
+    int numInst = InputData::getNumInst();
 
     clear();
     driverInst_.resize(InputData::getDrivers()->size());
-    for(std::vector<std::vector<Shift*> > a : driverInst_){
-        a.resize(InputData::getNumInst(),v);
+    for(i=0; i < (int)InputData::getDrivers()->size(); i++){
+        driverInst_.at(i).resize(InputData::getNumInst());
+        for(j=0; j < (int)driverInst_[i].size(); j++){
+            driverInst_.at(i).at(j).clear();
+            driverInst_.at(i).at(j).resize(1,NULL);
+        }
     }
 
     trailerInst_.resize(InputData::getTrailers()->size());
-    for(std::vector<std::vector<Shift*> > a : trailerInst_){
-        a.resize(InputData::getNumInst(),v);
+    for(i=0; i < (int)InputData::getTrailers()->size(); i++){
+        trailerInst_.at(i).resize(InputData::getNumInst());
+        for(j=0; j < (int)trailerInst_.at(i).size(); j++){
+            trailerInst_.at(i).at(j).clear();
+            trailerInst_.at(i).at(j).resize(1,NULL);
+        }
     }
 
     safetyLevelInst_.clear();
     stockLevelInst_.resize(InputData::getLocations()->size());
-    int i=0;
+    i=0;
     bool safetyLevelReached = false;
     for(Location* loc : *(InputData::getLocations())){
         switch(loc->getType()){
             case Location::BASE:{
-                stockLevelInst_[i].clear();
+                stockLevelInst_[i].resize(InputData::getNumInst(),INFINITY);
             }break;
             case Location::SOURCE:{
                 stockLevelInst_[i].resize(InputData::getNumInst(),INFINITY);
@@ -88,8 +95,10 @@ void Solution::reset(){
             case Location::CUSTOMER:{
                 Customer* c=(Customer*)loc;
                 stockLevelInst_[i].resize(InputData::getNumInst(),c->getInitialQuantity());
-                for(unsigned int j=1;j< c->getForecast()->size();j++){
+                for(unsigned int j=1;j< (int)c->getForecast()->size();j++){
                     stockLevelInst_[i][j]=stockLevelInst_[i][j-1]-(*(c->getForecast()))[j];
+                    if(stockLevelInst_[i][j]<0)
+                        stockLevelInst_[i][j] = 0.0;
                     if(!safetyLevelReached && stockLevelInst_[i][j]<c->getSafetyLevel()){
                         safetyLevelReached = true;
                         safetyLevelInst_.insert(std::make_pair(j,c));
@@ -100,12 +109,11 @@ void Solution::reset(){
         i++;
     }
 
-    std::vector<Stop*> s;
-    s.resize(2,NULL);
-    s.clear();
     locationInstStop_.resize(InputData::getLocations()->size());
-    for(std::vector<std::vector<Stop*> > a : locationInstStop_){
-        a.resize(InputData::getNumInst(),s);
+    for( i=0; i<(int)locationInstStop_.size(); i++ ){
+        locationInstStop_[i].resize(InputData::getNumInst());
+        for(j=0; j < (int)locationInstStop_[i].size(); j++)
+            locationInstStop_[i][j].resize(2, NULL);
     }
 }
 
@@ -401,10 +409,10 @@ void Solution::calcCost(bool print){
     int sourceNegativeTankPenalty = 0;
     int trailerShiftOverlapPenalty = 0;
 
-    for(int i=0;i<trailerInst_.size();i++){
+    for(int i=0;i<(int)trailerInst_.size();i++){
         Shift* shift = NULL;
-        double previousLoad = InputData::getTrailers()->at(i)->getInicialQuantity();
-        for(int j=0;j<trailerInst_.at(i).size();j++){
+        previousLoad = InputData::getTrailers()->at(i)->getInicialQuantity();
+        for(int j=0;j<(int)trailerInst_.at(i).size();j++){
             for(Shift *s: trailerInst_.at(i).at(j)){
                 if(shift == NULL){
                     shift = s;
@@ -452,11 +460,11 @@ void Solution::calcCost(bool print){
     }
 
 
-    for(int i = 0;i<driverInst_.size();i++){
+    for(int i = 0;i<(int)driverInst_.size();i++){
         Driver *driver = NULL;
         Shift *previousShift = NULL;
 
-        for(int j=0;j<driverInst_.at(i).size();j++){
+        for(int j=0;j<(int)driverInst_.at(i).size();j++){
             for(Shift *s: driverInst_.at(i).at(j)){
                 if(driver == NULL){
                     driver = s->getDriver();
@@ -530,4 +538,68 @@ void Solution::calcCost(bool print){
         }
     }
 
+}
+
+std::string Solution::toString(bool allData){
+    char data[100000],desloc[20];
+    std::stringstream str;
+
+    str.clear();
+
+    sprintf(data,"\nSolution:\n");
+
+    if( allData ){
+        sprintf(desloc,"           ");
+        for(Customer* customer : *(InputData::getCustomers())){
+            //Customer input data
+            sprintf(data,"%s=======================================================================================\n"
+                         "%s\n",data,customer->toString().c_str());
+            //stock level
+            sprintf(data,"%s%sStock=[",data,desloc);
+            int hour = 0,numHours = stockLevelInst_.at(customer->getIndex()).size();
+            int levelIndicator = 0;
+            for(double d: stockLevelInst_.at(customer->getIndex())){
+                if( d < 0.0001 )
+                    levelIndicator = -1;
+                else if( levelIndicator >= 0 && d > customer->getCapacity()-0.001)
+                    levelIndicator = 1;
+
+                if( hour % 24 == 23 ) {
+                    sprintf(data,"%s%s%5.1f",data,
+                            levelIndicator>0?"^^^":levelIndicator<0?"___":"   ",
+                            (d/customer->getCapacity())*(d<customer->getSafetyLevel()?-100:100));
+                    if( (hour/24)%10 == 9 && hour < numHours-1 )
+                        sprintf(data,"%s\n%s       ",data,desloc);
+                    levelIndicator=0;
+                }
+                hour++;
+            }
+            sprintf(data,"%s ]\n",data);
+            str << data;
+            data[0] = '\0';
+        }
+    }
+
+    sprintf(data,"\nSolution shifts:\n");
+
+    for(int i=0;i<(int)trailerInst_.size();i++){
+        Shift* lastShift = NULL;
+        for(int j=0;j<(int)trailerInst_.at(i).size();j++){
+            for(Shift *s: trailerInst_.at(i).at(j)){
+                if( s == NULL )
+                    continue;
+                if( s == lastShift )
+                    continue;
+
+                sprintf(data,"%s=======================================================================================\n"
+                         "%s\n",data,s->toString("   ").c_str());
+                lastShift = s;
+                str << data;
+                data[0] = '\0';
+            }
+        }
+    }
+
+    str << data;
+    return str.str();
 }

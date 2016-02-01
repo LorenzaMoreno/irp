@@ -1,6 +1,9 @@
 #ifndef SHIFT_H
 #define SHIFT_H
 
+#include <vector>
+#include <string>
+
 #include "Driver.h"
 #include "Trailer.h"
 #include "Stop.h"
@@ -44,12 +47,16 @@ class Shift{
         inline void setFinalInstant(int finalInstant){finalInstant_ =finalInstant;}
         inline void setInitialLoad(int initialLoad){initialLoad_ =initialLoad;}
         inline void setRemnantLoad(int remnantLoad){remnantLoad_ =remnantLoad;}
+        std::string toString(std::string tab="   ") const;
 
         double calcCost(bool print = false);
         double getQuantityDelivered();
 
     protected:
     private:
+
+        void toString_appendStop(char* data,int stopIndex) const;
+
         std::vector<Stop*> stops_;
         double cost_;
         Driver* driver_;

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <map>
+#include <string>
 
 #include "Customer.h"
 #include "Stop.h"
@@ -39,6 +40,8 @@ class Solution
 
         void updateCost(/*Penalties penalties*/);
         void calcCost(bool print = false);
+
+        std::string toString(bool allData=false);
 
     protected:
     private:

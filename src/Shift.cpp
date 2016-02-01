@@ -45,8 +45,8 @@ double Shift::calcCost(bool print){
     Base *standardBase = NULL;
     double distanceTime = 0; // guarda o tempo para o arrivalTime
 
-    if(stops_.size() >= 2){
-        for(int i=0;i<stops_.size() - 1;i++){
+    if((int)stops_.size() >= 2){
+        for(int i=0; i<(int)stops_.size() - 1; i++){
             distance = InputData::getDistance(stops_.at(i)->getLocation()->getIndex(),stops_.at(i+1)->getLocation()->getIndex());
         }
         distance = InputData::getDistance(stops_.at(stops_.size()-1)->getLocation()->getIndex(),stops_.at(0)->getLocation()->getIndex());
@@ -55,7 +55,7 @@ double Shift::calcCost(bool print){
 
     //procurando inviabilidade na solução
 
-    for(int i=0;i<stops_.size();i++){
+    for(int i=0; i<(int)stops_.size(); i++){
         if(stops_.at(i)->getQuantity() > trailer_->getCapacity())
             maxCapacity++;
 
@@ -131,3 +131,46 @@ double Shift::getQuantityDelivered(){
     return quantity;
 }
 
+std::string Shift::toString(std::string tab) const {
+    int i=0;
+    char data[4096], info[100];
+
+    sprintf(info,"Trailer=%02d",trailer_->getIndex());
+    sprintf(data,"%sShift %22sStops:  ",tab,info);
+    toString_appendStop(data,i++);
+
+    sprintf(info,"Driver=%02d",driver_->getIndex());
+    sprintf(data,"%s\n%s      %30s",data,tab,info);
+    toString_appendStop(data,i++);
+
+    sprintf(info,"Load=%.0f-%.0f",initialLoad_,remnantLoad_);
+    sprintf(data,"%s\n%s      %30s",data,tab,info);
+    toString_appendStop(data,i++);
+
+    sprintf(info,"Time=%.0f-%.0f",initialInstant_,finalInstant_);
+    sprintf(data,"%s\n%s      %30s",data,tab,info);
+    toString_appendStop(data,i++);
+
+    for(; i<(int)stops_.size(); i++){
+        sprintf(data,"%s\n%s      %30s",data,tab," ");
+        toString_appendStop(data,i++);
+    }
+
+    sprintf(data,"%s\n",data);
+}
+void Shift::toString_appendStop(char* data,int i) const{
+    if((int)stops_.size()>i){
+        sprintf(data,"%s%s",data,stops_[i]->toString().c_str());
+        if((int)stops_.size()>i+1)
+            sprintf(data,"%s-%.1f",data,stops_[i]->getArriveTime()+
+                    stops_[i]->getLocation()->getSetupTime()+
+                    InputData::getTime(stops_[i]->getLocation()->getIndex(),
+                                       stops_[i+1]->getLocation()->getIndex()));
+        else
+            sprintf(data,"%s-%.1f   %s",data,stops_[i]->getArriveTime()+
+                    stops_[i]->getLocation()->getSetupTime()+
+                    InputData::getTime(stops_[i]->getLocation()->getIndex(),
+                                       trailer_->getBase()->getIndex()),
+                    trailer_->getBase()->getIndexStr().c_str() );
+    }
+}

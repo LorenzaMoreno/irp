@@ -30,14 +30,18 @@ class InputData
         static double getTime(int origin, int destination);
         static int getTimeInMinutes(int origin, int destination);
 
-        inline static int getHorizon(){return instance->horizon;}
-        inline static int getUnit(){return instance->unit;}
-        inline static int getNumInst(){return instance->numInst;}
+        inline static int getHorizon(){return instance->horizon_;}
+        inline static int getUnit(){return instance->unit_;}
+        inline static int getNumInst(){return instance->numInst_;}
 
         void resizeTimeAndDistanceMatrices(int numLocations);
         inline double* getDistancesFrom(int orig) {return distance_[orig];}
         inline double* getTimeFrom(int orig) {return time_[orig];}
         inline int* getTimeInMinutesFrom(int orig) {return timeInMinutes_[orig];}
+
+        inline static void setHorizon(int horizon){instance->horizon_ = horizon;}
+        inline static void setUnit(int unit){instance->unit_ = unit;}
+        inline static void setNumInst(int numInst){instance->numInst_ = numInst;}
 
         virtual ~InputData();
     protected:
@@ -51,7 +55,7 @@ class InputData
         double** distance_;
         double** time_;
         int** timeInMinutes_;
-        int horizon, unit, numInst;
+        int horizon_, unit_, numInst_;
         //int** windowSize_;
 
         //find de cada um *
