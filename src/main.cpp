@@ -13,7 +13,7 @@ int main()
 
     Solution* solution = new Solution();
     printf("\n\n%s",solution->toString(true).c_str());
-    solution->calcCost();
+    solution->calcCost(true);
     printf("\n\nCost = %f\n",solution->getCost());
 
 }

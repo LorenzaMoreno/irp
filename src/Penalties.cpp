@@ -4,7 +4,7 @@ std::vector<double> Penalties::value_;
 Penalties::Penalties()
 {
     value_.clear();
-    value_.resize(Penalty::NUMBER_OF,0.0);
+    value_.resize(Penalty::NUMBER_OF,1.0);
 }
 
 Penalties::~Penalties()
@@ -15,7 +15,7 @@ Penalties::~Penalties()
 void Penalties::reset(int option)
 {
     value_.clear();
-    value_.resize(Penalty::NUMBER_OF,1.0);
+    value_.resize(Penalty::NUMBER_OF,option);
 }
 
 

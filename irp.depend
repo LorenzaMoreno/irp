@@ -99,14 +99,18 @@
 1447271877 /home/joao/Área de trabalho/irp/src/Source.h
 	"Location.h"
 
-1448419016 source:c:\users\lorenza\documents\github\irp\src\base.cpp
+1453924319 source:c:\users\lorenza\documents\github\irp\src\base.cpp
 	"Base.h"
+	"Trailer.h"
+	<stdio.h>
 
-1448419016 c:\users\lorenza\documents\github\irp\src\base.h
+1453918271 c:\users\lorenza\documents\github\irp\src\base.h
 	"Location.h"
+	<string>
 
-1448419424 c:\users\lorenza\documents\github\irp\src\location.h
+1454279672 c:\users\lorenza\documents\github\irp\src\location.h
 	<vector>
+	<string>
 
 1448419016 source:c:\users\lorenza\documents\github\irp\src\currentsolution.cpp
 	"CurrentSolution.h"
@@ -114,76 +118,115 @@
 1448419016 c:\users\lorenza\documents\github\irp\src\currentsolution.h
 	"Solution.h"
 
-1448423647 c:\users\lorenza\documents\github\irp\src\solution.h
+1454361137 c:\users\lorenza\documents\github\irp\src\solution.h
 	<vector>
-
-1448419016 source:c:\users\lorenza\documents\github\irp\src\customer.cpp
+	<map>
+	<string>
 	"Customer.h"
-
-1448419016 c:\users\lorenza\documents\github\irp\src\customer.h
-	"Location.h"
-
-1448419016 source:c:\users\lorenza\documents\github\irp\src\driver.cpp
-	"Driver.h"
-
-1448419016 c:\users\lorenza\documents\github\irp\src\driver.h
-	"TimeWindow.h"
-	<vector>
-
-1448419016 c:\users\lorenza\documents\github\irp\src\timewindow.h
-
-1448423254 source:c:\users\lorenza\documents\github\irp\src\inputdata.cpp
+	"Stop.h"
+	"Shift.h"
 	"InputData.h"
+
+1453924319 source:c:\users\lorenza\documents\github\irp\src\customer.cpp
+	"Customer.h"
 	<stdio.h>
 
-1448422780 c:\users\lorenza\documents\github\irp\src\inputdata.h
+1453919479 c:\users\lorenza\documents\github\irp\src\customer.h
+	"Location.h"
+	"Trailer.h"
+
+1453926356 source:c:\users\lorenza\documents\github\irp\src\driver.cpp
+	"Driver.h"
+	"Trailer.h"
+	<stdio.h>
+
+1453917271 c:\users\lorenza\documents\github\irp\src\driver.h
+	"TimeWindow.h"
+	<vector>
+	<string>
+
+1453917330 c:\users\lorenza\documents\github\irp\src\timewindow.h
+
+1454363733 source:c:\users\lorenza\documents\github\irp\src\inputdata.cpp
+	"InputData.h"
+	"Penalties.h"
+	<stdio.h>
+
+1454359102 c:\users\lorenza\documents\github\irp\src\inputdata.h
 	"Driver.h"
 	"Trailer.h"
 	"Location.h"
 	"Base.h"
+	"Source.h"
 	"Customer.h"
 
-1448419016 c:\users\lorenza\documents\github\irp\src\trailer.h
+1453925875 c:\users\lorenza\documents\github\irp\src\trailer.h
 	"Driver.h"
 	"Location.h"
+	"Base.h"
 
-1448419424 source:c:\users\lorenza\documents\github\irp\src\location.cpp
+1453924319 source:c:\users\lorenza\documents\github\irp\src\location.cpp
 	"Location.h"
+	<stdio.h>
 
-1448419016 source:c:\users\lorenza\documents\github\irp\src\main.cpp
+1454532354 source:c:\users\lorenza\documents\github\irp\src\main.cpp
 	<iostream>
+	"InputData.h"
+	"XMLDataLoader.h"
+	"Solution.h"
 
-1448419016 source:c:\users\lorenza\documents\github\irp\src\shift.cpp
+1454283399 source:c:\users\lorenza\documents\github\irp\src\shift.cpp
 	"Shift.h"
+	<stdexcept>
+	<string>
+	<algorithm>
+	<climits>
 
-1448419016 c:\users\lorenza\documents\github\irp\src\shift.h
+1454282775 c:\users\lorenza\documents\github\irp\src\shift.h
+	<vector>
+	<string>
 	"Driver.h"
 	"Trailer.h"
 	"Stop.h"
-
-1448419016 c:\users\lorenza\documents\github\irp\src\stop.h
+	"InputData.h"
+	"Penalties.h"
+	"Formatter.h"
 	"Location.h"
 
-1448423647 source:c:\users\lorenza\documents\github\irp\src\solution.cpp
+1454278041 c:\users\lorenza\documents\github\irp\src\stop.h
+	"Location.h"
+	<string>
+	<sstream>
+
+1454532240 source:c:\users\lorenza\documents\github\irp\src\solution.cpp
 	"Solution.h"
+	"Location.h"
+	"Trailer.h"
+	<cmath>
+	<cstdlib>
+	<utility>
+	<stdio.h>
+	<stdexcept>
 
-1448419016 source:c:\users\lorenza\documents\github\irp\src\source.cpp
+1453924319 source:c:\users\lorenza\documents\github\irp\src\source.cpp
 	"Source.h"
+	<stdio.h>
 
-1448419016 c:\users\lorenza\documents\github\irp\src\source.h
+1453919374 c:\users\lorenza\documents\github\irp\src\source.h
 	"Location.h"
 
-1448419459 source:c:\users\lorenza\documents\github\irp\src\stop.cpp
+1454282157 source:c:\users\lorenza\documents\github\irp\src\stop.cpp
 	<stdio.h>
 	"Stop.h"
 
-1448419016 source:c:\users\lorenza\documents\github\irp\src\timewindow.cpp
+1453917189 source:c:\users\lorenza\documents\github\irp\src\timewindow.cpp
 	"TimeWindow.h"
 
-1448419016 source:c:\users\lorenza\documents\github\irp\src\trailer.cpp
+1453926154 source:c:\users\lorenza\documents\github\irp\src\trailer.cpp
 	"Trailer.h"
+	<stdio.h>
 
-1441341497 source:c:\users\lorenza\documents\github\irp\src\util\markup.cpp
+1453850478 source:c:\users\lorenza\documents\github\irp\src\util\markup.cpp
 	<stdio.h>
 	"Markup.h"
 	<errno.h>
@@ -191,28 +234,33 @@
 	<windows.h>
 	<mbstring.h>
 
-1441259471 c:\users\lorenza\documents\github\irp\src\util\markup.h
+1453850478 c:\users\lorenza\documents\github\irp\src\util\markup.h
 	<stdlib.h>
 	<string.h>
 	<string>
 	<afx.h>
 
-1448423198 source:c:\users\lorenza\documents\github\irp\src\xmldataloader.cpp
+1454360163 source:c:\users\lorenza\documents\github\irp\src\xmldataloader.cpp
 	"XMLDataLoader.h"
 	"InputData.h"
 	"Location.h"
 	"Base.h"
 	"Customer.h"
-	"Driver.h"
 	"Trailer.h"
 	"TimeWindow.h"
+	"Source.h"
+	"Formatter.h"
+	<cstdio>
+	<utility>
 	<vector>
 	<map>
 	<math.h>
 
-1448420447 c:\users\lorenza\documents\github\irp\src\xmldataloader.h
+1454358529 c:\users\lorenza\documents\github\irp\src\xmldataloader.h
+	<map>
 	<string>
 	"util/Markup.h"
+	"Driver.h"
 
 1447892685 source:/home/joao/irp/src/CurrentSolution.cpp
 	"CurrentSolution.h"
@@ -490,4 +538,15 @@
 	<vector>
 	<map>
 	<math.h>
+
+1454363683 c:\users\lorenza\documents\github\irp\src\penalties.h
+	<vector>
+	<string>
+
+1453850477 c:\users\lorenza\documents\github\irp\include\formatter.h
+	<string>
+	<sstream>
+
+1454531221 source:c:\users\lorenza\documents\github\irp\src\penalties.cpp
+	"Penalties.h"
 

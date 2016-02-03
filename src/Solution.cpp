@@ -427,6 +427,9 @@ void Solution::calcCost(bool print){
     int sourceNegativeTankPenalty = 0;
     int trailerShiftOverlapPenalty = 0;
 
+    if( print )
+        printf("\nComputing solution costs...\n");
+
     for(int i=0;i<(int)trailerInst_.size();i++){
         Shift* shift = NULL;
         previousLoad = InputData::getTrailers()->at(i)->getInicialQuantity();
@@ -461,7 +464,11 @@ void Solution::calcCost(bool print){
             }
         }
     }
-    cost_ = cost/totalQuantity;
+    if( (cost_ > 0.001 || cost_ < 0.001) && totalQuantity > 0.001 ){
+        cost_ = cost/totalQuantity;
+        if( print )
+                  printf("  %30s: %5d\n","TIME AND DISTANCE",cost_);
+    }
 
     //checando se violou restrições
     for(Customer* c: *InputData::getCustomers()){
@@ -472,7 +479,7 @@ void Solution::calcCost(bool print){
 
             else if(c->getSafetyLevel() > i){
                 safetyLevel++;
-                if(0 >= i){
+                if(0.05 >= i){
                     runOut++;
                 }
             }
@@ -522,43 +529,49 @@ void Solution::calcCost(bool print){
     }
     */
 
-    cost_ += maxTankCapacity * Penalties::getValue(CUSTOMER_MAX_TANK_CAPACITY) +
-            safetyLevel * Penalties::getValue(CUSTOMER_SAFETY_LEVEL) +
-            runOut * Penalties::getValue(CUSTOMER_RUN_OUT) +
-            driverInnerShiftPenalty * Penalties::getValue(DRIVER_INTERSHIFT_DURATION) +
-            driverMaxDrivingPenalty * Penalties::getValue(DRIVER_MAX_DRIVING_TIME) +
-            driverTimeWindowPenalty * Penalties::getValue(DRIVER_TIME_WINDOWS) +
-            sourceMaxTankPenalty * Penalties::getValue(SOURCE_MAX_TANK_CAPACITY) +
-            sourceNegativeTankPenalty * Penalties::getValue(SOURCE_NEGATIVE_CAPACITY);
+    cost_ += maxTankCapacity * Penalties::getValue(CUSTOMER_MAX_TANK_CAPACITY);
+    if(print && maxTankCapacity > 0){
+        printf("  %30s: %5d\n",Penalties::toString(CUSTOMER_MAX_TANK_CAPACITY).c_str(),maxTankCapacity);
+    }
 
-    if(print){
-        if(maxTankCapacity > 0){
-            Formatter() << Penalties::toString(CUSTOMER_MAX_TANK_CAPACITY) <<": "<< maxTankCapacity<<"\n";
-        }
-        if(safetyLevel > 0){
-            Formatter() << Penalties::toString(CUSTOMER_SAFETY_LEVEL) <<": "<< safetyLevel<<"\n";
-        }
-        if(runOut > 0){
-            Formatter() << Penalties::toString(CUSTOMER_RUN_OUT) <<": "<< runOut<<"\n";
-        }
-        if(driverInnerShiftPenalty > 0){
-            Formatter() << Penalties::toString(DRIVER_INTERSHIFT_DURATION) <<": "<< driverInnerShiftPenalty<<"\n";
-        }
-        if(driverMaxDrivingPenalty > 0){
-            Formatter() << Penalties::toString(DRIVER_MAX_DRIVING_TIME) <<": "<< driverMaxDrivingPenalty<<"\n";
-        }
-        if(driverTimeWindowPenalty > 0){
-            Formatter() << Penalties::toString(DRIVER_TIME_WINDOWS) <<": "<< driverTimeWindowPenalty<<"\n";
-        }
-        if(sourceMaxTankPenalty > 0){
-            Formatter() << Penalties::toString(SOURCE_MAX_TANK_CAPACITY) <<": "<< sourceMaxTankPenalty<<"\n";
-        }
-        if(sourceNegativeTankPenalty > 0){
-            Formatter() << Penalties::toString(SOURCE_NEGATIVE_CAPACITY) <<": "<< sourceNegativeTankPenalty<<"\n";
-        }
-        if(trailerShiftOverlapPenalty > 0){
-            Formatter() << Penalties::toString(TRAILER_SHIFTS_OVERLAP) <<": "<< trailerShiftOverlapPenalty<<"\n";
-        }
+    cost_ += safetyLevel * Penalties::getValue(CUSTOMER_SAFETY_LEVEL);
+    if(print && safetyLevel > 0){
+        printf("  %30s: %5d\n",Penalties::toString(CUSTOMER_SAFETY_LEVEL).c_str(),safetyLevel);
+    }
+
+    cost_ += runOut * Penalties::getValue(CUSTOMER_RUN_OUT);
+    if(print && runOut > 0){
+        printf("  %30s: %5d\n",Penalties::toString(CUSTOMER_RUN_OUT).c_str(),runOut);
+    }
+
+    cost_ += driverInnerShiftPenalty * Penalties::getValue(DRIVER_INTERSHIFT_DURATION);
+    if(print && driverInnerShiftPenalty > 0){
+        printf("  %30s: %5d\n",Penalties::toString(DRIVER_INTERSHIFT_DURATION).c_str(),driverInnerShiftPenalty);
+    }
+
+    cost_ += driverMaxDrivingPenalty * Penalties::getValue(DRIVER_MAX_DRIVING_TIME);
+    if(print && driverMaxDrivingPenalty > 0){
+        printf("  %30s: %5d\n",Penalties::toString(DRIVER_MAX_DRIVING_TIME).c_str(),driverMaxDrivingPenalty);
+    }
+
+    cost_ += driverTimeWindowPenalty * Penalties::getValue(DRIVER_TIME_WINDOWS);
+    if(print && driverTimeWindowPenalty > 0){
+        printf("  %30s: %5d\n",Penalties::toString(DRIVER_TIME_WINDOWS).c_str(),driverTimeWindowPenalty);
+    }
+
+    cost_ += sourceMaxTankPenalty * Penalties::getValue(SOURCE_MAX_TANK_CAPACITY);
+    if(print && sourceMaxTankPenalty > 0){
+        printf("  %30s: %5d\n",Penalties::toString(SOURCE_MAX_TANK_CAPACITY).c_str(),sourceMaxTankPenalty);
+    }
+
+    cost_ += sourceNegativeTankPenalty * Penalties::getValue(SOURCE_NEGATIVE_CAPACITY);
+    if(print && sourceNegativeTankPenalty > 0){
+        printf("  %30s: %5d\n",Penalties::toString(SOURCE_NEGATIVE_CAPACITY).c_str(),sourceNegativeTankPenalty);
+    }
+
+    cost_ += trailerShiftOverlapPenalty * Penalties::getValue(TRAILER_SHIFTS_OVERLAP);
+    if(print && trailerShiftOverlapPenalty > 0){
+        printf("  %30s: %5d\n",Penalties::toString(TRAILER_SHIFTS_OVERLAP).c_str(),trailerShiftOverlapPenalty);
     }
 
 }
@@ -578,7 +591,7 @@ std::string Solution::toString(bool allData){
             sprintf(data,"%s=======================================================================================\n"
                          "%s\n",data,customer->toString().c_str());
             //stock level
-            sprintf(data,"%s%sStock=[",data,desloc);
+            sprintf(data,"%s%sStock %%=[",data,desloc);
             int hour = 0,numHours = stockLevelInst_.at(customer->getIndex()).size();
             int levelIndicator = 0;
             for(double d: stockLevelInst_.at(customer->getIndex())){
@@ -589,10 +602,10 @@ std::string Solution::toString(bool allData){
 
                 if( hour % 24 == 23 ) {
                     sprintf(data,"%s%s%5.1f",data,
-                            levelIndicator>0?"^^^":levelIndicator<0?"___":"   ",
+                            levelIndicator>0?"^^":levelIndicator<0?"__":"  ",
                             (d/customer->getCapacity())*(d<customer->getSafetyLevel()?-100:100));
                     if( (hour/24)%10 == 9 && hour < numHours-1 )
-                        sprintf(data,"%s\n%s       ",data,desloc);
+                        sprintf(data,"%s\n%s         ",data,desloc);
                     levelIndicator=0;
                 }
                 hour++;
