@@ -2,6 +2,8 @@
 #include "Penalties.h"
 
 #include <stdio.h>
+#include <algorithm> // sort
+
 
 InputData* InputData::instance = NULL;
 
@@ -141,3 +143,54 @@ void InputData::resizeTimeAndDistanceMatrices(int numLocations){
             timeInMinutes_[i] = new int[numLocations];
     }
 }
+
+struct Comparator {
+    Comparator(Location* location) { this->location = location; }
+    bool operator () (Location* l1, Location* l2) {
+        InputData* input = InputData::getInstance();
+        double* locationDistances = input->getDistancesFrom(location->getIndex());
+
+        double dist1 = locationDistances[l1->getIndex()];
+        double dist2 = locationDistances[l2->getIndex()];
+
+        return (dist1 < dist2);
+    }
+    Location* location;
+};
+
+void InputData::calcNeighborsLocations(){
+    for(Location* location : *(InputData::getLocations())){
+        for(Location* loc : *(InputData::getLocations())){
+            if(loc->getIndex() != location->getIndex()){
+                switch(loc->getType()){
+                    case Location::BASE:{
+                        location->getNeighborsBases()->push_back((Base*)loc);
+                    }break;
+                    case Location::SOURCE:{
+                        location->getNeighborsSources()->push_back((Source*)loc);
+                    }break;
+                    case Location::CUSTOMER:{
+                        location->getNeighborsCustomers()->push_back((Customer*)loc);
+                    }break;
+                }
+            }
+        }
+        std::sort((location->getNeighborsBases())->begin(),(location->getNeighborsBases())->end(),Comparator(location));
+        std::sort((location->getNeighborsCustomers())->begin(),(location->getNeighborsCustomers())->end(),Comparator(location));
+        std::sort((location->getNeighborsSources())->begin(),(location->getNeighborsSources())->end(),Comparator(location));
+        printf("\n Lista de bases vizinhos do location de index %d\n",location->getIndex());
+        for(Base* b : *(location->getNeighborsBases())){
+            printf("-> %d",b->getIndex());
+        }
+        printf("\n Lista de customers vizinhos do location de index %d\n",location->getIndex());
+        for(Customer* b : *(location->getNeighborsCustomers())){
+            printf("-> %d",b->getIndex());
+        }
+        printf("\n Lista de sources vizinhos do location de index %d\n",location->getIndex());
+        for(Source* b : *(location->getNeighborsSources())){
+            printf("-> %d",b->getIndex());
+        }
+    }
+}
+
+

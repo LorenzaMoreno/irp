@@ -21,6 +21,7 @@ class InputData
         static std::vector<Base*>* getBases();
         static std::vector<Source*>* getSources();
         static std::vector<Customer*>*  getCustomers();
+        void calcNeighborsLocations();
 
         Driver* findDriver(int id);
         Trailer* findTrailer(int id);
