@@ -9,7 +9,8 @@ using namespace std;
 int main()
 {
     XMLDataLoader loader;
-    loader.loadInputData("Instance_V_1.1.xml",".\\input");
+//    loader.loadInputData("Instance_V_1.1.xml",".\\input");
+    loader.loadInputData("Instance_V_1.1.xml","./input");
 
     Solution* solution = new Solution();
     printf("\n\n%s",solution->toString(true).c_str());

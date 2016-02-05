@@ -27,7 +27,8 @@ XMLDataLoader::~XMLDataLoader()
 
 void XMLDataLoader::loadInputData(std::string file,std::string folder)
 {
-    std::string fileAddress = folder + "\\" + file;
+//    std::string fileAddress = folder + "\\" + file;
+    std::string fileAddress = folder + "/" + file;
 
     CMarkup xml;
     if( !xml.Load(fileAddress) )
