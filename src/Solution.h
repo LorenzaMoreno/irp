@@ -25,8 +25,17 @@ class Solution
         inline std::vector<std::vector<double> >* getStockLevelInst(){return &stockLevelInst_;}
         inline std::vector<std::vector<std::vector<Stop*> > >* getLocationInstStop() {return &locationInstStop_;}
         inline std::multimap<int, Customer*>* getSafetyLevelInst(){return &safetyLevelInst_;}
+
+        void calcInitialSafetyLevelInst(std::vector<Customer*>* customers, int maxInstant);
+
+
+
         inline std::vector<std::vector<Shift*> >* getTrailersShifts(){return &trailersShifts_;}
         inline double getInfeasibilityCost() const{return infeasibilityCost_;}
+
+        std::vector<Customer*> sortCustomerBySafetyLevel(int inst);
+
+
         void reset();
         void clear();
 

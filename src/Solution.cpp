@@ -858,3 +858,39 @@ std::string Solution::toString(bool allData){
     str << data;
     return str.str();
 }
+
+void Solution::calcInitialSafetyLevelInst(std::vector<Customer*>* customers, int maxInstant){
+        //maxInstant deve ser menor ou igual ao total de forecasts
+    Customer* firstToReachSafety;
+
+    for(Customer* customer: *(customers)){
+        double safetyLevel= customer->getSafetyLevel();
+        double quantity = customer->getInitialQuantity();
+
+        int i;
+        for(i=0;i<maxInstant;i++){//varrer instantes
+            double instConsumption=customer->getForecast()->at(i);
+            quantity= quantity - instConsumption;
+            if(quantity < safetyLevel){
+                //estorou
+                safetyLevelInst_.insert (std::make_pair(i,customer));
+                printf("O customer %d atingiu o safety no instante %d\n", customer->getIndex(), i);
+                break;
+            }
+        }
+    }
+//
+// IMPRIME O MULTIMAP safetyLevelInst_
+//    for ( std::multimap< int, Customer* >::const_iterator iter = safetyLevelInst_.begin();
+//      iter != safetyLevelInst_.end(); ++iter ){
+//          printf(">> %d",iter->first);
+//      }
+
+
+
+
+
+
+}
+
+
