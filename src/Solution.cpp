@@ -861,36 +861,36 @@ std::string Solution::toString(bool allData){
 
 void Solution::calcInitialSafetyLevelInst(std::vector<Customer*>* customers, int maxInstant){
         //maxInstant deve ser menor ou igual ao total de forecasts
-    Customer* firstToReachSafety;
-
+        //TODO: ATUALIZAR ESSA FUNCAO PARA ELA NAO PARTIR SOMENTO DO INSTANTE INICIAL
     for(Customer* customer: *(customers)){
         double safetyLevel= customer->getSafetyLevel();
         double quantity = customer->getInitialQuantity();
-
         int i;
         for(i=0;i<maxInstant;i++){//varrer instantes
-            double instConsumption=customer->getForecast()->at(i);
+            double instConsumption= customer->getForecast()->at(i);
             quantity= quantity - instConsumption;
-            if(quantity < safetyLevel){
-                //estorou
+            if(quantity < safetyLevel){//estorou
                 safetyLevelInst_.insert (std::make_pair(i,customer));
                 printf("O customer %d atingiu o safety no instante %d\n", customer->getIndex(), i);
                 break;
             }
         }
     }
-//
-// IMPRIME O MULTIMAP safetyLevelInst_
-//    for ( std::multimap< int, Customer* >::const_iterator iter = safetyLevelInst_.begin();
-//      iter != safetyLevelInst_.end(); ++iter ){
-//          printf(">> %d",iter->first);
-//      }
-
-
-
-
+// Dividir customers por trailers
+    for(Trailer* t: *(InputData:: getTrailers())){
+        std::vector<int> indices;
+        for (std::multimap<int, Customer*>::const_iterator iter = safetyLevelInst_.begin(); iter != safetyLevelInst_.end(); ++iter ){
+            if(iter->second->isTrailerAllowed(t)){
+                indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
+                printf("Customer %d foi inserido na lista do caminhao %d\n",iter->second->getIndex(), t->getIndex());
+            }
+        }
+      //chamar a funcao do rondinelli (indeces, t) que retorna um shift;
+        for(int h=0;h<indices.size();h++){
+            printf(" %d " ,indices[h]);
+        }
+        printf("\n");
+    }
 
 
 }
-
-
