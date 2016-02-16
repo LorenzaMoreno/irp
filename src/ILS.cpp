@@ -10,17 +10,35 @@ ILS::~ILS(){
 }
 
 
-///Criar um shit para um dia inteiro
-///(inicialmente um dia inteiro, depois criar métodos de sobrescrita para períodos diferentes)
-///Os outros parâmetros são os índices na InputData
-Shift* criarShift(int dia, int ixTrailer, int ixDriver){
+///Criar um shit
+///Os parâmetros são os índices na InputData
+Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc){
 //rascunho do que deve ser feito
-  ///1º passo: Gerar uma lista de clientes que pretende-se atender no dia
-  ///          (obs: precisamos verificar o critério de ordenação dessa lista)
-  ///2º passo: Usar o algoritmo de dijkistra para ir gerando uma rota
-  ///          (obs: definir um critério de parada - ex: atendeu todos da lista ou atingiu
-  ///           o limite de tempo do motorista...)
-  ///3º passo: Com a rota definida, distribuir as quantidades para cada cliente
+
+  ///1º passo: Setar a lista negra (ignorar locations que o trailer n atende)
+  std::vector<int> lista;
+
+
+  Trailer* trailer;
+  for(Trailer* t : *InputData::getTrailers()){
+      if(t->getIndex()==ixTrailer){
+        trailer= t;
+        break;
+      }
+  }
+
+  for(Customer* c : *InputData::getCustomers()){
+    if(!c->isTrailerAllowed(trailer)) lista.push_back(c->getIndex());
+  }
+
+  ///2º passo: Definir as rotas
+  int atual= trailer->getBase()->getIndex();
+  int proximo= loc.at(0);//primeiro cliente
+  Dijkstra* d= new Dijkstra();
+  std::vector<int> rota = d->execDijkstra(atual,proximo);
+  for(std::<int>::iterator it= loc.begin(); it!=loc.end()-1; it++){
+    proximo= (int) *it;
+  }
   ///4º passo: Criar o shitft, e para cada cliente da rota criar um stop e inserir neste shift
 
   ///5º passo: validar e retornar o shift

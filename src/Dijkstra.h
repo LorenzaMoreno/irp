@@ -30,6 +30,8 @@ class Dijkstra
     bool caminhoCompleto(int ixSrc, int ixTgt);
     std::vector<int> obtemCaminhoCompleto(int ixSrc, int ixTgt);
     std::vector<int> execDijkstra(int ixSrc, int ixTgt);
+
+    void setBlackList(std::vector<int> lista);
   protected:
   private:
     std::vector<std::vector<double> > matrizDist;///matriz de distancia entre os vértices (tem isso no IRP)

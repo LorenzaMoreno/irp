@@ -2,7 +2,7 @@
 #include "InputData.h"
 #include "XMLDataLoader.h"
 #include "Solution.h"
-
+#include <stdio.h>
 
 using namespace std;
 

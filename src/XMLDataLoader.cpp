@@ -13,6 +13,7 @@
 #include <vector>
 #include <map>
 #include <math.h>
+#include <stdexcept>
 
 XMLDataLoader::XMLDataLoader()
 {

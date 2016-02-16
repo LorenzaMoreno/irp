@@ -9,7 +9,7 @@ class ILS
     ILS();
     virtual ~ILS();
 
-    Shift* criarShift(int dia, int ixTrailer, int ixDriver);
+    Shift* criarShift(int dia, int ixTrailer, int ixDriver, std::vector<int> loc);
     void constructor();
     void localSearch();
   protected:

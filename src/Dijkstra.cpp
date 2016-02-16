@@ -247,3 +247,7 @@ std::vector<int> Dijkstra::execDijkstra(int ixSrc, int ixTgt){
   return caminho;///retorna o caminho (obs: esse caminho pode ser vazio, caso não seja possível
                                     ///criar uma rota entre os pontos)
 }
+
+void Dijkstra::setBlackList(std::vector<int> lista){
+    std::copy(lista.begin(),lista.end(),listaNegra.begin());
+}
