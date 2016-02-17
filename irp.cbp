@@ -51,10 +51,22 @@
 		<Unit filename="src/Customer.h">
 			<Option virtualFolder="Input/" />
 		</Unit>
+		<Unit filename="src/Dijkstra.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/Dijkstra.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
 		<Unit filename="src/Driver.cpp">
 			<Option virtualFolder="Input/" />
 		</Unit>
 		<Unit filename="src/Driver.h">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/ILS.cpp">
+			<Option virtualFolder="Input/" />
+		</Unit>
+		<Unit filename="src/ILS.h">
 			<Option virtualFolder="Input/" />
 		</Unit>
 		<Unit filename="src/InputData.cpp">

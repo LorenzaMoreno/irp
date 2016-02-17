@@ -1,5 +1,6 @@
 #include "ILS.h"
 #include "Dijkstra.h"
+#include "Shift.h"
 
 ILS::ILS(){
   //ctor
@@ -31,17 +32,36 @@ Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc){
     if(!c->isTrailerAllowed(trailer)) lista.push_back(c->getIndex());
   }
 
-  ///2º passo: Definir as rotas
+  ///2º passo: Definir a rota tomando como base a lista de clientes
   int atual= trailer->getBase()->getIndex();
   int proximo= loc.at(0);//primeiro cliente
   Dijkstra* d= new Dijkstra();
   std::vector<int> rota = d->execDijkstra(atual,proximo);
-  for(std::<int>::iterator it= loc.begin(); it!=loc.end()-1; it++){
-    proximo= (int) *it;
+  rota.pop_back();
+  for(int i=1; i<loc.size(); i++){
+    atual= proximo;
+    proximo= loc.at(i);
+    std::vector<int> aux = d->execDijkstra(atual,proximo);
+    aux.pop_back();
+    std::copy(aux.begin(),aux.end(), rota.end());
   }
+  rota.push_back(trailer->getBase()->getIndex());
+
   ///4º passo: Criar o shitft, e para cada cliente da rota criar um stop e inserir neste shift
+  Shift* shift= new Shift();
+  std::vector<Stop*> stops;
+  for(int i=0; i<rota.size(); i++){
+    Stop* stop= new Stop();
+    //stop->setLocation(InputData::findLocation(rota.at(i)));
+    //stop->setArriveTime();
+    //stop->setQuantity();
+    stop->setShift(shift);
+    stops.push_back(stop);
+  }
 
   ///5º passo: validar e retornar o shift
+  shift->setStops(stops);
+  return shift;
 }
 
 ///Construtor da solução
