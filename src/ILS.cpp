@@ -20,13 +20,8 @@ Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc){
   std::vector<int> lista;
 
 
-  Trailer* trailer;
-  for(Trailer* t : *InputData::getTrailers()){
-      if(t->getIndex()==ixTrailer){
-        trailer= t;
-        break;
-      }
-  }
+  Trailer* trailer= InputData::getInstance()->findTrailer(ixTrailer);
+  Driver* driver= InputData::getInstance()->findDriver(ixDriver);
 
   for(Customer* c : *InputData::getCustomers()){
     if(!c->isTrailerAllowed(trailer)) lista.push_back(c->getIndex());
@@ -49,18 +44,20 @@ Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc){
 
   ///4º passo: Criar o shitft, e para cada cliente da rota criar um stop e inserir neste shift
   Shift* shift= new Shift();
+  shift->setDriver(driver);
+  shift->setTrailer(trailer);
   std::vector<Stop*> stops;
   for(int i=0; i<rota.size(); i++){
     Stop* stop= new Stop();
-    //stop->setLocation(InputData::findLocation(rota.at(i)));
+    stop->setLocation(InputData::getInstance()->findLocation(rota.at(i)));
     //stop->setArriveTime();
     //stop->setQuantity();
     stop->setShift(shift);
     stops.push_back(stop);
   }
 
-  ///5º passo: validar e retornar o shift
   shift->setStops(stops);
+  ///5º passo: 'validar?' e retornar o shift
   return shift;
 }
 
