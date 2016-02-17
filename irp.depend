@@ -619,38 +619,38 @@
 1454699068 source:/home/joao/irp/src/Penalties.cpp
 	"Penalties.h"
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\driver.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\driver.cpp
 	"Driver.h"
 	"Trailer.h"
 	<stdio.h>
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\driver.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\driver.h
 	"TimeWindow.h"
 	<vector>
 	<string>
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\timewindow.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\timewindow.h
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\trailer.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\trailer.h
 	"Driver.h"
 	"Location.h"
 	"Base.h"
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\location.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\location.h
 	<vector>
 	<string>
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\base.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\base.h
 	"Location.h"
 	<string>
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\inputdata.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\inputdata.cpp
 	"InputData.h"
 	"Penalties.h"
 	<stdio.h>
 	<algorithm>
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\inputdata.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\inputdata.h
 	"Driver.h"
 	"Trailer.h"
 	"Location.h"
@@ -658,41 +658,41 @@
 	"Source.h"
 	"Customer.h"
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\source.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\source.h
 	"Location.h"
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\customer.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\customer.h
 	"Location.h"
 	"Trailer.h"
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\penalties.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\penalties.h
 	<vector>
 	<string>
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\location.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\location.cpp
 	"Location.h"
 	<stdio.h>
 
-1455715248 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\main.cpp
+1455726049 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\main.cpp
 	<iostream>
 	"InputData.h"
 	"XMLDataLoader.h"
 	"Solution.h"
 	<stdio.h>
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\xmldataloader.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\xmldataloader.h
 	<map>
 	<string>
 	"util/Markup.h"
 	"Driver.h"
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\util\markup.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\util\markup.h
 	<stdlib.h>
 	<string.h>
 	<string>
 	<afx.h>
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\solution.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\solution.h
 	<vector>
 	<map>
 	<string>
@@ -701,12 +701,12 @@
 	"Shift.h"
 	"InputData.h"
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\stop.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\stop.h
 	"Location.h"
 	<string>
 	<sstream>
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\shift.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\shift.h
 	<vector>
 	<string>
 	"Driver.h"
@@ -717,36 +717,36 @@
 	"Formatter.h"
 	"Location.h"
 
-1455709706 d:\rondinelle\faculdade\2015_2\dcc141\irp\include\formatter.h
+1455726043 d:\rondinelle\faculdade\2015_2\dcc141\irp\include\formatter.h
 	<string>
 	<sstream>
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\penalties.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\penalties.cpp
 	"Penalties.h"
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\shift.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\shift.cpp
 	"Shift.h"
 	<stdexcept>
 	<string>
 	<algorithm>
 	<climits>
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\source.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\source.cpp
 	"Source.h"
 	<stdio.h>
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\stop.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\stop.cpp
 	<stdio.h>
 	"Stop.h"
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\timewindow.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\timewindow.cpp
 	"TimeWindow.h"
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\trailer.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\trailer.cpp
 	"Trailer.h"
 	<stdio.h>
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\util\markup.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\util\markup.cpp
 	<stdio.h>
 	"Markup.h"
 	<errno.h>
@@ -754,7 +754,7 @@
 	<windows.h>
 	<mbstring.h>
 
-1455709718 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\xmldataloader.cpp
+1455726049 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\xmldataloader.cpp
 	"XMLDataLoader.h"
 	"InputData.h"
 	"Location.h"
@@ -771,21 +771,21 @@
 	<math.h>
 	<stdexcept>
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\base.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\base.cpp
 	"Base.h"
 	"Trailer.h"
 	<stdio.h>
 
-1455709706 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\customer.cpp
+1455726043 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\customer.cpp
 	"Customer.h"
 	<stdio.h>
 
-1455709718 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\dijkstra.cpp
+1455726049 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\dijkstra.cpp
 	"Dijkstra.h"
 	"InputData.h"
 	<limits>
 
-1455709718 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\dijkstra.h
+1455726049 d:\rondinelle\faculdade\2015_2\dcc141\irp\src\dijkstra.h
 	<iostream>
 	<vector>
 	<cstdlib>
@@ -807,7 +807,7 @@
 1455654037 c:\users\miguel\documents\github\irp\src\ils.h
 	"Shift.h"
 
-1455709718 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\solution.cpp
+1455726049 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\solution.cpp
 	"Solution.h"
 	"Location.h"
 	"Trailer.h"

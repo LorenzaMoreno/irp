@@ -31,6 +31,7 @@ Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc){
   int atual= trailer->getBase()->getIndex();
   int proximo= loc.at(0);//primeiro cliente
   Dijkstra* d= new Dijkstra();
+  d->setBlackList(lista);
   std::vector<int> rota = d->execDijkstra(atual,proximo);
   rota.pop_back();
   for(int i=1; i<loc.size(); i++){
@@ -50,7 +51,8 @@ Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc){
   for(int i=0; i<rota.size(); i++){
     Stop* stop= new Stop();
     stop->setLocation(InputData::getInstance()->findLocation(rota.at(i)));
-    //stop->setArriveTime();
+    Location* c= InputData::getInstance()->findLocation(i);
+    stop->setArriveTime(c->getSetupTime());
     //stop->setQuantity();
     stop->setShift(shift);
     stops.push_back(stop);
@@ -61,13 +63,8 @@ Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc){
   return shift;
 }
 
-///Construtor da solução
-///Verificar se é necessário colocar um parâmetro de horizonte de tempo
 void ILS::constructor(){
-//rascunho do que deve ser feito
-  ///1º passo: Para cada dia do horizonte de tempo, criar um shift usando a função acima
-  ///2º passo: Inserir cada shitf criado na solução (fazer verificação da inserção antes)
-  ///3º passo: retornar a soução
+
 }
 
 ///Busca local
