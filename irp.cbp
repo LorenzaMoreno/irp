@@ -42,9 +42,6 @@
 		<Unit filename="src/Base.h">
 			<Option virtualFolder="Input/" />
 		</Unit>
-		<Unit filename="src/CurrentSolution.h">
-			<Option virtualFolder="Solution/" />
-		</Unit>
 		<Unit filename="src/Customer.cpp">
 			<Option virtualFolder="Input/" />
 		</Unit>

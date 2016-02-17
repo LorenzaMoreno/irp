@@ -515,7 +515,7 @@
 	"Location.h"
 	<stdio.h>
 
-1455654238 source:c:\users\miguel\documents\github\irp\src\main.cpp
+1455723783 source:c:\users\miguel\documents\github\irp\src\main.cpp
 	<iostream>
 	"InputData.h"
 	"XMLDataLoader.h"
@@ -550,7 +550,7 @@
 	<string>
 	<sstream>
 
-1455653975 source:c:\users\miguel\documents\github\irp\src\solution.cpp
+1455735294 source:c:\users\miguel\documents\github\irp\src\solution.cpp
 	"Solution.h"
 	"Location.h"
 	"Trailer.h"
@@ -559,6 +559,7 @@
 	<utility>
 	<stdio.h>
 	<stdexcept>
+	"ILS.h"
 
 1455653977 c:\users\miguel\documents\github\irp\src\solution.h
 	<vector>
@@ -800,12 +801,16 @@
 	<vector>
 	<cstdlib>
 
-1455656018 source:c:\users\miguel\documents\github\irp\src\ils.cpp
+1455735490 source:c:\users\miguel\documents\github\irp\src\ils.cpp
 	"ILS.h"
 	"Dijkstra.h"
-
-1455654037 c:\users\miguel\documents\github\irp\src\ils.h
 	"Shift.h"
+
+1455734500 c:\users\miguel\documents\github\irp\src\ils.h
+	"Shift.h"
+	<stdio.h>
+	<map>
+	"Solution.h"
 
 1455726049 source:d:\rondinelle\faculdade\2015_2\dcc141\irp\src\solution.cpp
 	"Solution.h"

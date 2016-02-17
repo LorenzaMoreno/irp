@@ -6,6 +6,7 @@
 #include <utility>
 #include <stdio.h>
 #include <stdexcept>
+#include "ILS.h"
 
 Solution::Solution(){
     reset();
@@ -506,6 +507,7 @@ int Solution::checkStop(Stop* stop, double* costDiff){
     }
 }
 
+
 void Solution::insertShift(Shift* shift){
     //Hour interval
     int iniHour_ = (shift->getInitialInstant());//Initial hour of the shift
@@ -540,9 +542,6 @@ void Solution::insertShift(Shift* shift){
             locationInstStop_[locationIndex_][i].push_back(shift->getStop()->at(j));//Adding the stop on the Instant list
         }
     }
-
-    //trailersShifts_
-    trailersShifts_.at(trailerIndex_).push_back(shift);
     shift->setSolution(this);
 }
 
@@ -551,22 +550,66 @@ void Solution::removeShift(Shift* shift){
     int iniHour_ = (shift->getInitialInstant());
     int finalHour_ = (shift->getFinalInstant());
 
+    //trailerInst_
+    int trailerIndex_ = shift->getTrailer()->getIndex();
+        /**------------------------------------------------------------------------------------**/
+        //checking for discrepancies in the neighbors ( shifts )
+        float netNeighborTank_=0;
+        int next_=-1;//The position in the vector of the shift that sucedes this one
+        int before_=-1;//The position in the vector of the shift that precedes this one
+        //Checking for neighbor to the left ( after the shift )
+        for(int i=finalHour_;i<=trailerInst_[trailerIndex_].size();i++){
+            next_=-1;
+            for(int j=0;j<trailerInst_[trailerIndex_][i].size();j++){//For every hour on the trailer's list beyond the end of THIS shift
+                if(next_==-1 && trailerInst_[trailerIndex_][i].at(j)!=shift){
+                    next_=0;
+                }else if((trailerInst_[trailerIndex_][i].at(next_)->getInitialInstant()>
+                         trailerInst_[trailerIndex_][i].at(j)->getInitialInstant()) &&
+                         (trailerInst_[trailerIndex_][i].at(j)!=shift)){
+                    next_ =j;
+                }
+            }
+            if(next_!=-1){//If next_ is not -1, then we have our neighbor
+                netNeighborTank_+=(trailerInst_[trailerIndex_][i].at(next_)->getInitialLoad());
+                break;
+            }
+        }
+        for(int i=iniHour_;i>=0;i--){
+            before_=-1;
+            for(int j=0;j<trailerInst_[trailerIndex_][i].size();j++){//For every hour on the trailer's list beyond the end of THIS shift
+                if(before_==-1  && trailerInst_[trailerIndex_][i].at(j)!=shift){
+                    before_=0;
+                }else if((trailerInst_[trailerIndex_][i].at(before_)->getFinalInstant()<
+                         trailerInst_[trailerIndex_][i].at(j)->getFinalInstant()) &&
+                         (trailerInst_[trailerIndex_][i].at(j)!=shift)){
+                    before_ =j;
+                }
+            }
+            if(before_!=-1){//If before_ is not -1, then we have our neighbor
+                netNeighborTank_-=(trailerInst_[trailerIndex_][i].at(before_)->getRemnantLoad());
+                break;
+            }
+        }
+        if (netNeighborTank_!=0){
+            //ERROR, CAN'T REMOVE THE SHIFT
+            throw std::runtime_error(Formatter() << "Error: " << "Incompatibility on trailer cargo while removing shift.\n Be sure that the trailer levels are the same ( from the shift that comes before and the one that comes after).");
+        }
+        /**------------------------------------------------------------------------------------**/
+
+    for(int i=iniHour_;i<=finalHour_;i++){
+        for(int j=0;j<trailerInst_[trailerIndex_][i].size();j++){//For every hour on the trailer's list
+            if(trailerInst_[trailerIndex_][i].at(j)==shift){//Checking to see if the shift is present on that position
+                trailerInst_[trailerIndex_][i].erase(trailerInst_[trailerIndex_][i].begin()+j);//If it is, remove it.
+            }
+        }
+    }
+
     //driverInst_
     int driverIndex_ = shift->getDriver()->getIndex();
     for(int i=iniHour_;i<=finalHour_;i++){
         for(int j=0;j<driverInst_[driverIndex_][i].size();j++){//For every hour on the driver's list
             if(driverInst_[driverIndex_][i].at(j)==shift){//Checking to see if the shift is present on that position
                 driverInst_[driverIndex_][i].erase(driverInst_[driverIndex_][i].begin()+j);//If it is, remove it.
-            }
-        }
-    }
-
-    //trailerInst_
-    int trailerIndex_ = shift->getTrailer()->getIndex();
-    for(int i=iniHour_;i<=finalHour_;i++){
-        for(int j=0;j<trailerInst_[trailerIndex_][i].size();j++){//For every hour on the trailer's list
-            if(trailerInst_[trailerIndex_][i].at(j)==shift){//Checking to see if the shift is present on that position
-                trailerInst_[trailerIndex_][i].erase(trailerInst_[trailerIndex_][i].begin()+j);//If it is, remove it.
             }
         }
     }
@@ -608,29 +651,156 @@ void Solution::removeShift(Shift* shift){
             }
         }
     }
-
-    for(int j=0;j<trailersShifts_.at(trailerIndex_).size();j++){
-        if(trailersShifts_.at(trailerIndex_).at(j)==shift){//Checking to see if the shift is present on that position
-            trailersShifts_.at(trailerIndex_).erase(trailersShifts_.at(trailerIndex_).begin()+j);//If it is, remove it.
-        }
-    }
-
     shift->setSolution(NULL);
     calcCost();
     /**
 
-    TODO             -> ( )VERIFICAR OS SHIFTS VIZINHOS DO TRAILER
+    DONE             -> (X)VERIFICAR OS TANQUES DOS SHIFTS ANTERIOES E POSTERIORES E TRHOW EXCEPTION SE HOUVER ( NÃO AVERA REMOVEÇÃO )
                         (x)MODIFICAR OS ESTOQUES DE TODOS OS STOPS
                         (x)RETORNAR OS NOVOS CUSTO
     **/
 
 }
+/**
+    Stop Sorter
+**/
+bool stopSorter (Stop* i, Stop* j){
+    return (i->getArriveTime() < j->getArriveTime());
+}
 
 void Solution::insertStopInShift(Shift* shift, Stop* stop){
+    shift->getStop()->push_back(stop);//Adding the Stop on the vector
+    std::sort(shift->getStop()->begin(),shift->getStop()->end(),stopSorter);//Sorting the stops
+
+    if( instanceof<Customer>(stop->getLocation())){
+        for(int i = stop->getArriveTime();i<stockLevelInst_.size();i++){
+            if(stockLevelInst_[stop->getLocation()->getIndex()][i] > 0 || i==0)
+                stockLevelInst_[stop->getLocation()->getIndex()][i] += stop->getQuantity();
+            else if(i!=0){
+                double val = stockLevelInst_[stop->getLocation()->getIndex()][i-1] - ((Customer*)stop->getLocation())->getForecast()->at(i);
+                val += stop->getQuantity();
+                if(val >0)
+                    stockLevelInst_[stop->getLocation()->getIndex()][i] = val;
+                else
+                    break;
+            }
+        }
+    }
+    calcCost();
 }
 
 void Solution::removeStopFromShift(Shift* shift, Stop* stop){
+    //finding the stop on the shift ( index )
+    int index_ = 0;
+    for(int i=0;shift->getStop()->size();i++){
+        if(shift->getStop()->at(i) == stop){
+            index_ = i;
+            break;
+        }
+    }
+    //If
+    if( instanceof<Customer>(stop->getLocation())){
+        for(int j = shift->getInitialInstant();j<trailerInst_[shift->getTrailer()->getIndex()].size();j++){
+                for(int i=0;i<trailerInst_[shift->getTrailer()->getIndex()][j].size();i++){
+                    if(trailerInst_[shift->getTrailer()->getIndex()][j][i]!=shift){
+                    //-------------------------------------------------
+                        for(int k = 0;k<trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->size();k++){
+                            if(instanceof<Source>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                                break;
+                            }else if (instanceof<Customer>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                                stockLevelInst_[trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation()->getIndex()][j] +=
+                                trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getQuantity();
+                            }
+                        }
+                    }
+                }
+        }
+    }else if(instanceof<Source>(stop->getLocation())){
+        double tank_ = shift->getInitialLoad();
+        //Getting the value of the trailer tank in the instant that the stop happens - OK
+        for(int i = 0;i<shift->getStop()->size();i++){
+            if(shift->getStop()->at(i) == stop){
+                break;
+            }
+            tank_ -= shift->getStop()->at(i)->getQuantity();
+        }
+        // Verify if the shift is correct by looking at the trailer cargo level of this shift - OK
+
+        for(int i = index_+1;i<shift->getStop()->size();i++){
+            if(instanceof<Source>(shift->getStop()->at(i)->getLocation())){
+                break;
+            }else if (instanceof<Customer>(shift->getStop()->at(i)->getLocation())){
+                if(tank_ + shift->getStop()->at(i)->getQuantity() <0){
+                    throw std::runtime_error(Formatter() << "Error: " << "Invalid remove of a stop. Non-legal trailer tank cargo ( tried to give more than it had ).");
+                }
+                tank_ += shift->getStop()->at(i)->getQuantity();
+            }
+        }
+        // Verify if the shift is correct by looking at the trailer cargo level in every shift after this one
+        /**TODO**/
+        bool flag = false;
+        for(int j = shift->getInitialInstant();j<trailerInst_[shift->getTrailer()->getIndex()].size();j++){
+            if (flag)break;
+            for(int i=0;i<trailerInst_[shift->getTrailer()->getIndex()][j].size();i++){
+                if(flag)break;
+                if(trailerInst_[shift->getTrailer()->getIndex()][j][i]!=shift){
+                //-------------------------------------------------
+                    for(int k = 0;k<trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->size();k++){
+                        if(instanceof<Source>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                            flag = true;
+                            break;
+                        }else if (instanceof<Customer>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                            if(tank_ + trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getQuantity() <0){
+                                throw std::runtime_error(Formatter() << "Error: " << "Invalid remove of a stop. Non-legal trailer tank cargo ( tried to give more than it had ).");
+                            }
+                            tank_ += trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getQuantity();
+                        }
+                    }
+                }
+                //-------------------------------------------------
+            }
+        }
+
+        for(int i = index_+1;i<shift->getStop()->size();i++){
+            if(instanceof<Source>(shift->getStop()->at(i)->getLocation())){
+                break;
+            }else if (instanceof<Customer>(shift->getStop()->at(i)->getLocation())){
+                if(tank_ - shift->getStop()->at(i)->getQuantity() <0){
+                    throw std::runtime_error(Formatter() << "Error: " << "Invalid remove of a stop. Non-legal trailer tank cargo ( tried to give more than it had ).");
+                }
+                tank_ += shift->getStop()->at(i)->getQuantity();
+            }
+        }
+    }
+        /**TODO END**/
+
+    for(int j = shift->getInitialInstant();j<trailerInst_[shift->getTrailer()->getIndex()].size();j++){
+            for(int i=0;i<trailerInst_[shift->getTrailer()->getIndex()][j].size();i++){
+                if(trailerInst_[shift->getTrailer()->getIndex()][j][i]!=shift){
+                //-------------------------------------------------
+                    for(int k = 0;k<trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->size();k++){
+                        if(instanceof<Source>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                            break;
+                        }else if (instanceof<Customer>(trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation())){
+                            stockLevelInst_[trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getLocation()->getIndex()][j] -=
+                            trailerInst_[shift->getTrailer()->getIndex()][j][i]->getStop()->at(k)->getQuantity();
+                        }
+                    }
+                }
+            }
+    }
+
+    //Removing the stop
+    shift->getStop()->erase(shift->getStop()->begin()+index_);
+    for(int i =0;locationInstStop_[stop->getLocation()->getIndex()][stop->getArriveTime()].size();i++){
+        if(locationInstStop_[stop->getLocation()->getIndex()][stop->getArriveTime()].at(i) == stop){
+            locationInstStop_[stop->getLocation()->getIndex()][stop->getArriveTime()].
+                erase(locationInstStop_[stop->getLocation()->getIndex()][stop->getArriveTime()].begin()+i);
+            break;
+        }
+    }
 }
+
 
 void Solution::calcCost(bool print){
     double totalQuantity = 0;
@@ -859,37 +1029,41 @@ std::string Solution::toString(bool allData){
     return str.str();
 }
 void Solution::calcInitialSafetyLevelInst(std::vector<Customer*>* customers, int maxInstant){
-        //maxInstant deve ser menor ou igual ao total de forecasts
-        //TODO: ATUALIZAR ESSA FUNCAO PARA ELA NAO PARTIR SOMENTO DO INSTANTE INICIAL
-    for(Customer* customer: *(customers)){
-        double safetyLevel= customer->getSafetyLevel();
-        double quantity = customer->getInitialQuantity();
-        int i;
-        for(i=0;i<maxInstant;i++){//varrer instantes
-            double instConsumption= customer->getForecast()->at(i);
-            quantity= quantity - instConsumption;
-            if(quantity < safetyLevel){//estorou
-                safetyLevelInst_.insert (std::make_pair(i,customer));
-                printf("O customer %d atingiu o safety no instante %d\n", customer->getIndex(), i);
-                break;
-            }
-        }
-    }
-// Dividir customers por trailers
-    for(Trailer* t: *(InputData:: getTrailers())){
-        std::vector<int> indices;
-        for (std::multimap<int, Customer*>::const_iterator iter = safetyLevelInst_.begin(); iter != safetyLevelInst_.end(); ++iter ){
-            if(iter->second->isTrailerAllowed(t)){
-                indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
-                printf("Customer %d foi inserido na lista do caminhao %d\n",iter->second->getIndex(), t->getIndex());
-            }
-        }
-      //chamar a funcao do rondinelli (indeces, t) que retorna um shift;
-        for(int h=0;h<indices.size();h++){
-            printf(" %d " ,indices[h]);
-        }
-        printf("\n");
-    }
+
+    ILS* ils= new ILS(this);
+
+    ils->constructor(customers,maxInstant);
+//        //maxInstant deve ser menor ou igual ao total de forecasts
+//        //TODO: ATUALIZAR ESSA FUNCAO PARA ELA NAO PARTIR SOMENTO DO INSTANTE INICIAL
+//    for(Customer* customer: *(customers)){
+//        double safetyLevel= customer->getSafetyLevel();
+//        double quantity = customer->getInitialQuantity();
+//        int i;
+//        for(i=0;i<maxInstant;i++){//varrer instantes
+//            double instConsumption= customer->getForecast()->at(i);
+//            quantity= quantity - instConsumption;
+//            if(quantity < safetyLevel){//estorou
+//                safetyLevelInst_.insert (std::make_pair(i,customer));
+//                printf("O customer %d atingiu o safety no instante %d\n", customer->getIndex(), i);
+//                break;
+//            }
+//        }
+//    }
+//// Dividir customers por trailers
+//    for(Trailer* t: *(InputData:: getTrailers())){
+//        std::vector<int> indices;
+//        for (std::multimap<int, Customer*>::const_iterator iter = safetyLevelInst_.begin(); iter != safetyLevelInst_.end(); ++iter ){
+//            if(iter->second->isTrailerAllowed(t)){
+//                indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
+//                printf("Customer %d foi inserido na lista do caminhao %d\n",iter->second->getIndex(), t->getIndex());
+//            }
+//        }
+//      //chamar a funcao do rondinelli (indeces, t) que retorna um shift;
+//        for(int h=0;h<indices.size();h++){
+//            printf(" %d " ,indices[h]);
+//        }
+//        printf("\n");
+//    }
 
 
 }
