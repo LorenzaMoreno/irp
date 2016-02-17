@@ -1,6 +1,7 @@
 #include "ILS.h"
 #include "Dijkstra.h"
 #include "Shift.h"
+#include "Solution.h"
 
 ILS::ILS(){
   //ctor
@@ -13,7 +14,7 @@ ILS::~ILS(){
 
 ///Criar um shit
 ///Os parâmetros são os índices na InputData
-Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc){
+Shift* ILS::criarShift(int ixTrailer, int ixDriver, std::vector<int> loc, Solution* solAtual){
 //rascunho do que deve ser feito
 
   ///1º passo: Setar a lista negra (ignorar locations que o trailer n atende)
@@ -48,12 +49,30 @@ Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc){
   shift->setDriver(driver);
   shift->setTrailer(trailer);
   std::vector<Stop*> stops;
-  for(int i=0; i<rota.size(); i++){
+  double qtdInicial= trailer->getInicialQuantity();
+  double qtdFinal= qtdInicial;
+  double tempoShift= 0;
+
+  for(int i=1; i<rota.size(); i++){
     Stop* stop= new Stop();
     stop->setLocation(InputData::getInstance()->findLocation(rota.at(i)));
-    Location* c= InputData::getInstance()->findLocation(i);
+    Customer* c= (Customer*)InputData::getInstance()->findLocation(i);
     stop->setArriveTime(c->getSetupTime());
-    //stop->setQuantity();
+
+    //tempo do shift = Distancia da location anterior a atual + tempo de setup da location atual
+    tempoShift+= InputData::getInstance()->getDistance(rota.at(i-1),rota.at(i))+ c->getSetupTime();
+
+    //qtde a ser colocada no cliente
+    double instanteAtual= tempoShift-c->getSetupTime();
+    double qtdAtualCliente= solAtual->getStockLevelInst()->at(c->getIndex()).at(instanteAtual);
+    double qtdMinimaCliente= c->getSafetyLevel();
+    //inicialmente, só clientes abaixo do safetyLevel recebem carga
+    if(qtdAtualCliente<qtdMinimaCliente){
+      stop->setQuantity(qtdMinimaCliente-qtdAtualCliente);//coloca o estoque do cliente "na risca" so safetyLevel
+      qtdFinal-= qtdMinimaCliente-qtdAtualCliente;//debita a qtde depositada do trailer
+    }
+
+
     stop->setShift(shift);
     stops.push_back(stop);
   }
