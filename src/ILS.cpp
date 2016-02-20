@@ -17,6 +17,7 @@ Customer* ILS::getCustomerMaisProximo(Location* loc, std::vector<int> ignorar){
 
   std::vector<Customer*> customers = *loc->getNeighborsCustomers();
   if(customers.empty()) return NULL;
+  if(ignorar.empty()) return customers.front();
 
   Customer* c=NULL;
   for(int i=0; i< customers.size(); i++){
@@ -68,16 +69,19 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, d
 
     Location* localAtual= baseTrailer;//location atual
     double arriveTime= tempoInicial;//tempo de chegada nos stops, à partir do tempo inicial
+    std::vector<int> jaVisitados;//vetor que indica os customers que já foram visitados no shift
+    jaVisitados.clear();
 
     do{//faça
       Stop* stop= NULL;
       Location* proximoLocal=NULL;
       double quantity=0;
       if(trailer->getInicialQuantity()> trailer->getCapacity()*.1){//restrição de quantidade está ok?
-        proximoLocal= getSourceMaisProximo(localAtual);
+        proximoLocal= getCustomerMaisProximo(localAtual,jaVisitados);
         /*********TODO*********
         quantity= <fç que define a qtde que ser entregue no customer>
         **********************/
+        jaVisitados.push_back(proximoLocal->getIndex());//não permitir que o mesmo custumer entre num stop mais frente
       }else{//se não, se a qtde está baixa
         proximoLocal= getSourceMaisProximo(localAtual);
         quantity= trailer->getCapacity()-trailer->getInicialQuantity();//procura encher o trailer no source
