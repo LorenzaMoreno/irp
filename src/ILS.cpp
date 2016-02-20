@@ -41,15 +41,69 @@ Source* ILS::getSourceMaisProximo(Location* loc){
   return sources.front();
 }
 
+
+
+Stop* ILS::criarStop(Location* location, Shift* shift, double arriveTime, double quantity){
+  Stop* s= new Stop();
+
+  s->setArriveTime(arriveTime);
+  s->setLocation(location);
+  s->setQuantity(quantity);
+  s->setShift(shift);
+
+  return s;
+
+}
+
 ///Criar um shit
 ///Os parâmetros são os índices na InputData
 Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, double tempoInicial){
-    std::vector<Stop*> stops;
+    Shift* shift= new Shift();//shift que será retornado pela função
+    std::vector<Stop*> stops;//vetor de stops do shift
+
+    Base* baseTrailer= trailer->getBase();//base do trailer
+
+    double tempoTotalShift= 0;//tempo acumulado do shift
+    double tempoMaximoPermitido= driver->getMaxDriving();//tempo máximo que o shift pode durar
+
+    Location* localAtual= baseTrailer;//location atual
+    double arriveTime= tempoInicial;//tempo de chegada nos stops, à partir do tempo inicial
+
+    do{//faça
+      Stop* stop= NULL;
+      Location* proximoLocal=NULL;
+      double quantity=0;
+      if(trailer->getInicialQuantity()> trailer->getCapacity()*.1){//restrição de quantidade está ok?
+        proximoLocal= getSourceMaisProximo(localAtual);
+        /*********TODO*********
+        quantity= <fç que define a qtde que ser entregue no customer>
+        **********************/
+      }else{//se não, se a qtde está baixa
+        proximoLocal= getSourceMaisProximo(localAtual);
+        quantity= trailer->getCapacity()-trailer->getInicialQuantity();//procura encher o trailer no source
+      }
+      //cria o stop
+      arriveTime+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex());//adiciona o tempo de viagem no arriveTime acumulado
+      stop= criarStop(proximoLocal,shift,arriveTime,quantity);//cria um stop na location mais próxima do local atual
+      arriveTime+= proximoLocal->getSetupTime();//adiciona o tempo de setUp do location no arriveTime acumulado
+      tempoTotalShift+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex())+
+                        proximoLocal->getSetupTime();//atualiza o tempo acumulado do shift
+
+      localAtual= proximoLocal;//marca a proxima location como atual
+      stops.push_back(stop);//inclui o stop criado no vetor de stops do shift
+    }while(tempoTotalShift+(InputData::getInstance()->
+                            getTime(localAtual->getIndex(),baseTrailer->getIndex())) <
+           tempoMaximoPermitido);//enquanto a restrição de tempo não for ferida
+    ///O algoritmo sai do loop quando a restrição de tempo for violada, ou seja,
+    ///o último stop inserido é inválido e deve ser removido do vetor de stops
+    stops.pop_back();
+    /*---- Não sei se a base entra como ultimo stop no vetor, temos que verificar isso ----*/
 
 
-
-
-
+    /*********TODO ********
+    ///daqui pra baixo devemos começar a setar as propriedas do shift
+    ///além de incluir nele o vetor de stops criado acima
+    **********************/
 
 
 //
