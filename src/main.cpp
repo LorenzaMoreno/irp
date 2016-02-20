@@ -2,6 +2,7 @@
 #include "InputData.h"
 #include "XMLDataLoader.h"
 #include "Solution.h"
+#include "ILS.h"
 #include <stdio.h>
 
 using namespace std;
@@ -17,7 +18,8 @@ int main()
 
     Solution* solution = new Solution();
     printf("\n");
-    solution->calcInitialSafetyLevelInst(InputData::getCustomers(), 120);
+    ILS* ils= new ILS(solution);
+    ils->constructor(InputData::getInstance()->getCustomers(),30);
     printf("dividir customers por caminhao\n");
 //    printf("\n\n%s",solution->toString(true).c_str());
 //    solution->calcCost(true);

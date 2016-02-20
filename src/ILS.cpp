@@ -1,5 +1,5 @@
 #include "ILS.h"
-//#include "Dijkstra.h"
+#include <iostream>
 #include "Shift.h"
 
 
@@ -30,8 +30,8 @@ Customer* ILS::getCustomerMaisProximo(Location* loc, std::vector<int> ignorar){
     }
     if(c!=NULL) break;
   }
-
   return c;
+
 }
 
 Source* ILS::getSourceMaisProximo(Location* loc){
@@ -58,7 +58,7 @@ Stop* ILS::criarStop(Location* location, Shift* shift, double arriveTime, double
 
 ///Criar um shit
 ///Os parâmetros são os índices na InputData
-Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, double tempoInicial){
+Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial){
     Shift* shift= new Shift();//shift que será retornado pela função
     std::vector<Stop*> stops;//vetor de stops do shift
 
@@ -72,6 +72,21 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, d
     std::vector<int> jaVisitados;//vetor que indica os customers que já foram visitados no shift
     jaVisitados.clear();
 
+    //coloca na lista de já visitados os locations que não estão na lista dada como parâmetro de entrada
+    //A ROTA É CONSTRUIDA CONSIDERANDO SOMENTE AS LOCATIONS DADAS NA ENTRADA
+    for(Location* l : *(InputData::getInstance()->getLocations())){
+        bool aux= false;
+        for(int j=0;j< locais.size();j++){
+            if(locais.at(j)==l->getIndex()){
+                aux=true;
+                break;
+            }
+        }
+        if(!aux) jaVisitados.push_back(l->getIndex());
+    }
+
+    int qtdeVisitados= 0;//controlar se visitou todos os locations da rota
+    bool controleTempo= true;//controlar a restrição de tempo
     do{//faça
       Stop* stop= NULL;
       Location* proximoLocal=NULL;
@@ -86,6 +101,9 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, d
         proximoLocal= getSourceMaisProximo(localAtual);
         quantity= trailer->getCapacity()-trailer->getInicialQuantity();//procura encher o trailer no source
       }
+
+      if(proximoLocal==NULL) break;///não um caminho para o próximo stop
+      qtdeVisitados++;//enquando existir rota para o proximo location, atualiza o controle de visitas
       //cria o stop
       arriveTime+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex());//adiciona o tempo de viagem no arriveTime acumulado
       stop= criarStop(proximoLocal,shift,arriveTime,quantity);//cria um stop na location mais próxima do local atual
@@ -95,12 +113,17 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, d
 
       localAtual= proximoLocal;//marca a proxima location como atual
       stops.push_back(stop);//inclui o stop criado no vetor de stops do shift
-    }while(tempoTotalShift+(InputData::getInstance()->
-                            getTime(localAtual->getIndex(),baseTrailer->getIndex())) <
-           tempoMaximoPermitido);//enquanto a restrição de tempo não for ferida
-    ///O algoritmo sai do loop quando a restrição de tempo for violada, ou seja,
-    ///o último stop inserido é inválido e deve ser removido do vetor de stops
-    stops.pop_back();
+      double tempoAteBase= InputData::getInstance()->getTime(localAtual->getIndex(),baseTrailer->getIndex());
+      controleTempo= (tempoTotalShift+tempoAteBase)<tempoMaximoPermitido;
+    }while(controleTempo && (qtdeVisitados< locais.size()));//enquanto a restrição de tempo não for ferida
+                                                            //e não tiver visitado todos os locations pretendidos
+
+
+    ///O algoritmo sai do loop quando a restrição de tempo for violada(ou seja,
+    ///o último stop inserido é inválido), ou quando não encontrou uma rota para
+    ///todos os locations da lista
+    //se o controle de tempo foi violado, o ultimo stop inserido no vector é inválido
+    if(!controleTempo) stops.pop_back();//remove esse stop inválido do vector
     /*---- Não sei se a base entra como ultimo stop no vetor, temos que verificar isso ----*/
 
 
@@ -171,8 +194,9 @@ void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
                 printf("Customer %d foi inserido na lista do caminhao %d\n",iter->second->getIndex(), t->getIndex());
             }
         }
-
-      Shift* shift= criarShift(t,0,indices, tempoCorrente);
+      Driver* d= InputData::getInstance()->getDrivers()->at(0);///** SÓ PRA TESTES
+      Shift* shift= criarShift(t,d,indices, tempoCorrente);
+      std::cout<<shift->toString("->")<<"\n----------------------FIM----------------\n";
 
       //validar shift
       double custoShift=0;

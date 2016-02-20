@@ -18,7 +18,7 @@ class ILS
     Stop* criarStop(Location* location, Shift* shift, double arriveTime, double quantity);
 
 
-    Shift* criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, double tempoInicial);
+    Shift* criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial);
     void constructor(std::vector<Customer*>* customers, int maxInstant);
     void localSearch();
   protected:

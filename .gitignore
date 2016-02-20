@@ -6,3 +6,6 @@ bin/Debug/irp.exe
 *.exe
 bin/Debug/irp.exe
 *.exe
+*.exe
+obj/Debug/src/main.o
+*.o
