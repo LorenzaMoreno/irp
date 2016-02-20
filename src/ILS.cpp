@@ -1,5 +1,5 @@
 #include "ILS.h"
-#include "Dijkstra.h"
+//#include "Dijkstra.h"
 #include "Shift.h"
 
 
@@ -13,25 +13,61 @@ ILS::~ILS(){
 }
 
 
+Customer* ILS::getCustomerMaisProximo(Location* loc, std::vector<int> ignorar){
+
+  std::vector<Customer*> customers = *loc->getNeighborsCustomers();
+  if(customers.empty()) return NULL;
+
+  Customer* c=NULL;
+  for(int i=0; i< customers.size(); i++){
+    c=NULL;
+    for(int j=0; j< ignorar.size(); j++){
+      if(customers.at(i)->getIndex()!=ignorar.at(j)){
+        c= customers.at(i);
+        break;
+      }
+    }
+    if(c!=NULL) break;
+  }
+
+  return c;
+}
+
+Source* ILS::getSourceMaisProximo(Location* loc){
+
+  std::vector<Source*> sources = *loc->getNeighborsSources();
+  if(sources.empty()) return NULL;
+
+  return sources.front();
+}
+
 ///Criar um shit
 ///Os parâmetros são os índices na InputData
 Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, double tempoInicial){
     std::vector<Stop*> stops;
-    if(trailer.getInicialQuantity>0.1*trailer.getCapacity){
-        //ta vazio, vai pra source mais proxima;
-        Source* source = trailer->getBase()->getNeighborsSources()->at(0);
-        Stop* stop = new Stop();
-        stop->setLocation = source;
-        double tempoChegada=tempoInicial+InputData::getTime(trailer->getBase()->getIndex(), source->getIndex());
-        stop->setArriveTime(tempoChegada);
-        double qtdAbastecer= trailer->getCapacity-trailer->getInicialQuantity;
-        stop->setQuantity(qtdAbastecer);
-//        stop->setShift()//Miguel TODO create shift;
 
-    }else{
-        //vamos visitar os clientes mais proximos que estao incluidos no vector loc.
-//        Customer* customer = trailer
-    }
+
+
+
+
+
+
+//
+//    if(trailer->getInicialQuantity()>0.1*trailer->getCapacity()){
+//        //ta vazio, vai pra source mais proxima;
+//        Source* source = trailer->getBase()->getNeighborsSources()->at(0);
+//        Stop* stop = new Stop();
+//        stop->setLocation(source);
+//        double tempoChegada=tempoInicial+InputData::getTime(trailer->getBase()->getIndex(), source->getIndex());
+//        stop->setArriveTime(tempoChegada);
+//        double qtdAbastecer= trailer->getCapacity()-trailer->getInicialQuantity();
+//        stop->setQuantity(qtdAbastecer);
+////        stop->setShift()//Miguel TODO create shift;
+//
+//    }else{
+//        //vamos visitar os clientes mais proximos que estao incluidos no vector loc.
+////        Customer* customer = trailer
+//    }
 //rascunho do que deve ser feito
     /*
 
@@ -46,76 +82,6 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, d
 
     */
 
-
-  ///1º passo: Setar a lista negra (ignorar locations que o trailer n atende)
-  std::vector<int> lista;
-
-    std::cout<<"ok1---------"<<std::endl;
-
-  Trailer* trailer= InputData::getInstance()->findTrailer(ixTrailer);
-  Driver* driver= InputData::getInstance()->findDriver(ixDriver);
-
-  for(Customer* c : *InputData::getCustomers()){
-    if(!c->isTrailerAllowed(trailer)) lista.push_back(c->getIndex());
-  }
-
-    std::cout<<"ok2---------"<<std::endl;
-  ///2º passo: Definir a rota tomando como base a lista de clientes
-  int atual= trailer->getBase()->getIndex();
-  int proximo= loc.at(0);//primeiro cliente
-  Dijkstra* d= new Dijkstra();
-  d->setBlackList(lista);
-  std::vector<int> rota = d->execDijkstra(atual,proximo);
-  rota.pop_back();
-  for(int i=1; i<loc.size(); i++){
-    atual= proximo;
-    proximo= loc.at(i);
-    std::vector<int> aux = d->execDijkstra(atual,proximo);
-    aux.pop_back();
-    std::copy(aux.begin(),aux.end(), rota.end());
-  }
-  rota.push_back(trailer->getBase()->getIndex());
-
-    std::cout<<"ok3---------"<<std::endl;
-  ///3º passo: Criar o shitft, e para cada cliente da rota criar um stop e inserir neste shift
-  Shift* shift= new Shift();
-  shift->setDriver(driver);
-  shift->setTrailer(trailer);
-  std::vector<Stop*> stops;
-  double qtdInicial= trailer->getInicialQuantity();
-  double qtdFinal= qtdInicial;
-  double tempoShift= 0;
-
-  for(int i=1; i<rota.size(); i++){
-    Stop* stop= new Stop();
-    stop->setLocation(InputData::getInstance()->findLocation(rota.at(i)));
-    Customer* c= (Customer*)InputData::getInstance()->findLocation(i);
-    stop->setArriveTime(c->getSetupTime());
-
-    //tempo do shift = Distancia da location anterior a atual + tempo de setup da location atual
-    tempoShift+= InputData::getInstance()->getDistance(rota.at(i-1),rota.at(i))+ c->getSetupTime();
-
-    //qtde a ser colocada no cliente
-    double instanteAtual= tempoShift-c->getSetupTime();
-    double qtdAtualCliente= solAtual->getStockLevelInst()->at(c->getIndex()).at(instanteAtual);
-    double qtdMinimaCliente= c->getSafetyLevel();
-    //inicialmente, só clientes abaixo do safetyLevel recebem carga
-    if(c->getCapacity()>qtdAtualCliente+0.1*qtdMinimaCliente){
-      stop->setQuantity(0.1*qtdMinimaCliente);//coloca o estoque do cliente "na risca" so safetyLevel
-      qtdFinal-= 0.1*qtdMinimaCliente;//debita a qtde depositada do trailer
-    }
-
-
-    std::cout<<"ok4---------"<<std::endl;
-    stop->setShift(shift);
-    stops.push_back(stop);
-  }
-
-  shift->setStops(stops);
-  shift->setInitialInstant(tempoInicial);
-  shift->setFinalInstant(tempoInicial+tempoShift);
-  ///5º passo: 'validar?' e retornar o shift
-  return shift;
 }
 
 void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
@@ -148,7 +114,7 @@ void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
             }
         }
 
-      Shift* shift= criarShift(t->getIndex(),0,indices, tempoCorrente);
+      Shift* shift= criarShift(t,0,indices, tempoCorrente);
 
       //validar shift
       double custoShift=0;

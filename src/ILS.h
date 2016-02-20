@@ -12,7 +12,10 @@ class ILS
     ILS(Solution* s);
     virtual ~ILS();
 
-    Shift* criarShift(int ixTrailer, int ixDriver, std::vector<int> loc, double tempoInicial);
+    Customer* getCustomerMaisProximo(Location* loc, std::vector<int> ignorar);
+    Source* getSourceMaisProximo(Location* loc);
+
+    Shift* criarShift(Trailer* trailer, Driver* driver, std::vector<int> loc, double tempoInicial);
     void constructor(std::vector<Customer*>* customers, int maxInstant);
     void localSearch();
   protected:

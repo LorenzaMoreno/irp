@@ -6,6 +6,7 @@
 #include <utility>
 #include <stdio.h>
 #include <stdexcept>
+#include <algorithm>
 #include "ILS.h"
 
 Solution::Solution(){
