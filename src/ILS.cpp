@@ -30,6 +30,7 @@ Customer* ILS::getCustomerMaisProximo(Location* loc, std::vector<int> ignorar){
     }
     if(c!=NULL) break;
   }
+  std::cout<<(c==NULL)<<std::endl;
   return c;
 
 }
@@ -59,6 +60,8 @@ Stop* ILS::criarStop(Location* location, Shift* shift, double arriveTime, double
 ///Criar um shit
 ///Os parâmetros são os índices na InputData
 Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial){
+
+    ///1º passo: Variáveis de controle
     Shift* shift= new Shift();//shift que será retornado pela função
     std::vector<Stop*> stops;//vetor de stops do shift
 
@@ -87,22 +90,25 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
 
     int qtdeVisitados= 0;//controlar se visitou todos os locations da rota
     bool controleTempo= true;//controlar a restrição de tempo
+
+    ///2º passo: criação dos stops
     do{//faça
       Stop* stop= NULL;
       Location* proximoLocal=NULL;
       double quantity=0;
       if(trailer->getInicialQuantity()> trailer->getCapacity()*.1){//restrição de quantidade está ok?
         proximoLocal= getCustomerMaisProximo(localAtual,jaVisitados);
+        if(proximoLocal==NULL) break;///não um caminho para o próximo stop
         /*********TODO*********
         quantity= <fç que define a qtde que ser entregue no customer>
         **********************/
         jaVisitados.push_back(proximoLocal->getIndex());//não permitir que o mesmo custumer entre num stop mais frente
       }else{//se não, se a qtde está baixa
         proximoLocal= getSourceMaisProximo(localAtual);
+        if(proximoLocal==NULL) break;///não um caminho para o próximo stop
         quantity= trailer->getCapacity()-trailer->getInicialQuantity();//procura encher o trailer no source
       }
 
-      if(proximoLocal==NULL) break;///não um caminho para o próximo stop
       qtdeVisitados++;//enquando existir rota para o proximo location, atualiza o controle de visitas
       //cria o stop
       arriveTime+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex());//adiciona o tempo de viagem no arriveTime acumulado
@@ -119,13 +125,15 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
                                                             //e não tiver visitado todos os locations pretendidos
 
 
-    ///O algoritmo sai do loop quando a restrição de tempo for violada(ou seja,
-    ///o último stop inserido é inválido), ou quando não encontrou uma rota para
-    ///todos os locations da lista
-    //se o controle de tempo foi violado, o ultimo stop inserido no vector é inválido
-    if(!controleTempo) stops.pop_back();//remove esse stop inválido do vector
+    /*O algoritmo sai do loop quando a restrição de tempo for violada(ou seja,
+      o último stop inserido é inválido), ou quando não encontrou uma rota para
+      todos os locations da lista se o controle de tempo foi violado, o ultimo
+      stop inserido no vector é inválido
+    */
+    if(!controleTempo && !stops.empty()) stops.pop_back();//remove esse stop inválido do vector
     /*---- Não sei se a base entra como ultimo stop no vetor, temos que verificar isso ----*/
 
+    ///3º passo: montagem do shitf
 
     /*********TODO ********
     ///daqui pra baixo devemos começar a setar as propriedas do shift
@@ -195,15 +203,10 @@ void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
             }
         }
       Driver* d= InputData::getInstance()->getDrivers()->at(0);///** SÓ PRA TESTES
-      Shift* shift= criarShift(t,d,indices, tempoCorrente);
-      std::cout<<shift->toString("->")<<"\n----------------------FIM----------------\n";
 
-      //validar shift
-      double custoShift=0;
-//      if(solAtual->checkShift(shift,&custoShift)==Penalty::NO_PENALTIES){
-//
-//
-//      }
+      Shift* shift= criarShift(t,d,indices, tempoCorrente);
+
+      std::cout<<shift->getStop()->size()<<"\n----------------------FIM----------------\n";
 
       //std::cout<<shift->toString()<<std::endl;
       //chamar a funcao do rondinelli (indices, t) que retorna um shift;
