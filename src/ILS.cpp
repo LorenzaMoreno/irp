@@ -212,7 +212,8 @@ void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
 
       Shift* shift= criarShift(t,d,indices, tempoCorrente);
 
-      //std::cout<<shift->getStop()->size()<<"\n----------------------FIM----------------\n";
+      std::cout<<"Nro de stops criados: "<<shift->getStop()->size()<<
+      "\n----------------------FIM----------------\n";
 
       //std::cout<<shift->toString()<<std::endl;
       //chamar a funcao do rondinelli (indices, t) que retorna um shift;
