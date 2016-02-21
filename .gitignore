@@ -9,3 +9,4 @@ bin/Debug/irp.exe
 *.exe
 obj/Debug/src/main.o
 *.o
+*.exe

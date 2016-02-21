@@ -30,7 +30,7 @@ Customer* ILS::getCustomerMaisProximo(Location* loc, std::vector<int> ignorar){
     }
     if(c!=NULL) break;
   }
-  std::cout<<(c==NULL)<<std::endl;
+  //std::cout<<(c==NULL)<<std::endl;
   return c;
 
 }
@@ -108,7 +108,7 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
         if(proximoLocal==NULL) break;///não um caminho para o próximo stop
         quantity= trailer->getCapacity()-trailer->getInicialQuantity();//procura encher o trailer no source
       }
-
+      //std::cout<<"Ok1"<<std::endl;
       qtdeVisitados++;//enquando existir rota para o proximo location, atualiza o controle de visitas
       //cria o stop
       arriveTime+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex());//adiciona o tempo de viagem no arriveTime acumulado
@@ -139,6 +139,11 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
     ///daqui pra baixo devemos começar a setar as propriedas do shift
     ///além de incluir nele o vetor de stops criado acima
     **********************/
+
+    ///4º passo: retornar o shit (verificar se a validação será feita aqui)
+    shift->setStops(stops);
+
+    return shift;
 
 
 //
@@ -191,6 +196,7 @@ void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
         }
     }
 
+  InputData::getInstance()->calcNeighborsLocations();
 // Dividir customers por trailers
     for(Trailer* t: *(InputData:: getTrailers())){
         double tempoCorrente= 0;
@@ -206,7 +212,7 @@ void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
 
       Shift* shift= criarShift(t,d,indices, tempoCorrente);
 
-      std::cout<<shift->getStop()->size()<<"\n----------------------FIM----------------\n";
+      //std::cout<<shift->getStop()->size()<<"\n----------------------FIM----------------\n";
 
       //std::cout<<shift->toString()<<std::endl;
       //chamar a funcao do rondinelli (indices, t) que retorna um shift;
