@@ -11,15 +11,14 @@ class ILS
   public:
     ILS(Solution* s);
     virtual ~ILS();
-
     Customer* getCustomerMaisProximo(Location* loc, std::vector<int> ignorar);
     Source* getSourceMaisProximo(Location* loc);
-
     Stop* criarStop(Location* location, Shift* shift, double arriveTime, double quantity);
-
-
+    double amountSupply(Customer* customer, int time);
     Shift* criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial);
+
     void constructor(std::vector<Customer*>* customers, int maxInstant);
+
     void localSearch();
   protected:
   private:

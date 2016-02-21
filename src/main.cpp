@@ -6,12 +6,7 @@
 #include <stdio.h>
 
 using namespace std;
-
-
-
-
-int main()
-{
+int main(){
     XMLDataLoader loader;
 //    loader.loadInputData("Instance_V_1.1.xml",".\\input");
     loader.loadInputData("Instance_V_1.1.xml","./input");
@@ -20,7 +15,7 @@ int main()
     printf("\n");
     ILS* ils= new ILS(solution);
     ils->constructor(InputData::getInstance()->getCustomers(),30);
-    printf("dividir customers por caminhao\n");
+
 //    printf("\n\n%s",solution->toString(true).c_str());
 //    solution->calcCost(true);
 //    printf("\n\nCost = %f\n",solution->getCost());

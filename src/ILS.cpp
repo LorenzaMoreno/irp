@@ -12,70 +12,72 @@ ILS::~ILS(){
   //dtor
 }
 
-
 Customer* ILS::getCustomerMaisProximo(Location* loc, std::vector<int> ignorar){
-
   std::vector<Customer*> customers = *loc->getNeighborsCustomers();
   if(customers.empty()) return NULL;
   if(ignorar.empty()) return customers.front();
-
   Customer* c=NULL;
   for(int i=0; i< customers.size(); i++){
     c=NULL;
     for(int j=0; j< ignorar.size(); j++){
-      if(customers.at(i)->getIndex()!=ignorar.at(j)){
-        c= customers.at(i);
+      if(customers.at(i)->getIndex()!= ignorar.at(j)){
+        c = customers.at(i);
         break;
       }
     }
-    if(c!=NULL) break;
+    if(c!=NULL) break;//ja achou o primeiro.
   }
   //std::cout<<(c==NULL)<<std::endl;
   return c;
-
 }
 
 Source* ILS::getSourceMaisProximo(Location* loc){
-
   std::vector<Source*> sources = *loc->getNeighborsSources();
   if(sources.empty()) return NULL;
-
   return sources.front();
 }
 
-
-
 Stop* ILS::criarStop(Location* location, Shift* shift, double arriveTime, double quantity){
   Stop* s= new Stop();
-
   s->setArriveTime(arriveTime);
   s->setLocation(location);
   s->setQuantity(quantity);
   s->setShift(shift);
-
   return s;
-
 }
+
+double ILS::amountSupply(Customer* customer, int time){
+    //determina quantidade a abastecer um customer, tenta garantir o suficiente para nao voltar em x tempo...
+    double maxLoader= customer->getCapacity() - customer->getInitialQuantity();
+    double quantity = 0.0;
+    for(int i=0;i<time;i++){//varrer instantes
+        double instConsumption = customer->getForecast()->at(i);
+        if((quantity+instConsumption) < maxLoader){//pode abastecer
+            quantity= quantity + instConsumption;
+        }else{//Não dá para abastecer mais.
+            break;
+        }
+    }
+    printf("O cliente %d tentará ser abastecido em uma quantidade de %f de gas\n", customer->getIndex(), quantity);
+    return quantity;
+}
+
 
 ///Criar um shit
 ///Os parâmetros são os índices na InputData
 Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial){
-
     ///1º passo: Variáveis de controle
     Shift* shift= new Shift();//shift que será retornado pela função
     std::vector<Stop*> stops;//vetor de stops do shift
-
     Base* baseTrailer= trailer->getBase();//base do trailer
-
     double tempoTotalShift= 0;//tempo acumulado do shift
     double tempoMaximoPermitido= driver->getMaxDriving();//tempo máximo que o shift pode durar
-
     Location* localAtual= baseTrailer;//location atual
     double arriveTime= tempoInicial;//tempo de chegada nos stops, à partir do tempo inicial
     std::vector<int> jaVisitados;//vetor que indica os customers que já foram visitados no shift
     jaVisitados.clear();
-
     //coloca na lista de já visitados os locations que não estão na lista dada como parâmetro de entrada
+
     //A ROTA É CONSTRUIDA CONSIDERANDO SOMENTE AS LOCATIONS DADAS NA ENTRADA
     for(Location* l : *(InputData::getInstance()->getLocations())){
         bool aux= false;
@@ -96,7 +98,14 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
       Stop* stop= NULL;
       Location* proximoLocal=NULL;
       double quantity=0;
-      if(trailer->getInicialQuantity()> trailer->getCapacity()*.1){//restrição de quantidade está ok?
+//rascunho do que deve ser feito
+    /*
+            3 - O quanto que vai abastercer: criar uma funcao que varre o forecast do customer
+                e diz quanto que ele vai gastar nos porximos n dias.
+            4 - sempre sabemos quem eh o proximo customer a ser atendido, verificar se a distancia desse customer ate a
+            base é válida. (Aproveitar aqui e olhar: posso passar numa source primeiro?)
+    */
+      if(trailer->getInicialQuantity() > trailer->getCapacity()*.1){//restrição de quantidade está ok?
         proximoLocal= getCustomerMaisProximo(localAtual,jaVisitados);
         if(proximoLocal==NULL) break;///não um caminho para o próximo stop
         /*********TODO*********
@@ -145,42 +154,13 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
 
     return shift;
 
-
-//
-//    if(trailer->getInicialQuantity()>0.1*trailer->getCapacity()){
-//        //ta vazio, vai pra source mais proxima;
-//        Source* source = trailer->getBase()->getNeighborsSources()->at(0);
-//        Stop* stop = new Stop();
-//        stop->setLocation(source);
-//        double tempoChegada=tempoInicial+InputData::getTime(trailer->getBase()->getIndex(), source->getIndex());
-//        stop->setArriveTime(tempoChegada);
-//        double qtdAbastecer= trailer->getCapacity()-trailer->getInicialQuantity();
-//        stop->setQuantity(qtdAbastecer);
-////        stop->setShift()//Miguel TODO create shift;
-//
-//    }else{
-//        //vamos visitar os clientes mais proximos que estao incluidos no vector loc.
-////        Customer* customer = trailer
-//    }
-//rascunho do que deve ser feito
-    /*
-
-            1 - testar se o caminho ta vazio, se tiver ele vai pra source mais perto.
-            2 - se nao ele vai pro customer mais perto. Ele vai fazer isso enquanto o
-                trailer nao esvaziar e nem atingir o maxdrivetime.
-            3 - O quanto que vai abastercer: criar uma funcao que varre o forecast do customer
-                e diz quanto que ele vai gastar nos porximos n dias.
-            4 - sempre sabemos quem eh o proximo customer a ser atendido, verificar se a distancia desse customer ate a base é
-            válida. (Aproveitar aqui e olhar: posso passar numa source primeiro?)
-
-
-    */
-
 }
+
+
+
 
 void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
         //maxInstant deve ser menor ou igual ao total de forecasts
-        //TODO: ATUALIZAR ESSA FUNCAO PARA ELA NAO PARTIR SOMENTO DO INSTANTE INICIAL
     for(Customer* customer: *(customers)){
         double safetyLevel= customer->getSafetyLevel();
         double quantity = customer->getInitialQuantity();
@@ -195,7 +175,6 @@ void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
             }
         }
     }
-
   InputData::getInstance()->calcNeighborsLocations();
 // Dividir customers por trailers
     for(Trailer* t: *(InputData:: getTrailers())){
@@ -208,25 +187,17 @@ void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
                 printf("Customer %d foi inserido na lista do caminhao %d\n",iter->second->getIndex(), t->getIndex());
             }
         }
-      Driver* d= InputData::getInstance()->getDrivers()->at(0);///** SÓ PRA TESTES
-
-      Shift* shift= criarShift(t,d,indices, tempoCorrente);
-
-      std::cout<<"Nro de stops criados: "<<shift->getStop()->size()<<
-      "\n----------------------FIM----------------\n";
-
+        Driver* d= InputData::getInstance()->getDrivers()->at(0);///** SÓ PRA TESTES
+        Shift* shift= criarShift(t,d,indices, tempoCorrente);
+        std::cout<<"Nro de stops criados: "<<shift->getStop()->size()<<
+        "\n----------------------FIM----------------\n";
       //std::cout<<shift->toString()<<std::endl;
-      //chamar a funcao do rondinelli (indices, t) que retorna um shift;
         for(int h=0;h<indices.size();h++){
-            printf(" %d " ,indices[h]);
+            printf("%d, " ,indices[h]);
         }
-        printf("\n");
+        printf("\nPara cada motorista livre, atribuir um caminhao..");
     }
-
-
 }
-
-
 
 ///Busca local
 void ILS::localSearch(){
