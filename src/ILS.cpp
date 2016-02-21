@@ -58,13 +58,10 @@ double ILS::amountSupply(Customer* customer, int time){
             break;
         }
     }
-    printf("O cliente %d tentará ser abastecido em uma quantidade de %f de gas\n", customer->getIndex(), quantity);
+    printf("O cliente %d quer ser abastecido em uma quantidade de %.3f de gas\n", customer->getIndex(), quantity);
     return quantity;
 }
 
-
-///Criar um shit
-///Os parâmetros são os índices na InputData
 Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial){
     ///1º passo: Variáveis de controle
     Shift* shift= new Shift();//shift que será retornado pela função
@@ -94,51 +91,46 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
     bool controleTempo= true;//controlar a restrição de tempo
 
     ///2º passo: criação dos stops
-    do{//faça
-      Stop* stop= NULL;
-      Location* proximoLocal=NULL;
-      double quantity=0;
-//rascunho do que deve ser feito
-    /*
-            3 - O quanto que vai abastercer: criar uma funcao que varre o forecast do customer
-                e diz quanto que ele vai gastar nos porximos n dias.
-            4 - sempre sabemos quem eh o proximo customer a ser atendido, verificar se a distancia desse customer ate a
-            base é válida. (Aproveitar aqui e olhar: posso passar numa source primeiro?)
-    */
-      if(trailer->getInicialQuantity() > trailer->getCapacity()*.1){//restrição de quantidade está ok?
-        proximoLocal= getCustomerMaisProximo(localAtual,jaVisitados);
-        if(proximoLocal==NULL) break;///não um caminho para o próximo stop
-        /*********TODO*********
-        quantity= <fç que define a qtde que ser entregue no customer>
-        **********************/
-        jaVisitados.push_back(proximoLocal->getIndex());//não permitir que o mesmo custumer entre num stop mais frente
-      }else{//se não, se a qtde está baixa
-        proximoLocal= getSourceMaisProximo(localAtual);
-        if(proximoLocal==NULL) break;///não um caminho para o próximo stop
-        quantity= trailer->getCapacity()-trailer->getInicialQuantity();//procura encher o trailer no source
-      }
-      //std::cout<<"Ok1"<<std::endl;
-      qtdeVisitados++;//enquando existir rota para o proximo location, atualiza o controle de visitas
-      //cria o stop
-      arriveTime+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex());//adiciona o tempo de viagem no arriveTime acumulado
-      stop= criarStop(proximoLocal,shift,arriveTime,quantity);//cria um stop na location mais próxima do local atual
-      arriveTime+= proximoLocal->getSetupTime();//adiciona o tempo de setUp do location no arriveTime acumulado
-      tempoTotalShift+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex())+
-                        proximoLocal->getSetupTime();//atualiza o tempo acumulado do shift
-
-      localAtual= proximoLocal;//marca a proxima location como atual
-      stops.push_back(stop);//inclui o stop criado no vetor de stops do shift
-      double tempoAteBase= InputData::getInstance()->getTime(localAtual->getIndex(),baseTrailer->getIndex());
-      controleTempo= (tempoTotalShift+tempoAteBase)<tempoMaximoPermitido;
-    }while(controleTempo && (qtdeVisitados< locais.size()));//enquanto a restrição de tempo não for ferida
-                                                            //e não tiver visitado todos os locations pretendidos
-
-
     /*O algoritmo sai do loop quando a restrição de tempo for violada(ou seja,
       o último stop inserido é inválido), ou quando não encontrou uma rota para
       todos os locations da lista se o controle de tempo foi violado, o ultimo
       stop inserido no vector é inválido
     */
+    do{//faça
+        Stop* stop= NULL;
+        Location* proximoLocal=NULL;
+        double quantity=0.0;
+        double qtdAbatecer;
+        if(trailer->getInicialQuantity() > trailer->getCapacity()*.1){//restrição de quantidade está ok?
+            proximoLocal= getCustomerMaisProximo(localAtual,jaVisitados);//vai pro customer mais perto
+            if(proximoLocal==NULL) break;///não tem um caminho para o próximo stop
+            Customer* c=(Customer*)proximoLocal;
+            qtdAbatecer = amountSupply(c, 120); //descobre o quanto vai abastercer esse customer
+            if(trailer->getInicialQuantity() <= qtdAbatecer){
+                    printf("Abastecer com todo o gas do trailer\n");
+                    qtdAbatecer=trailer->getInicialQuantity();
+            }//senao vai abastecer com o retorno da funcao mesmo.
+            jaVisitados.push_back(proximoLocal->getIndex());//não permitir que o mesmo custumer entre num stop mais a frente
+        }else{//se o trailer ta quase vazio, tem que procurar a fonte mais proxima...
+            proximoLocal= getSourceMaisProximo(localAtual);
+            if(proximoLocal==NULL) break;///não tem um caminho para o próximo stop??
+            quantity= trailer->getCapacity()-trailer->getInicialQuantity();//procura encher o trailer no source
+        }
+        //std::cout<<"Ok1"<<std::endl;
+        qtdeVisitados++;//enquando existir rota para o proximo location, atualiza o controle de visitas
+        //cria o stop
+        arriveTime+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex());//adiciona o tempo de viagem no arriveTime acumulado
+        stop= criarStop(proximoLocal,shift,arriveTime,quantity);//cria um stop na location mais próxima do local atual
+        arriveTime+= proximoLocal->getSetupTime();//adiciona o tempo de setUp do location no arriveTime acumulado
+        tempoTotalShift+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex())+
+                          proximoLocal->getSetupTime();//atualiza o tempo acumulado do shift
+
+        localAtual= proximoLocal;//marca a proxima location como atual
+        stops.push_back(stop);//inclui o stop criado no vetor de stops do shift
+        double tempoAteBase= InputData::getInstance()->getTime(localAtual->getIndex(),baseTrailer->getIndex());
+        controleTempo= (tempoTotalShift+tempoAteBase)<tempoMaximoPermitido;
+        }while(controleTempo && (qtdeVisitados< locais.size()));//enquanto a restrição de tempo não for ferida e não tiver visitado todos os locations pretendidos
+
     if(!controleTempo && !stops.empty()) stops.pop_back();//remove esse stop inválido do vector
     /*---- Não sei se a base entra como ultimo stop no vetor, temos que verificar isso ----*/
 
@@ -151,13 +143,8 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
 
     ///4º passo: retornar o shit (verificar se a validação será feita aqui)
     shift->setStops(stops);
-
     return shift;
-
 }
-
-
-
 
 void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
         //maxInstant deve ser menor ou igual ao total de forecasts
@@ -178,26 +165,29 @@ void ILS::constructor(std::vector<Customer*>* customers, int maxInstant){
   InputData::getInstance()->calcNeighborsLocations();
 // Dividir customers por trailers
     for(Trailer* t: *(InputData:: getTrailers())){
-        double tempoCorrente= 0;
+
         std::vector<int> indices;
         for (std::multimap<int, Customer*>::const_iterator iter = solAtual->getSafetyLevelInst()->begin();
                 iter != solAtual->getSafetyLevelInst()->end(); ++iter ){
             if(iter->second->isTrailerAllowed(t)){
                 indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
-                printf("Customer %d foi inserido na lista do caminhao %d\n",iter->second->getIndex(), t->getIndex());
+                printf("Customer %d esta na lista do caminhao %d\n",iter->second->getIndex(), t->getIndex());
             }
         }
-        Driver* d= InputData::getInstance()->getDrivers()->at(0);///** SÓ PRA TESTES
+        ///** SÓ PRA TESTES
+        Driver* d= InputData::getInstance()->getDrivers()->at(0);
+        double tempoCorrente= 0;
         Shift* shift= criarShift(t,d,indices, tempoCorrente);
         std::cout<<"Nro de stops criados: "<<shift->getStop()->size()<<
         "\n----------------------FIM----------------\n";
       //std::cout<<shift->toString()<<std::endl;
-        for(int h=0;h<indices.size();h++){
-            printf("%d, " ,indices[h]);
-        }
-        printf("\nPara cada motorista livre, atribuir um caminhao..");
+//        for(int h=0;h<indices.size();h++){
+//            printf("%d, " ,indices[h]);
+//        }
+//        printf("\nPara cada motorista livre, atribuir um caminhao..");
     }
 }
+///Criar um shit;;Os parâmetros são os índices na InputData
 
 ///Busca local
 void ILS::localSearch(){
