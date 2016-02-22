@@ -18,16 +18,19 @@ Customer* ILS::getCustomerMaisProximo(Location* loc, std::vector<int> ignorar){
   if(ignorar.empty()) return customers.front();
   Customer* c=NULL;
   for(int i=0; i< customers.size(); i++){
-    c=NULL;
+    bool bloquear= false;//controlar se é pra "barrar" o customer como o proximo
     for(int j=0; j< ignorar.size(); j++){
-      if(customers.at(i)->getIndex()!= ignorar.at(j)){
-        c = customers.at(i);
+      if(customers.at(i)->getIndex()== ignorar.at(j)){
+        bloquear=true;
         break;
       }
+    }//fim para j
+    if(!bloquear){
+      c= customers.at(i);
+      break;
     }
-    if(c!=NULL) break;//ja achou o primeiro.
-  }
-  //std::cout<<(c==NULL)<<std::endl;
+  }//fim para i
+
   return c;
 }
 
