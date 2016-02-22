@@ -1029,11 +1029,30 @@ std::string Solution::toString(bool allData){
     str << data;
     return str.str();
 }
-void Solution::calcInitialSafetyLevelInst(std::vector<Customer*>* customers, int maxInstant){
 
-    ILS* ils= new ILS(this);
+void Solution::calcSafetyLevelInst(std::vector<Customer*>* customers, int initialInstant, int maxInstant){
+        //maxInstant deve ser menor ou igual ao total de forecasts
+    for(Customer* customer: *(customers)){
+        double safetyLevel= customer->getSafetyLevel();
+        double quantity = (stockLevelInst_.at(customer->getIndex())).at(initialInstant);
+        for(int i=initialInstant ;i<maxInstant; i++){//varrer instantes
+            double instConsumption=customer->getForecast()->at(i);
+            quantity= quantity - instConsumption;
+            if(quantity < safetyLevel){
+                //estorou
+                safetyLevelInst_.insert (std::make_pair(i,customer));
+                printf("O customer %d atingiu o safety no instante %d\n", customer->getIndex(), i);
+                break;
+            }
+        }
+    }
+}
 
-    ils->constructor(customers,maxInstant);
+//void Solution::calcInitialSafetyLevelInst(std::vector<Customer*>* customers, int maxInstant){
+//
+//    ILS* ils= new ILS(this);
+//
+//    ils->constructor(customers,maxInstant);
 //        //maxInstant deve ser menor ou igual ao total de forecasts
 //        //TODO: ATUALIZAR ESSA FUNCAO PARA ELA NAO PARTIR SOMENTO DO INSTANTE INICIAL
 //    for(Customer* customer: *(customers)){
@@ -1067,6 +1086,6 @@ void Solution::calcInitialSafetyLevelInst(std::vector<Customer*>* customers, int
 //    }
 
 
-}
+//}
 
 

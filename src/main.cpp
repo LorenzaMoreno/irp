@@ -12,6 +12,7 @@ int main(){
     loader.loadInputData("Instance_V_1.1.xml","./input");
 
     Solution* solution = new Solution();
+    solution->calcSafetyLevelInst(InputData::getCustomers(),0,120);
     printf("\n");
     ILS* ils= new ILS(solution);
     ils->constructor(InputData::getInstance()->getCustomers(),30);

@@ -26,7 +26,8 @@ class Solution
         inline std::vector<std::vector<std::vector<Stop*> > >* getLocationInstStop() {return &locationInstStop_;}
         inline std::multimap<int, Customer*>* getSafetyLevelInst(){return &safetyLevelInst_;}
 
-        void calcInitialSafetyLevelInst(std::vector<Customer*>* customers, int maxInstant);
+        void calcSafetyLevelInst(std::vector<Customer*>* customers, int initialInstant, int maxInstant);
+
 
 
 
