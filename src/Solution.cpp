@@ -516,7 +516,11 @@ void Solution::insertShift(Shift* shift){
     //driverInst_
     int driverIndex_ = shift->getDriver()->getIndex();//Get the shift's driver index
     for(int i=iniHour_;i<=finalHour_;i++){
+<<<<<<< HEAD
 //        printf("%d",driverInst_[driverIndex_].size());
+=======
+        printf("%d",driverInst_[driverIndex_].size());
+>>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
         driverInst_[driverIndex_][i].push_back(shift);//Add the shift on the driver's Instants list
     }
     //trailerInst_
