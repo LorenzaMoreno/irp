@@ -8,18 +8,15 @@
 using namespace std;
 int main(){
     XMLDataLoader loader;
-//    loader.loadInputData("Instance_V_1.1.xml",".\\input");
     loader.loadInputData("Instance_V_1.1.xml","./input");
-
-    Solution* solution = new Solution();
-    solution->calcSafetyLevelInst(InputData::getCustomers(),0,120);
     printf("\n");
+    Solution* solution = new Solution();
+    solution->calcSafetyLevelInst(InputData::getCustomers(),0,720);
+    printf("\n");
+    InputData::getInstance()->calcNeighborsLocations();
     ILS* ils= new ILS(solution);
-    ils->constructor(InputData::getInstance()->getCustomers(),30);
-
-//    printf("\n\n%s",solution->toString(true).c_str());
-//    solution->calcCost(true);
-//    printf("\n\nCost = %f\n",solution->getCost());
+    ils->constructor(1, solution);
+//    NAMALAH EH ESSE
 
 }
 

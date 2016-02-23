@@ -17,7 +17,8 @@ class ILS
     double amountSupply(Customer* customer, int time);
     Shift* criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial);
 
-    void constructor(std::vector<Customer*>* customers, int maxInstant);
+//    void constructor(std::vector<Customer*>* customers, int maxInstant);
+    void constructor(int maxInstant, Solution* solution);
 
     void localSearch();
   protected:

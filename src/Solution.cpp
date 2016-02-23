@@ -75,7 +75,7 @@ void Solution::reset(){
         driverInst_.at(i).resize(InputData::getNumInst());
         for(j=0; j < (int)driverInst_[i].size(); j++){
             driverInst_.at(i).at(j).clear();
-            driverInst_.at(i).at(j).resize(1,NULL);
+//            driverInst_.at(i).at(j).resize(1,NULL);
         }
     }
 
@@ -84,7 +84,7 @@ void Solution::reset(){
         trailerInst_.at(i).resize(InputData::getNumInst());
         for(j=0; j < (int)trailerInst_.at(i).size(); j++){
             trailerInst_.at(i).at(j).clear();
-            trailerInst_.at(i).at(j).resize(1,NULL);
+//            trailerInst_.at(i).at(j).resize(1,NULL);
         }
     }
 
@@ -513,13 +513,12 @@ void Solution::insertShift(Shift* shift){
     //Hour interval
     int iniHour_ = (shift->getInitialInstant());//Initial hour of the shift
     int finalHour_ = (shift->getFinalInstant());//Final hour of the shift
-
     //driverInst_
     int driverIndex_ = shift->getDriver()->getIndex();//Get the shift's driver index
     for(int i=iniHour_;i<=finalHour_;i++){
+//        printf("%d",driverInst_[driverIndex_].size());
         driverInst_[driverIndex_][i].push_back(shift);//Add the shift on the driver's Instants list
     }
-
     //trailerInst_
     int trailerIndex_ = shift->getTrailer()->getIndex();//Get the shift's trailer index
     for(int i=iniHour_;i<=finalHour_;i++){
@@ -529,16 +528,13 @@ void Solution::insertShift(Shift* shift){
     //locationInstStop_
     for(int j=0;j<shift->getStop()->size();j++){//j = stop
         int locationIndex_ = shift->getStop()->at(j)->getLocation()->getIndex();//Getting each location index
-
         double iniHourStop_ = shift->getStop()->at(j)->getArriveTime();//initial our of arrival at location
         double finalHourStop_ = shift->getStop()->at(j)->getArriveTime();//setting up the final hour of arrival/ hour of departure from location
-
         if( instanceof<Customer>(shift->getStop()->at(j)->getLocation())){
             finalHourStop_ += ((Customer*)shift->getStop()->at(j)->getLocation())->getSetupTime();
         }else if( instanceof<Source>(shift->getStop()->at(j)->getLocation()) ){
             finalHourStop_ += ((Source*)shift->getStop()->at(j)->getLocation())->getSetupTime();
         }
-
         for(int i=iniHourStop_;i<=finalHourStop_;i++){
             locationInstStop_[locationIndex_][i].push_back(shift->getStop()->at(j));//Adding the stop on the Instant list
         }
@@ -1047,45 +1043,3 @@ void Solution::calcSafetyLevelInst(std::vector<Customer*>* customers, int initia
         }
     }
 }
-
-//void Solution::calcInitialSafetyLevelInst(std::vector<Customer*>* customers, int maxInstant){
-//
-//    ILS* ils= new ILS(this);
-//
-//    ils->constructor(customers,maxInstant);
-//        //maxInstant deve ser menor ou igual ao total de forecasts
-//        //TODO: ATUALIZAR ESSA FUNCAO PARA ELA NAO PARTIR SOMENTO DO INSTANTE INICIAL
-//    for(Customer* customer: *(customers)){
-//        double safetyLevel= customer->getSafetyLevel();
-//        double quantity = customer->getInitialQuantity();
-//        int i;
-//        for(i=0;i<maxInstant;i++){//varrer instantes
-//            double instConsumption= customer->getForecast()->at(i);
-//            quantity= quantity - instConsumption;
-//            if(quantity < safetyLevel){//estorou
-//                safetyLevelInst_.insert (std::make_pair(i,customer));
-//                printf("O customer %d atingiu o safety no instante %d\n", customer->getIndex(), i);
-//                break;
-//            }
-//        }
-//    }
-//// Dividir customers por trailers
-//    for(Trailer* t: *(InputData:: getTrailers())){
-//        std::vector<int> indices;
-//        for (std::multimap<int, Customer*>::const_iterator iter = safetyLevelInst_.begin(); iter != safetyLevelInst_.end(); ++iter ){
-//            if(iter->second->isTrailerAllowed(t)){
-//                indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
-//                printf("Customer %d foi inserido na lista do caminhao %d\n",iter->second->getIndex(), t->getIndex());
-//            }
-//        }
-//      //chamar a funcao do rondinelli (indeces, t) que retorna um shift;
-//        for(int h=0;h<indices.size();h++){
-//            printf(" %d " ,indices[h]);
-//        }
-//        printf("\n");
-//    }
-
-
-//}
-
-

@@ -28,9 +28,6 @@ class Solution
 
         void calcSafetyLevelInst(std::vector<Customer*>* customers, int initialInstant, int maxInstant);
 
-
-
-
         inline std::vector<std::vector<Shift*> >* getTrailersShifts(){return &trailersShifts_;}
         inline double getInfeasibilityCost() const{return infeasibilityCost_;}
 
