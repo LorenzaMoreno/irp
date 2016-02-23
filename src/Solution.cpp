@@ -75,7 +75,7 @@ void Solution::reset(){
         driverInst_.at(i).resize(InputData::getNumInst());
         for(j=0; j < (int)driverInst_[i].size(); j++){
             driverInst_.at(i).at(j).clear();
-            driverInst_.at(i).at(j).resize(1,NULL);
+//            driverInst_.at(i).at(j).resize(1,NULL);
         }
     }
 
@@ -84,7 +84,7 @@ void Solution::reset(){
         trailerInst_.at(i).resize(InputData::getNumInst());
         for(j=0; j < (int)trailerInst_.at(i).size(); j++){
             trailerInst_.at(i).at(j).clear();
-            trailerInst_.at(i).at(j).resize(1,NULL);
+//            trailerInst_.at(i).at(j).resize(1,NULL);
         }
     }
 
@@ -517,6 +517,7 @@ void Solution::insertShift(Shift* shift){
     //driverInst_
     int driverIndex_ = shift->getDriver()->getIndex();//Get the shift's driver index
     for(int i=iniHour_;i<=finalHour_;i++){
+        printf("%d",driverInst_[driverIndex_].size());
         driverInst_[driverIndex_][i].push_back(shift);//Add the shift on the driver's Instants list
     }
 
