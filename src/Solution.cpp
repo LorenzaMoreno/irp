@@ -516,11 +516,11 @@ void Solution::insertShift(Shift* shift){
     //driverInst_
     int driverIndex_ = shift->getDriver()->getIndex();//Get the shift's driver index
     for(int i=iniHour_;i<=finalHour_;i++){
-<<<<<<< HEAD
+
 //        printf("%d",driverInst_[driverIndex_].size());
-=======
+
         printf("%d",driverInst_[driverIndex_].size());
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
+
         driverInst_[driverIndex_][i].push_back(shift);//Add the shift on the driver's Instants list
     }
     //trailerInst_
@@ -978,7 +978,7 @@ std::string Solution::toString(bool allData){
         sprintf(desloc,"           ");
         for(Customer* customer : *(InputData::getCustomers())){
             //Customer input data
-            sprintf(data,"%s=======================================================================================\n"
+            sprintf(data,"%s===\n"
                          "%s\n",data,customer->toString().c_str());
             //stock level
             sprintf(data,"%s%sStock %%=[",data,desloc);
@@ -1017,7 +1017,7 @@ std::string Solution::toString(bool allData){
                 if( s == lastShift )
                     continue;
 
-                sprintf(data,"%s=======================================================================================\n"
+                sprintf(data,"%s===\n"
                          "%s\n",data,s->toString("   ").c_str());
                 lastShift = s;
                 str << data;

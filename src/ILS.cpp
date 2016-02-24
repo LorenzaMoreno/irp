@@ -2,12 +2,6 @@
 #include <iostream>
 #include "Shift.h"
 #include "Driver.h"
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
 
 ILS::ILS(Solution* s){
   solAtual = s;
@@ -47,11 +41,10 @@ Source* ILS::getSourceMaisProximo(Location* loc){
 }
 
 Stop* ILS::criarStop(Location* location, Shift* shift, double arriveTime, double quantity){
-<<<<<<< HEAD
+
 //    printf("\nStop criado:\nLocal=%d\nArriveTime=%.3f\nquantity=%.3f\n", location->getIndex(), arriveTime, quantity);
-=======
+
 //    printf("Stop criado: \nLocal=%d\nArriveTime=%.3f\nquantity=%.3f\n", location->getIndex(), arriveTime, quantity);
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
   Stop* s= new Stop();
   s->setArriveTime(arriveTime);
   s->setLocation(location);
@@ -72,11 +65,10 @@ double ILS::amountSupply(Customer* customer, int time){
             break;
         }
     }
-<<<<<<< HEAD
+
 //    printf("O cliente %d precisa de %.3f de gas para garantir %d tempo\n", customer->getIndex(), quantity, time);
-=======
+
     printf("O cliente %d precisa de %.3f de gas para garantir %d tempo\n", customer->getIndex(), quantity, time);
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
     return quantity;
 }
 
@@ -103,10 +95,9 @@ double ILS::amountSupply(Customer* customer, int time){
 
     ///4º passo: retornar o shit (verificar se a validação será feita aqui)
 Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial){
-<<<<<<< HEAD
-=======
+
+
      ///1º passo: colocar na lista de já visitados os locations que não estão na lista dada como parâmetro de entrada
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
     std::vector<int> jaVisitados;//vetor que indica os customers que já foram visitados no shift
     jaVisitados.clear();
     //A ROTA É CONSTRUIDA CONSIDERANDO SOMENTE AS LOCATIONS DADAS COMO PARAMETRO
@@ -120,11 +111,8 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
         }
         if(!aux) jaVisitados.push_back(l->getIndex());
     }
-<<<<<<< HEAD
-    Solution*  solution=new Solution;
-=======
-    Solution*        solution=new Solution;
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
+
+    Solution* solution=new Solution;
     Shift* shift= new Shift();//shift que será retornado pela função
     shift->setDriver(driver);
     shift->setTrailer(trailer);
@@ -137,10 +125,6 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
     double arriveTime= tempoInicial;//tempo de chegada nos stops, à partir do tempo inicial
     int qtdeVisitados= 0;//controlar se visitou todos os locations da rota
     bool controleTempo= true;//controlar a restrição de tempo
-<<<<<<< HEAD
-=======
-
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
     int cont=0;
     do{//faça
 //        printf("\niteracao %d\n\n", cont);
@@ -154,21 +138,21 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
                 printf("Abastecer com todo o gas do trailer: %.3f\n", quantity);
             }else{
                 Customer* customer=(Customer*)proximoLocal;
-<<<<<<< HEAD
+
                 quantity = amountSupply(customer, 480); //descobre o quanto vai abastercer esse customer
-=======
+
                 quantity = amountSupply(customer, 120); //descobre o quanto vai abastercer esse customer
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
+
                 printf("Abastecer com toda necesidade do customer: %.3f\n", quantity);
             }
             jaVisitados.push_back(proximoLocal->getIndex());//não permitir que o mesmo custumer entre num stop mais a frente
 
         }else{//se o trailer ta quase vazio, tem que procurar a fonte mais proxima...
-<<<<<<< HEAD
+
             printf("Trailer precisa abastecer...\n");
-=======
+
 //            printf("o Trailer vai abastecer...\n");
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
+
             proximoLocal= getSourceMaisProximo(localAtual);
             if(proximoLocal==NULL) break;///não tem um caminho para o próximo stop??
             double quantity= trailer->getCapacity()- trailer->getInicialQuantity();//procura encher o trailer no source
@@ -191,18 +175,18 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
         double tempoAteBase= InputData::getInstance()->getTime(localAtual->getIndex(),baseTrailer->getIndex());
         controleTempo= (tempoTotalShift+tempoAteBase)<tempoMaximoPermitido;
         cont++;
-<<<<<<< HEAD
 
-=======
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
+
+
+
         }while(controleTempo && (qtdeVisitados< locais.size()));//enquanto a restrição de tempo não for ferida e não tiver visitado todos os locations pretendidos
 
     if(!controleTempo && !stops.empty()) stops.pop_back();//remove esse stop inválido do vector
     tempoTotalShift+= InputData::getInstance()->getTime(stops.back()->getLocation()->getIndex(),baseTrailer->getIndex());
-<<<<<<< HEAD
-=======
 
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
+
+
+
     shift->setStops(stops);
     shift->setInitialInstant(tempoInicial);
     shift->setFinalInstant(tempoInicial+tempoTotalShift);
@@ -212,7 +196,7 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
 }
 
 void ILS::constructor(int maxInstant, Solution* solution){
-<<<<<<< HEAD
+
     for(int i=0;i<maxInstant; i++){//para cada instante i...
 //            printf("Instante %d... -> ", i);
         for(Driver* driver: *(InputData::getDrivers())){
@@ -222,42 +206,41 @@ void ILS::constructor(int maxInstant, Solution* solution){
                     printf("\nDriver %d esta livre no instante %d e pega o caminhao %d\n", driver->getIndex(), i, t->getIndex());
                     std::vector<int> indices;
                     for (std::multimap<int, Customer*>::const_iterator iter = solution->getSafetyLevelInst()->begin(); iter != solution->getSafetyLevelInst()->end(); ++iter ){
-=======
+                        for(int i=0;i<maxInstant; i++){//para cada instante i...
+                            for(Driver* driver: *(InputData::getDrivers())){
+                                if(solution->getDriverInst()->at(driver->getIndex()).at(i).empty()){//se o motorista estiver livre...
+                                    for(Trailer* t: *(InputData::getTrailers())){
+                                        std::vector<int> indices;
+                                        for (std::multimap<int, Customer*>::const_iterator iter = solAtual->getSafetyLevelInst()->begin();
+                                            iter != solAtual->getSafetyLevelInst()->end(); ++iter ){
 
-    for(int i=0;i<maxInstant; i++){//para cada instante i...
-        for(Driver* driver: *(InputData::getDrivers())){
-            if(solution->getDriverInst()->at(driver->getIndex()).at(i).empty()){//se o motorista estiver livre...
-                for(Trailer* t: *(InputData::getTrailers())){
-                    std::vector<int> indices;
-                    for (std::multimap<int, Customer*>::const_iterator iter = solAtual->getSafetyLevelInst()->begin();
-                        iter != solAtual->getSafetyLevelInst()->end(); ++iter ){
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
-                        if(iter->second->isTrailerAllowed(t)){
-                            indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
+                                            if(iter->second->isTrailerAllowed(t)){
+                                                indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
+                                            }
+                                        }
+
+
+                    //                    printf("atender os customers: ");
+                    //                    for(int i=1; i<indices.size();i++){
+                    //                        printf("%d , ", indices.at(i));
+                    //                    }
+
+
+
+                                        Shift* shift= criarShift(t,driver,indices, i);
+                                        solution->insertShift(shift);
+                                    }
+                                }
+                            }
                         }
                     }
-<<<<<<< HEAD
-
-//                    printf("atender os customers: ");
-//                    for(int i=1; i<indices.size();i++){
-//                        printf("%d , ", indices.at(i));
-//                    }
-
-=======
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
-                    Shift* shift= criarShift(t,driver,indices, i);
-                    solution->insertShift(shift);
                 }
-           }
+            }
         }
     }
 }
-<<<<<<< HEAD
-=======
-
-
 ///Criar um shit;;Os parâmetros são os índices na InputData
->>>>>>> 0467ebf59680f43fc078e52abaa43e6ed2544895
+
 
 ///Busca local
 void ILS::localSearch(){
