@@ -119,9 +119,19 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
             printf("O trailer abastece %.3f e fica com tanque cheio = %f\n", quantity, trailer->getCapacity());
             trailer->setCapacity(trailer->getCapacity());
         }
+
+        double tempoAteProximo= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex());
+        if(
+           !solAtual->getLocationInstStop()->at(proximoLocal->getIndex()).at(arriveTime+tempoAteProximo).empty()
+        ){
+          jaVisitados.push_back(proximoLocal->getIndex());//marca o cliente como visitado
+          continue;//ignora o cliente que já tem um stop agendado na previsao de chegada
+        }
+
         qtdeVisitados++;//enquando existir rota para o proximo location, atualiza o controle de visitas
         //cria o stop
         arriveTime+= InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocal->getIndex());//adiciona o tempo de viagem no arriveTime acumulado
+
         Stop* stop= NULL;
         stop= criarStop(proximoLocal,shift,arriveTime,quantity);//cria um stop na location mais próxima do local atual
         solution->insertStopInShift(shift, stop);
@@ -137,7 +147,10 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
         }while(controleTempo && (qtdeVisitados< locais.size()));//enquanto a restrição de tempo não for ferida e não tiver visitado todos os locations pretendidos
 
     if(!controleTempo && !stops.empty()) stops.pop_back();//remove esse stop inválido do vector
+    //tempo do último stop à base
     tempoTotalShift+= InputData::getInstance()->getTime(stops.back()->getLocation()->getIndex(),baseTrailer->getIndex());
+
+    //setando as prop do shift
     shift->setStops(stops);
     shift->setInitialInstant(tempoInicial);
     shift->setFinalInstant(tempoInicial+tempoTotalShift);
