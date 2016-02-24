@@ -9,24 +9,11 @@ using namespace std;
 int main(){
     XMLDataLoader loader;
     loader.loadInputData("Instance_V_1.1.xml","./input");
-
     printf("\n");
     Solution* solution = new Solution();
     solution->calcSafetyLevelInst(InputData::getCustomers(),0,720);
     printf("\n");
     InputData::getInstance()->calcNeighborsLocations();
     ILS* ils= new ILS(solution);
-    ils->constructor(1, solution);
-//    NAMALAH EH ESSE
-
-/*
-    printf("\n");
-    Solution* solution = new Solution();
-    solution->calcSafetyLevelInst(InputData::getCustomers(),0,480);
-    InputData::getInstance()->calcNeighborsLocations();
-    ILS* ils= new ILS(solution);
-    ils->constructor(20, solution);
-*/
+    ils->constructor(720, solution);
 }
-
-

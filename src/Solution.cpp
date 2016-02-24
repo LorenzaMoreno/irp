@@ -507,8 +507,6 @@ int Solution::checkStop(Stop* stop, double* costDiff){
         return Penalty::NO_PENALTIES;
     }
 }
-
-
 void Solution::insertShift(Shift* shift){
     //Hour interval
     int iniHour_ = (shift->getInitialInstant());//Initial hour of the shift
@@ -516,11 +514,7 @@ void Solution::insertShift(Shift* shift){
     //driverInst_
     int driverIndex_ = shift->getDriver()->getIndex();//Get the shift's driver index
     for(int i=iniHour_;i<=finalHour_;i++){
-
 //        printf("%d",driverInst_[driverIndex_].size());
-
-        printf("%d",driverInst_[driverIndex_].size());
-
         driverInst_[driverIndex_][i].push_back(shift);//Add the shift on the driver's Instants list
     }
     //trailerInst_
@@ -528,7 +522,6 @@ void Solution::insertShift(Shift* shift){
     for(int i=iniHour_;i<=finalHour_;i++){
         trailerInst_[trailerIndex_][i].push_back(shift);//Add the shift on the trailer's Instants list
     }
-
     //locationInstStop_
     for(int j=0;j<shift->getStop()->size();j++){//j = stop
         int locationIndex_ = shift->getStop()->at(j)->getLocation()->getIndex();//Getting each location index
