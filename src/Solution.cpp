@@ -145,7 +145,7 @@ int Solution::checkShift(Shift* shift, double* costDiff){
     for(int i = 0; i < stopsSize; i++){ // for every stop on shift
         // colisão dentro do shift
         Stop* stop = shift->getStop()->at(i);
-        printf("arriveTime %d\n", stop->getArriveTime());
+//        printf("arriveTime %d\n", stop->getArriveTime());
         double endStop;
         if(i < stopsSize - 1){ // if can have collision
             Stop* s = shift->getStop()->at(i + 1);
@@ -1025,16 +1025,6 @@ std::string Solution::toString(bool allData){
 }
 
 void Solution::calcSafetyLevelInst(std::vector<Customer*>* customers, int initialInstant, int maxInstant){
-
-
-    //printf("Customer do sli tem tamanho %d --> ",safetyLevelInst_.size());
-
-//    for ( std::multimap<int, Customer*>::const_iterator iter =safetyLevelInst_.begin();
-//      iter != safetyLevelInst_.end(); ++iter ){
-//        printf("%d ",iter->second->getIndex());
-//      }
-//      printf("\n");
-
 
         //maxInstant deve ser menor ou igual ao total de forecasts
     for(Customer* customer: *(customers)){
