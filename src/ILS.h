@@ -15,10 +15,10 @@ class ILS
     Source* getSourceMaisProximo(Location* loc);
     Stop* criarStop(Location* location, Shift* shift, double arriveTime, double quantity);
     double amountSupply(Customer* customer, int time, double instant, double stockAtInstant);
-    Shift* criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial, Solution* solution);
+    Shift* criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial);
 
 //    void constructor(std::vector<Customer*>* customers, int maxInstant);
-    void constructor(int maxInstant, Solution* solution);
+    void constructor(int maxInstant);
 
     void localSearch();
   protected:

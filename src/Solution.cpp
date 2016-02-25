@@ -121,7 +121,8 @@ void Solution::reset(){
     for( i=0; i<(int)locationInstStop_.size(); i++ ){
         locationInstStop_[i].resize(InputData::getNumInst());
         for(j=0; j < (int)locationInstStop_[i].size(); j++)
-            locationInstStop_[i][j].resize(2, NULL);
+            //locationInstStop_[i][j].resize(2, NULL);
+            locationInstStop_[i][j].clear();
     }
 
     trailersShifts_.resize(InputData::getTrailers()->size());
@@ -1026,13 +1027,13 @@ std::string Solution::toString(bool allData){
 void Solution::calcSafetyLevelInst(std::vector<Customer*>* customers, int initialInstant, int maxInstant){
 
 
-    printf("Customer do sli tem tamanho %d --> ",safetyLevelInst_.size());
+    //printf("Customer do sli tem tamanho %d --> ",safetyLevelInst_.size());
 
-    for ( std::multimap<int, Customer*>::const_iterator iter =safetyLevelInst_.begin();
-      iter != safetyLevelInst_.end(); ++iter ){
-        printf("%d ",iter->second->getIndex());
-      }
-      printf("\n");
+//    for ( std::multimap<int, Customer*>::const_iterator iter =safetyLevelInst_.begin();
+//      iter != safetyLevelInst_.end(); ++iter ){
+//        printf("%d ",iter->second->getIndex());
+//      }
+//      printf("\n");
 
 
         //maxInstant deve ser menor ou igual ao total de forecasts
@@ -1045,7 +1046,7 @@ void Solution::calcSafetyLevelInst(std::vector<Customer*>* customers, int initia
             if(quantity < safetyLevel){
                 //estorou
                 safetyLevelInst_.insert (std::make_pair(i,customer));
-                printf("O customer %d atingiu o safety no instante %d\n", customer->getIndex(), i);
+                //printf("O customer %d atingiu o safety no instante %d\n", customer->getIndex(), i);
                 break;
             }
         }

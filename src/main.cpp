@@ -16,5 +16,5 @@ int main(){
     InputData::getInstance()->calcNeighborsLocations();
     ILS* ils= new ILS(solution);
     printf("\n");
-    ils->constructor(720, solution);
+    ils->constructor(720);
 }

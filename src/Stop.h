@@ -29,7 +29,8 @@ class Stop{
         std::string toString() const;
 
         inline void setLocation(Location* location){location_ = location;}
-        inline void setArriveTime(double arriveTime){arriveTime_ = arriveTime;}
+        //inline void setArriveTime(double arriveTime){arriveTime_ = arriveTime;}
+        void setArriveTime(double time);
         inline void setQuantity(double quantity){quantity_ = quantity;}
         inline void setShift(Shift* shift){shift_ = shift;}
 

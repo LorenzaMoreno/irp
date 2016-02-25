@@ -4,8 +4,8 @@
 Stop::Stop(): location_(NULL)
 {
     shift_ = NULL;
-    quantity_ = 0;
-    arriveTime_ = 0;
+    quantity_ = 0.0;
+    arriveTime_ = 0.0;
 }
 
 Stop::Stop(double quantity, double arriveTime, Location* location): location_(location), arriveTime_(arriveTime), quantity_(quantity)
@@ -42,4 +42,8 @@ std::string Stop::toString() const {
 
     str = data;
     return str;
+}
+
+void Stop::setArriveTime(double time){
+  arriveTime_ = time;
 }

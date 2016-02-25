@@ -12,3 +12,4 @@ obj/Debug/src/main.o
 *.exe
 *.exe
 solucaoInicial.csv
+*.o

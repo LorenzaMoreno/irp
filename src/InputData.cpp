@@ -180,15 +180,15 @@ void InputData::calcNeighborsLocations(){
         std::sort((location->getNeighborsSources())->begin(),(location->getNeighborsSources())->end(),Comparator(location));
 
 
-        printf("\n Lista de bases vizinhos do location de index %d\n",location->getIndex());
-        for(Base* b : *(location->getNeighborsBases())){
-            printf("-> %d",b->getIndex());
-        }
-
-        printf("\n Lista de customers vizinhos do location de index %d\n",location->getIndex());
-        for(Customer* b : *(location->getNeighborsCustomers())){
-            printf("-> %d",b->getIndex());
-        }
+//        printf("\n Lista de bases vizinhos do location de index %d\n",location->getIndex());
+//        for(Base* b : *(location->getNeighborsBases())){
+//            printf("-> %d",b->getIndex());
+//        }
+//
+//        printf("\n Lista de customers vizinhos do location de index %d\n",location->getIndex());
+//        for(Customer* b : *(location->getNeighborsCustomers())){
+//            printf("-> %d",b->getIndex());
+//        }
 
         printf("\n Lista de sources vizinhos do location de index %d\n",location->getIndex());
         for(Source* b : *(location->getNeighborsSources())){

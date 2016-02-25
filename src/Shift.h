@@ -43,10 +43,10 @@ class Shift{
         inline void setTrailer(Trailer* trailer){trailer_ = trailer;}
         inline void setCost(double cost){cost_ = cost;}
         inline void setSolution(Solution* solution){solution_ = solution;}
-        inline void setInitialInstant(int initialInstant){initialInstant_ = initialInstant;}
-        inline void setFinalInstant(int finalInstant){finalInstant_ =finalInstant;}
-        inline void setInitialLoad(int initialLoad){initialLoad_ =initialLoad;}
-        inline void setRemnantLoad(int remnantLoad){remnantLoad_ =remnantLoad;}
+        inline void setInitialInstant(double initialInstant){initialInstant_ = initialInstant;}
+        inline void setFinalInstant(double finalInstant){finalInstant_ =finalInstant;}
+        inline void setInitialLoad(double initialLoad){initialLoad_ =initialLoad;}
+        inline void setRemnantLoad(double remnantLoad){remnantLoad_ =remnantLoad;}
         std::string toString(std::string tab="   ") const;
 
         double calcCost(bool print = false);

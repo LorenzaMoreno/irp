@@ -1,0 +1,3219 @@
+
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+Instante 0: 
+Arrive 1: 0
+0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	0.00 	
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
+stop: 0.00
