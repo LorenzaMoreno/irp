@@ -87,7 +87,7 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
 
 
     FILE* f = fopen("log_teste.txt", "a");
-    fprintf(f, "\nInstante %d: \n", tempoInicial);
+    fprintf(f, "\nInstante %f: \n", tempoInicial);
 
     std::vector<int> jaVisitados;//vetor que indica os customers que já foram visitados no shift
     jaVisitados.clear();
@@ -114,7 +114,7 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
     double tempoMaximoPermitido= driver->getMaxDriving();//tempo máximo que o shift pode durar
     Location* localAtual= baseTrailer;//location atual
     double arriveTime= tempoInicial;//tempo de chegada nos stops, à partir do tempo inicial
-    fprintf(f, "Arrive 1: %d\n", arriveTime);
+    fprintf(f, "Arrive 1: %f\n", arriveTime);
 
     int qtdeVisitados= 0;//controlar se visitou todos os locations da rota
     bool controleTempo= true;//controlar a restrição de tempo
@@ -157,16 +157,16 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
         //printf("\n %d - %d \n",localAtual->getIndex(), proximoLocalIndex);
 
         double tempoAteProximo = InputData::getInstance()->getTime(localAtual->getIndex(), proximoLocalIndex);
-        if((tempoAteProximo+arriveTime)>719.9) break;
-//        if(!solAtual->getLocationInstStop()->at(proximoLocal->getIndex()).at(arriveTime+tempoAteProximo).empty()){
-//          jaVisitados.push_back(proximoLocal->getIndex());//marca o cliente como visitado
-//          continue;//ignora o cliente que já tem um stop agendado na previsao de chegada
-//        }
+        if((tempoAteProximo+arriveTime)>716.9) break;
+        if(!solAtual->getLocationInstStop()->at(proximoLocal->getIndex()).at(arriveTime+tempoAteProximo).empty()){
+          jaVisitados.push_back(proximoLocal->getIndex());//marca o cliente como visitado
+          continue;//ignora o cliente que já tem um stop agendado na previsao de chegada
+        }
 
         qtdeVisitados++;//enquando existir rota para o proximo location, atualiza o controle de visitas
         //cria o stop
         arriveTime= arriveTime+tempoAteProximo;//adiciona o tempo de viagem no arriveTime acumulado
-        fprintf(f, "%.2lf \t", arriveTime);
+        fprintf(f, "%.2f \t", arriveTime);
 
         Stop* stop= NULL;
         stop= criarStop(proximoLocal,shift,arriveTime,quantity);//cria um stop na location mais próxima do local atual
@@ -203,7 +203,7 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
     shift->setDriver(driver);
     shift->setSolution(solAtual);
     for(Stop* s: *shift->getStop())
-      fprintf(f, "\nstop: %.2lf", s->getArriveTime());
+      fprintf(f, "\nstop: %.2f", s->getArriveTime());
     fclose(f);
     printf("fim do shift\n");
     //int ak;
