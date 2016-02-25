@@ -30,9 +30,16 @@ Customer* ILS::getCustomerMaisProximo(Location* loc, std::vector<int> ignorar){
       break;
     }
   }//fim para i
-  if (c!=NULL){
-   // printf("Customer mais proximo: %d\n", c->getIndex());
-  }
+//  if (c!=NULL){
+//   // printf("Customer mais proximo: %d\n", c->getIndex());
+//  }
+    if(c==NULL){
+        printf("Nao ha customer mais prox da loc %d!\n",loc->getIndex());
+        int a;
+        scanf("%d",&a);
+    }else{
+        printf("O cust mais proximo eh: %d\n",c->getIndex());
+    }
   return c;
 
 }
@@ -53,11 +60,11 @@ Stop* ILS::criarStop(Location* location, Shift* shift, double arriveTime, double
   return s;
 }
 
-double ILS::amountSupply(Customer* customer, int time){
+double ILS::amountSupply(Customer* customer, int time, double instant, double stockAtInstant){
     //determina quantidade a abastecer um customer, tenta garantir o suficiente para nao voltar em x tempo...
-    double maxLoader= customer->getCapacity() - customer->getInitialQuantity();
+    double maxLoader= customer->getCapacity() - stockAtInstant;
     double quantity = 0.0;
-    for(int i=0;i<time;i++){//varrer instantes
+    for(int i=instant;i<time+instant;i++){//varrer instantes
         double instConsumption = customer->getForecast()->at(i);
         if((quantity+instConsumption) < maxLoader){//pode abastecer
             quantity= quantity + instConsumption;
@@ -69,11 +76,18 @@ double ILS::amountSupply(Customer* customer, int time){
     return quantity;
 }
 
-Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial){
+Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial, Solution* solution){
+    printf("Visitar: ");
+    for(int i = 0 ; i < locais.size() ; i++){
+        printf("%d ",locais.at(i));
+    }
+    printf("\n");
+
+
     std::vector<int> jaVisitados;//vetor que indica os customers que já foram visitados no shift
     jaVisitados.clear();
     //A ROTA É CONSTRUIDA CONSIDERANDO SOMENTE AS LOCATIONS DADAS COMO PARAMETRO
-    for(Location* l : *(InputData::getInstance()->getLocations())){
+    for(Location* l: *(InputData::getInstance()->getLocations())){
         bool aux= false;
         for(int j=0;j< locais.size();j++){
             if(locais.at(j)==l->getIndex()){
@@ -83,7 +97,6 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
         }
         if(!aux) jaVisitados.push_back(l->getIndex());
     }
-    Solution* solution=new Solution;
     Shift* shift= new Shift();//shift que será retornado pela função
     shift->setDriver(driver);
     shift->setTrailer(trailer);
@@ -96,10 +109,12 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
     double arriveTime= tempoInicial;//tempo de chegada nos stops, à partir do tempo inicial
     int qtdeVisitados= 0;//controlar se visitou todos os locations da rota
     bool controleTempo= true;//controlar a restrição de tempo
-    int cont=0;
+    int cont=-1;
     int proximoLocalIndex =-1;
+
     do{//faça
-//        printf("\niteracao %d\n\n", cont);
+        cont++;
+        printf("\niteracao %d\n\n", cont);
         Location* proximoLocal=NULL;
         double quantity=0.0;
         if(trailer->getInicialQuantity() > trailer->getCapacity()*.1){//restrição de quantidade está ok?
@@ -108,17 +123,20 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
             proximoLocalIndex = proximoLocal->getIndex();
             if(trailer->getInicialQuantity() <= quantity){//nao tem gas o suficiente
                 quantity=trailer->getInicialQuantity();//abastece com o que ta no tanque mesmo
-//                printf("Abastecer com todo o gas do trailer: %.3f\n", quantity);
+                printf("Abastecer com todo o gas do trailer: %.3f\n", quantity);
             }else{
                 Customer* customer=(Customer*)proximoLocal;
-                quantity = amountSupply(customer, 120); //descobre o quanto vai abastercer esse customer
-//                printf("Abastecer com toda necesidade do customer: %.3f\n", quantity);
+                double timeToCustomer = InputData::getInstance()->getTime(localAtual->getIndex(),proximoLocalIndex);
+                double timeAtCustomer = tempoTotalShift + timeToCustomer;
+                double stockAtCustomerInst = solution->getStockLevelInst()->at(proximoLocalIndex).at(timeAtCustomer);
+                quantity = amountSupply(customer, 120,timeAtCustomer,stockAtCustomerInst); //descobre o quanto vai abastercer esse customer
+                printf("Abastecer com toda necesidade do customer: %.3f\n", quantity);
             }
             jaVisitados.push_back(proximoLocal->getIndex());//não permitir que o mesmo custumer entre num stop mais a frente
 
 
         }else{//se o trailer ta quase vazio, tem que procurar a fonte mais proxima...
-//            printf("Trailer precisa abastecer...\n");
+            printf("Trailer precisa abastecer...\n");
             proximoLocal= getSourceMaisProximo(localAtual);
             proximoLocalIndex = proximoLocal->getIndex();
             if(proximoLocal==NULL) break;///não tem um caminho para o próximo stop??
@@ -151,7 +169,7 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
         stops.push_back(stop);//inclui o stop criado no vetor de stops do shift
         double tempoAteBase= InputData::getInstance()->getTime(localAtual->getIndex(),baseTrailer->getIndex());
         controleTempo= (tempoTotalShift+tempoAteBase)<tempoMaximoPermitido;
-        cont++;
+//        cont++;
         }while(controleTempo && (qtdeVisitados< locais.size()));//enquanto a restrição de tempo não for ferida e não tiver visitado todos os locations pretendidos
 
     if(!controleTempo && !stops.empty())
@@ -160,9 +178,7 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
     if(!stops.empty()){
         int auxB=baseTrailer->getIndex();
         int auxL=stops.back()->getLocation()->getIndex();
-        tempoTotalShift+= InputData::getInstance()->getTime(
-                                                            auxL,
-                                                            auxB);
+        tempoTotalShift+= InputData::getInstance()->getTime(auxL, auxB);
     }
     //setando as prop do shift
     shift->setStops(stops);
@@ -179,29 +195,34 @@ void ILS::constructor(int maxInstant, Solution* solution){
     for(int i=0;i<maxInstant; i++){//para cada instante i...
         for(Driver* driver: *(InputData::getDrivers())){
             if(solution->getDriverInst()->at(driver->getIndex()).at(i).empty()){//se o motorista estiver livre...
-                for(Trailer* t: *(InputData::getTrailers())){//atribuir um trailer disponivel para ele travalhar
-                    std::vector<int> indices;
-                    for (std::multimap<int, Customer*>::const_iterator iter = solAtual->getSafetyLevelInst()->begin();
-                        iter != solAtual->getSafetyLevelInst()->end(); ++iter ){
-
-                        if(iter->second->isTrailerAllowed(t)){
-                            indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
+                for(Trailer*t: *(driver->getTrailers())){//atribuir um trailer disponivel para ele travalhar
+                    //TODO VERIFICAR SE ESSE MOTORISTA PODE DIRIGIR ESSE CAMINHAO E AINDA SE ESSE CAMINHAO TA LIVRE.
+                    if(solution->getTrailerInst()->at(t->getIndex()).at(i).empty()){
+                        std::vector<int> indices;
+//                        printf("Multimap: ");
+                        for (std::multimap<int, Customer*>::const_iterator iter = solAtual->getSafetyLevelInst()->begin();
+                            iter != solAtual->getSafetyLevelInst()->end(); ++iter ){
+//                            printf("%d ",iter->second->getIndex());
+                            if(iter->second->isTrailerAllowed(t)){
+                                indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
+                            }
                         }
+//                        printf("\n");
+                        Shift* shift= criarShift(t,driver,indices, i, solution);
+                        cont++;
+                        solution->insertShift(shift);
+                        f = fopen("solucaoInicial.csv", "a");
+                        fprintf(f, "Shift %d:\n", cont);
+                        fprintf(f, "%d, ", shift->getTrailer()->getIndex());
+                        fprintf(f, "%d, ", shift->getDriver()->getIndex());
+                        fprintf(f, "%.3f, ", shift->getInitialInstant());
+                        fprintf(f, "%.3f, ", shift->getFinalInstant());
+                        fprintf(f, "%.3f, ", shift->getInitialLoad());
+                        fprintf(f, "%.3f, ", shift->getQuantityDelivered());
+                        fprintf(f, "%.3f\n ", shift->getRemnantLoad());
+    //                    printf(">>>>o shift foi escrito no arquivo solucaoInicial.csv\n");
+                        fclose(f);
                     }
-                    Shift* shift= criarShift(t,driver,indices, i);
-                    cont++;
-                    solution->insertShift(shift);
-                    f = fopen("solucaoInicial.csv", "a");
-                    fprintf(f, "Shift %d:\n", cont);
-                    fprintf(f, "%d, ", shift->getTrailer()->getIndex());
-                    fprintf(f, "%d, ", shift->getDriver()->getIndex());
-                    fprintf(f, "%.3f, ", shift->getInitialInstant());
-                    fprintf(f, "%.3f, ", shift->getFinalInstant());
-                    fprintf(f, "%.3f, ", shift->getInitialLoad());
-                    fprintf(f, "%.3f, ", shift->getQuantityDelivered());
-                    fprintf(f, "%.3f\n ", shift->getRemnantLoad());
-//                    printf(">>>>o shift foi escrito no arquivo solucaoInicial.csv\n");
-                    fclose(f);
                 }
             }
         }

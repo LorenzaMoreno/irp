@@ -14,8 +14,8 @@ class ILS
     Customer* getCustomerMaisProximo(Location* loc, std::vector<int> ignorar);
     Source* getSourceMaisProximo(Location* loc);
     Stop* criarStop(Location* location, Shift* shift, double arriveTime, double quantity);
-    double amountSupply(Customer* customer, int time);
-    Shift* criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial);
+    double amountSupply(Customer* customer, int time, double instant, double stockAtInstant);
+    Shift* criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial, Solution* solution);
 
 //    void constructor(std::vector<Customer*>* customers, int maxInstant);
     void constructor(int maxInstant, Solution* solution);

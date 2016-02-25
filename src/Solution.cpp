@@ -109,7 +109,7 @@ void Solution::reset(){
                         stockLevelInst_[i][j] = 0.0;
                     if(!safetyLevelReached && stockLevelInst_[i][j]<c->getSafetyLevel()){
                         safetyLevelReached = true;
-                        safetyLevelInst_.insert(std::make_pair(j,c));
+//                        safetyLevelInst_.insert(std::make_pair(j,c));
                     }
                 }
             }break;
@@ -1024,6 +1024,17 @@ std::string Solution::toString(bool allData){
 }
 
 void Solution::calcSafetyLevelInst(std::vector<Customer*>* customers, int initialInstant, int maxInstant){
+
+
+    printf("Customer do sli tem tamanho %d --> ",safetyLevelInst_.size());
+
+    for ( std::multimap<int, Customer*>::const_iterator iter =safetyLevelInst_.begin();
+      iter != safetyLevelInst_.end(); ++iter ){
+        printf("%d ",iter->second->getIndex());
+      }
+      printf("\n");
+
+
         //maxInstant deve ser menor ou igual ao total de forecasts
     for(Customer* customer: *(customers)){
         double safetyLevel= customer->getSafetyLevel();
@@ -1039,4 +1050,16 @@ void Solution::calcSafetyLevelInst(std::vector<Customer*>* customers, int initia
             }
         }
     }
+
+
+
 }
+
+
+
+
+
+
+
+
+

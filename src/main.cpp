@@ -11,9 +11,10 @@ int main(){
     loader.loadInputData("Instance_V_1.1.xml","./input");
     printf("\n");
     Solution* solution = new Solution();
-    solution->calcSafetyLevelInst(InputData::getCustomers(),0,720);
+    solution->calcSafetyLevelInst(InputData::getCustomers(),0,120);
     printf("\n");
     InputData::getInstance()->calcNeighborsLocations();
     ILS* ils= new ILS(solution);
-    ils->constructor(720, solution);
+    printf("\n");
+    ils->constructor(620, solution);
 }
