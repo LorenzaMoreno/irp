@@ -199,6 +199,7 @@ void ILS::constructor(int maxInstant){
                             solAtual->insertShift(shift);
                         cont++;
                         f = fopen("solucaoInicial.csv", "a");
+                        /*
                         fprintf(f, "Shift %d:\n", cont);
                         fprintf(f, "%d, ", shift->getTrailer()->getIndex());
                         fprintf(f, "%d, ", shift->getDriver()->getIndex());
@@ -206,6 +207,17 @@ void ILS::constructor(int maxInstant){
                         fprintf(f, "%.3f\n", shift->getFinalInstant());
                         for(Stop* st: *shift->getStop())
                             fprintf(f, "%d(%.2f)\t", st->getLocation()->getIndex(),st->getQuantity());
+                        */
+                        fprintf(f, "Shift %d;%d;%d;%.3f;%.3f\n", cont, shift->getTrailer()->getIndex(),
+                                shift->getDriver()->getIndex(),
+                                shift->getInitialInstant(),
+                                shift->getFinalInstant());
+                        for(Stop* st: *shift->getStop()){
+                          fprintf(f, ";%d;%.2f;%.2f;%.2f\n",st->getLocation()->getIndex(),
+                                  st->getArriveTime(),
+                                  st->getArriveTime()+st->getLocation()->getSetupTime(),
+                                  st->getQuantity());
+                        }
                         fprintf(f, "\n");
                         fclose(f);
                     }
