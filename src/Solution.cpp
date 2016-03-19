@@ -128,7 +128,7 @@ void Solution::reset(){
     trailersShifts_.resize(InputData::getTrailers()->size());
 }
 
-int Solution::checkShift(Shift* shift, double* costDiff){
+Penalty Solution::checkShift(Shift* shift, double* costDiff){
     double cost = 0;
 
 //    Shift* shift;
@@ -538,6 +538,7 @@ void Solution::insertShift(Shift* shift){
         }
     }
     shift->setSolution(this);
+    shifts_.push_back(shift);
 }
 
 void Solution::removeShift(Shift* shift){

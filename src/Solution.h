@@ -25,6 +25,7 @@ class Solution
         inline std::vector<std::vector<double> >* getStockLevelInst(){return &stockLevelInst_;}
         inline std::vector<std::vector<std::vector<Stop*> > >* getLocationInstStop() {return &locationInstStop_;}
         inline std::multimap<int, Customer*>* getSafetyLevelInst(){return &safetyLevelInst_;}
+        inline std::vector<Shift*>* getShifts(){return &shifts_;}
 
         void calcSafetyLevelInst(std::vector<Customer*>* customers, int initialInstant, int maxInstant);
 
@@ -43,7 +44,7 @@ class Solution
         void insertStopInShift(Shift* shift, Stop* stop);
         void removeStopFromShift(Shift* shift, Stop* stop);
 
-        int checkShift(Shift* shift, double* costDiff);
+        Penalty checkShift(Shift* shift, double* costDiff);
         int checkStop(Stop*,double* costDiff);
 
         void updateCost(/*Penalties penalties*/);
@@ -74,6 +75,8 @@ class Solution
         std::vector<std::vector<Shift*> > trailersShifts_;
 
         double infeasibilityCost_;
+
+        std::vector<Shift*> shifts_;
 
 };
 

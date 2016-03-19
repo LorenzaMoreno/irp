@@ -17,4 +17,8 @@ int main(){
     ILS* ils= new ILS(solution);
     printf("\n");
     ils->constructor(720);
+    printf("Verificacao\n");
+    ils->verificarSolucao();
+
+    printf("\n\n*****FIM*****\n");
 }

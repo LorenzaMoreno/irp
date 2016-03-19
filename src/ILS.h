@@ -20,6 +20,8 @@ class ILS
 //    void constructor(std::vector<Customer*>* customers, int maxInstant);
     void constructor(int maxInstant);
 
+    void verificarSolucao();
+
     void localSearch();
   protected:
   private:

@@ -215,7 +215,7 @@ void ILS::constructor(int maxInstant){
                         for(Stop* st: *shift->getStop()){
                           fprintf(f, ";%d;%.2f;%.2f;%.2f\n",st->getLocation()->getIndex(),
                                   st->getArriveTime(),
-                                  st->getArriveTime()+st->getLocation()->getSetupTime(),
+                                  st->getLocation()->getSetupTime(),
                                   st->getQuantity());
                         }
                         fprintf(f, "\n");
@@ -227,6 +227,13 @@ void ILS::constructor(int maxInstant){
     }
     printf("A solucao foi gerada no arquivo solucaoInicial\nCusto: \t\n");
 
+}
+
+void ILS::verificarSolucao(){
+  for(Shift* shift : *solAtual->getShifts()){
+    double cost;
+    std::cout<<Penalties::toString(solAtual->checkShift(shift,&cost))<<std::endl;
+  }
 }
 
 ///Busca local
