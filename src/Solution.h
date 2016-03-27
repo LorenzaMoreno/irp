@@ -47,6 +47,8 @@ class Solution
         Penalty checkShift(Shift* shift, double* costDiff);
         int checkStop(Stop*,double* costDiff);
 
+        int getSafetyLevelReachInst(Customer *c,int initialInst);
+
         void updateCost(/*Penalties penalties*/);
         void calcCost(bool print = false);
 

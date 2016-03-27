@@ -1049,7 +1049,17 @@ void Solution::calcSafetyLevelInst(std::vector<Customer*>* customers, int initia
 
 }
 
-
+ /*
+         @in: Pointer for the Customer & the initial instant to search that ranges from 0 to the Time Window Size
+         @return: The instant where the Customer will reach the safety level; IF said instant is beyond the time Window, is returned time window size +1
+        */
+        int Solution::getSafetyLevelReachInst(Customer *c,int initialInst){
+            for(int i=initialInst;i<stockLevelInst_[c->getIndex()].size();i++){
+                if(stockLevelInst_[c->getIndex()][i] <= c->getSafetyLevel())
+                    return i;
+            }
+            return stockLevelInst_[c->getIndex()].size()+1;//Se o cliente não for estourar até o final do horizonte de tempo, a função SEMPRE retorna o horizonte de tempo +1
+        }
 
 
 
