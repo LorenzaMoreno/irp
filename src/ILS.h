@@ -22,6 +22,8 @@ class ILS
 
     void verificarSolucao();
 
+    void perturbation(Solution *s);
+
     void localSearch();
   protected:
   private:

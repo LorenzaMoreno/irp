@@ -4,12 +4,16 @@
 #include "Solution.h"
 #include "ILS.h"
 #include <stdio.h>
+#include <time.h>
 
 using namespace std;
 int main(){
     XMLDataLoader loader;
     loader.loadInputData("Instance_V_1.1.xml","./input");
     printf("\n");
+
+    srand(time(NULL));
+
     Solution* solution = new Solution();
     solution->calcSafetyLevelInst(InputData::getCustomers(),0,120);
     printf("\n");

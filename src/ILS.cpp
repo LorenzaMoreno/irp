@@ -1,6 +1,7 @@
 #include "ILS.h"
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
 #include "Shift.h"
 #include "Driver.h"
 
@@ -234,6 +235,56 @@ void ILS::verificarSolucao(){
     double cost;
     std::cout<<Penalties::toString(solAtual->checkShift(shift,&cost))<<std::endl;
   }
+}
+
+///Perturbação
+void ILS::perturbation(Solution *s){
+
+  ///para cada trailer
+  for(Trailer* trailer : *(InputData::getTrailers())){
+    std::vector<int> posicoes;
+    posicoes.clear();
+    int indice=0;
+    ///para cada shift da solução
+
+    for(Shift* shift : *(s->getShifts())){
+      ///se o shift pertence ao trailer, coloca no vetor de posições o índice do shift no vetor da solução
+      if(shift->getTrailer()->getIndex()==trailer->getIndex())
+        posicoes.push_back(indice);
+      indice++;
+    }
+
+    /**----------------------------
+      Após esse loop, temos um vetor chamado "posicoes" que contém os índices de todos os shifts do trailer
+      na solução S (no vetor de shifts da solução). A estratégia de perturbação vai ser trocar pelo menos
+      dois shifts dessas posições de lugar!
+    ----------------------------**/
+
+
+    ///**TROCA
+    //sorteio randomico de 2 posições que serão trocadas
+    int pos1= rand()%posicoes.size();
+    int pos2;
+    do{
+      pos2= rand()%posicoes.size();
+    }while(pos1==pos2);//certificar que serão sempre 2 valores DIFERENTES sorteados
+    //troca propriamente dita
+    Shift* shiftAux= s->getShifts()->at(pos1);
+    s->getShifts()->at(pos1)= s->getShifts()->at(pos2);
+    s->getShifts()->at(pos2)= shiftAux;
+
+    /**TODO:
+        - Função para atualizar os tempos dos shifts do trailer(início e término) além dos tempos dos stops
+        desses shifts que também terão que ser atualizados, pois isso tudo pode ter sido afetado pela troca
+        - Função pra fazer as correções de Safety Level dos costumers afetados pela troca e
+        correção dos tempos dos shifts/stops dos shifts do trailer
+    **/
+
+
+
+  }///fim para cada trailer
+
+
 }
 
 ///Busca local
