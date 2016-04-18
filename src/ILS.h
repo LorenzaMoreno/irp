@@ -24,7 +24,10 @@ class ILS
 
     void perturbation(Solution *s);
 
-    void localSearch();
+    void localSearch(Solution *s);
+
+    void exec_ILS(int maxInstant);
+
   protected:
   private:
       Solution* solAtual;

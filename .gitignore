@@ -14,3 +14,9 @@ obj/Debug/src/main.o
 solucaoInicial.csv
 *.o
 *.o
+*.exe
+bin/Debug/irp.exe
+*.exe
+*.exe
+bin/Debug/irp.exe
+*.csv

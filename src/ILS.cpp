@@ -288,7 +288,7 @@ void ILS::perturbation(Solution *s){
 }
 
 ///Busca local
-void ILS::localSearch(){
+void ILS::localSearch(Solution *s){
   /**
     A IDÉIA É CRIAR UM SISTEMA DE BUSCA LOCAL FOCADA NOS SHIFTS JÁ EXISTENTES NA SOLUÇÃO
     SERIA TIPO TENTAR FAZER UMA "MELHORA LOCAL" NOS SHIFTS PRA REDUZIR AS PENALIDADES
@@ -305,5 +305,23 @@ void ILS::localSearch(){
     TENTATIVAS, OU POR TEMPO, OU ATÉ ENCONTRAR UMA SOLUÇÃO QUE CONSIDEREMOS SATISFATÓRIA.
   **/
 
+
+}
+
+void ILS::exec_ILS(int maxInstant){
+
+  constructor(maxInstant);///construtor
+
+  /** TODO: construtor de cópia na Solution*/
+  //Solution *sBest= new Solution();//cópia da solAtual
+  while(true){//definir critério de parada
+    //Solution *sLinha= new Solution();//cria uma cópia da sBest
+    //perturbation(sLinha);//perturbação em sLinha
+    //localSearch(sLinha);//busca local em sLinha
+    //if(custo de sLinha < custo de sBest)
+      /** TODO: função que cria uma cópia de ums Solution*/
+      //sBest = cópia de sLinha
+    //delete sLinha
+  }
 
 }
