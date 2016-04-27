@@ -1,9 +1,11 @@
 #include "ILS.h"
+#include "Shift.h"
+#include "Driver.h"
+
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include "Shift.h"
-#include "Driver.h"
+#include <limits>
 
 ILS::ILS(Solution* s){
   solAtual = s;
@@ -235,6 +237,69 @@ void ILS::verificarSolucao(){
     double cost;
     std::cout<<Penalties::toString(solAtual->checkShift(shift,&cost))<<std::endl;
   }
+}
+
+
+std::vector<Penalty> ILS::avaliarShift(Shift* shift){
+/**
+VERIFICA:
+  -SE EM ALGUM STOP DO SHIFT O CUSTOMER NÃO FOI ATENDIDO O SUFICIENTE PARA ESTAR ACIMA DO SAFETYLEVEL
+  -SE O ARRIVETIME DE ALGUM STOP SOBRESCREVEU O STOP SEGUINTE
+  -SE ALGUM SHIFT DO TRAILLER SOBRESCREVEU O SHIFT SEGUINTE (ESTOU CONSIDERANDO QUE NÃO HÁ TROCA
+                                                             DE DRIVER NO TRAILER, LOGO A VERIFICAÇÃO
+                                                             TAMBÉM VALE PARA OS MOTORISTAS A PRINCÍPIO)
+RETORNA:
+  -UM VECTOR COM AS PENALIDADES ENCONTRADAS NO SHIFT PARA SER USADA POSTERIORMENTE EM UMA FÇ DE CLASSIFICAÇÃO
+  DE QUALIDADE DOS SHIFTS DA SOLUTION;
+**/
+  std::vector<Penalty> penalidades;
+  penalidades.clear();
+  ///para cada stop no shift
+  for(std::vector<Stop*>::iterator it=shift->getStop()->begin();
+      it!=shift->getStop()->end();it++){
+    Stop* stop= (Stop*) *it;
+    if(instanceof<Customer>(stop->getLocation())){///verifica o safetyLevel dos Customers
+      Customer* c= (Customer*)stop->getLocation();
+      ///quantidade disponível no cliente contando a entrega do stop analisado
+      double qtde= solAtual->getStockLevelInst()->at(c->getIndex()).at((int)stop->getArriveTime())+stop->getQuantity();
+      ///se cliente está abaixo do safety level no instante
+      if(qtde<c->getSafetyLevel())
+        penalidades.push_back(Penalty::CUSTOMER_SAFETY_LEVEL);///adiciona a penalidade
+    }
+    Stop* proximoStop= (Stop*) *(it+1);
+    if(proximoStop==*shift->getStop()->end()) continue;
+    ///verifica se o stop atual sobrescreveu o stop seguinte
+    if(stop->getArriveTime()>proximoStop->getArriveTime())
+      penalidades.push_back(Penalty::STOP_ARRIVAL_TIME);///adiciona a penalidade
+  }///fim para cada stop
+
+
+
+  Trailer* trailer = shift->getTrailer();
+  std::vector<int> posicoes;
+  posicoes.clear();
+  int indice=0;
+  int indiceShift=0;
+  ///para cada shift da solução
+
+  for(Shift* s : *(solAtual->getShifts())){
+    ///se o shift pertence ao trailer, coloca no vetor de posições o índice do shift no vetor da solução
+    if(s->getTrailer()->getIndex()==trailer->getIndex()){
+      posicoes.push_back(indice);
+      if(s==shift) indiceShift= posicoes.size()-1;
+    }
+    indice++;
+  }
+  double anterior= indiceShift==0?-1:solAtual->getShifts()->at(posicoes.at(indiceShift-1))->getFinalInstant();///final do shift anterior
+  double atualIni= solAtual->getShifts()->at(posicoes.at(indiceShift))->getInitialInstant();///início do shift atual
+  double atualFim= solAtual->getShifts()->at(posicoes.at(indiceShift))->getFinalInstant();///final do shift atual
+  double proximo= indiceShift==posicoes.size()-1?std::numeric_limits<double>::max():
+                    solAtual->getShifts()->at(posicoes.at(indiceShift+1))->getInitialInstant();///início do shift seguinte
+  ///verifica se houve uma sobreposição de shifts no trailer
+  if((anterior>atualIni)||(atualFim>proximo))
+    penalidades.push_back(Penalty::TRAILER_SHIFTS_OVERLAP);///adiciona a penalidade
+
+  return penalidades;
 }
 
 ///Perturbação

@@ -22,6 +22,8 @@ class ILS
 
     void verificarSolucao();
 
+    std::vector<Penalty> avaliarShift(Shift* shift);
+
     void perturbation(Solution *s);
 
     void localSearch(Solution *s);
