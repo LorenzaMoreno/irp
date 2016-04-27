@@ -54,6 +54,7 @@ class Solution
 
         std::string toString(bool allData=false);
 
+        Solution* clone();
     protected:
     private:
         double cost_;
@@ -79,6 +80,7 @@ class Solution
         double infeasibilityCost_;
 
         std::vector<Shift*> shifts_;
+
 
 };
 

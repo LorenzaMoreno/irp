@@ -799,7 +799,6 @@ void Solution::removeStopFromShift(Shift* shift, Stop* stop){
     }
 }
 
-
 void Solution::calcCost(bool print){
     double totalQuantity = 0;
     double previousLoad;
@@ -1061,7 +1060,20 @@ void Solution::calcSafetyLevelInst(std::vector<Customer*>* customers, int initia
             return stockLevelInst_[c->getIndex()].size()+1;//Se o cliente não for estourar até o final do horizonte de tempo, a função SEMPRE retorna o horizonte de tempo +1
         }
 
+Solution* Solution::clone(){
+        Solution* clon = new Solution();
+        std::copy( this->shifts_.begin(), this->shifts_.end(), std::back_inserter( clon->shifts_ ) );
+        std::copy( this->driverInst_.begin(), this->driverInst_.end(), std::back_inserter( clon->driverInst_ ) );
+        std::copy( this->trailerInst_.begin(), this->trailerInst_.end(), std::back_inserter( clon->trailerInst_ ) );
+        std::copy( this->stockLevelInst_.begin(), this->stockLevelInst_.end(), std::back_inserter( clon->stockLevelInst_ ) );
+        std::copy( this->trailersShifts_.begin(), this->trailersShifts_.end(), std::back_inserter( clon->trailersShifts_ ) );
+        std::copy( this->locationInstStop_.begin(), this->locationInstStop_.end(), std::back_inserter( clon->locationInstStop_ ) );
+        clon->cost_ = this->cost_;
+        clon->infeasibilityCost_ = this->infeasibilityCost_;
+        clon->safetyLevelInst_ = this->safetyLevelInst_;
 
+        return clon;
+}
 
 
 
