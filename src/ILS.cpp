@@ -72,7 +72,7 @@ double ILS::amountSupply(Customer* customer, int time, double instant, double st
 Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais, double tempoInicial){
     std::vector<int> jaVisitados;//vetor que indica os customers que já foram visitados no shift
     jaVisitados.clear();
-    //A ROTA É CONSTRUIDA CONSIDERANDO SOMENTE AS LOCATIONS DADAS COMO PARAMETRO
+    //A ROTA É CONSTRUIDA CONSIDERANDO SOMENTE PARA AS LOCATIONS DADAS COMO PARAMETRO
     for(Location* l: *(InputData::getInstance()->getLocations())){
         bool aux= false;
         for(int j=0;j< locais.size();j++){
@@ -177,9 +177,41 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
     return shift;
 }
 
+/*Construtor que gera a solucao mais trivial: shifts sao sempre da base para o cliente e do cliente para a base. NAO TEM NENHUM VALIDAÇÃO*/
+void ILS::constructorOficial(int instanteInicial, int instanteFinal){
+    solAtual->calcSafetyLevelInst(InputData::getCustomers(),instanteInicial,instanteFinal);
+    for (std::multimap<int, Customer*>::const_iterator iter = solAtual->getSafetyLevelInst()->begin();
+        iter != solAtual->getSafetyLevelInst()->end(); ++iter ){
+        Customer* c = iter->second;//guarda o ponteiro para o cliente
+        int instante = iter->first;//guarda int instante do shift
+        Trailer* t = c->getAllowedTrailers()->at(0);//pega o primeiro trailer que pode atender o customer
+        Driver* d = t->getDrivers()->at(0);//pega o primeiro tdriver que pode dirigir o trailer
+
+        double aaaa;//TODO: VARIAVEL QUE GUARDA O CUSTO PARA CRIAR O SHIFT//NAO ESTAMOS UTILIZANDO CUTOS AINDA...
+        double quantidadeAbastecer = c->getCapacity()- solAtual->getStockLevelInst()->at(c->getIndex()).at(instante);
+        double tempoVolta = InputData::getInstance()->getTime(c->getIndex(), t->getBase()->getIndex());
+
+        //TODO VERIFICAR OS INSTANTES DOS STOPS.
+        Shift* shift = new Shift(aaaa, d, t);
+        Stop* stop = new Stop(quantidadeAbastecer, instante, c);
+
+        Stop* stopVolta = new Stop(0.0, instante+(c->getSetupTime())+ tempoVolta, t->getBase());
+        std::vector<Stop*> vetorStops;
+        vetorStops.push_back(stop);
+        vetorStops.push_back(stopVolta);
+        shift->setStops(vetorStops);
+        solAtual->insertShift(shift);
+   }
+}
+
 void ILS::constructor(int maxInstant){
     FILE* f = fopen("solucaoInicial.csv", "w");
     int cont=0;
+     f = fopen("solucaoInicial.csv", "a");
+                        fprintf(f, "shift; trailer; driver;arriveTime;SetupTime;Qantity");
+                        fprintf(f, "\n");
+                        printf("uai;....\n");
+
     for(int i=0;i<maxInstant; i++){//para cada instante i...
         for(Driver* driver: *(InputData::getDrivers())){
             if(solAtual->getDriverInst()->at(driver->getIndex()).at(i).empty()){//se o motorista estiver livre...
@@ -194,34 +226,23 @@ void ILS::constructor(int maxInstant){
                             if(iter->second->isTrailerAllowed(t)){
                                 indices.push_back(iter->second->getIndex());//Add the shift on the driver's Instants list
                             }
-                        }
-//                        printf("\n");
+                            }
                         Shift* shift= criarShift(t,driver,indices, i);
                         double aaaa=0;
-//                        if(solAtual->checkShift(shift,&aaaa)==Penalty::NO_PENALTIES)
-                            solAtual->insertShift(shift);
-                        cont++;
-                        f = fopen("solucaoInicial.csv", "a");
-                        /*
-                        fprintf(f, "Shift %d:\n", cont);
-                        fprintf(f, "%d, ", shift->getTrailer()->getIndex());
-                        fprintf(f, "%d, ", shift->getDriver()->getIndex());
-                        fprintf(f, "%.3f, ", shift->getInitialInstant());
-                        fprintf(f, "%.3f\n", shift->getFinalInstant());
-                        for(Stop* st: *shift->getStop())
-                            fprintf(f, "%d(%.2f)\t", st->getLocation()->getIndex(),st->getQuantity());
-                        */
-                        fprintf(f, "Shift %d;%d;%d;%.3f;%.3f\n", cont, shift->getTrailer()->getIndex(),
-                                shift->getDriver()->getIndex(),
-                                shift->getInitialInstant(),
-                                shift->getFinalInstant());
+                        //CHECK SHIFT
+                        solAtual->insertShift(shift);
+                        cont++;//shift
+
                         for(Stop* st: *shift->getStop()){
-                          fprintf(f, ";%d;%.2f;%.2f;%.2f\n",st->getLocation()->getIndex(),
-                                  st->getArriveTime(),
-                                  st->getLocation()->getSetupTime(),
-                                  st->getQuantity());
+                            fprintf(f, "%d;%d;%d;%.2f;%.2f;%.2f\n",cont,
+                            shift->getTrailer()->getIndex(),
+                            shift->getDriver()->getIndex(),
+                            st->getArriveTime(),
+                            st->getLocation()->getSetupTime(),
+                            st->getQuantity());
                         }
                         fprintf(f, "\n");
+                        printf("a-k-bo");
                         fclose(f);
                     }
                 }
