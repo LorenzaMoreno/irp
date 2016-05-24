@@ -179,29 +179,66 @@ Shift* ILS::criarShift(Trailer* trailer, Driver* driver, std::vector<int> locais
 
 /*Construtor que gera a solucao mais trivial: shifts sao sempre da base para o cliente e do cliente para a base. NAO TEM NENHUM VALIDAÇÃO*/
 void ILS::constructorOficial(int instanteInicial, int instanteFinal){
-    solAtual->calcSafetyLevelInst(InputData::getCustomers(),instanteInicial,instanteFinal);
-    for (std::multimap<int, Customer*>::const_iterator iter = solAtual->getSafetyLevelInst()->begin();
-        iter != solAtual->getSafetyLevelInst()->end(); ++iter ){
-        Customer* c = iter->second;//guarda o ponteiro para o cliente
-        int instante = iter->first;//guarda int instante do shift
-        Trailer* t = c->getAllowedTrailers()->at(0);//pega o primeiro trailer que pode atender o customer
-        Driver* d = t->getDrivers()->at(0);//pega o primeiro tdriver que pode dirigir o trailer
+  ///calcula o instante em que os customers atingirão o safety level de estoque
+  solAtual->calcSafetyLevelInst(InputData::getCustomers(),instanteInicial,instanteFinal);
 
-        double aaaa;//TODO: VARIAVEL QUE GUARDA O CUSTO PARA CRIAR O SHIFT//NAO ESTAMOS UTILIZANDO CUTOS AINDA...
-        double quantidadeAbastecer = c->getCapacity()- solAtual->getStockLevelInst()->at(c->getIndex()).at(instante);
-        double tempoVolta = InputData::getInstance()->getTime(c->getIndex(), t->getBase()->getIndex());
+  ///percorre o multimap gerado pelo calculo acima
+  for (std::multimap<int, Customer*>::const_iterator iter = solAtual->getSafetyLevelInst()->begin();
+      iter != solAtual->getSafetyLevelInst()->end(); ++iter ){///para cada customer que atingirá o safety level
+      Customer* c = iter->second;///guarda o ponteiro para o cliente
+      int instanteSafety = iter->first;///guarda int instante onde o safety level é atingido
 
-        //TODO VERIFICAR OS INSTANTES DOS STOPS.
-        Shift* shift = new Shift(aaaa, d, t);
-        Stop* stop = new Stop(quantidadeAbastecer, instante, c);
+      Trailer* t = c->getAllowedTrailers()->at(0);///pega o primeiro trailer que pode atender o customer
+      Driver* d = t->getDrivers()->at(0);///pega o primeiro driver que pode dirigir o trailer
 
-        Stop* stopVolta = new Stop(0.0, instante+(c->getSetupTime())+ tempoVolta, t->getBase());
-        std::vector<Stop*> vetorStops;
-        vetorStops.push_back(stop);
-        vetorStops.push_back(stopVolta);
-        shift->setStops(vetorStops);
-        solAtual->insertShift(shift);
-   }
+      double custoShift=0.0;///TODO: VARIAVEL QUE GUARDA O CUSTO PARA CRIAR O SHIFT//NAO ESTAMOS UTILIZANDO CUTOS AINDA...
+      ///quantidade a abastecer no customer: o que falta para "encher" o cliente ou o que tem disponível no trailer
+      double quantidadeAbastecer = c->getCapacity()- solAtual->getStockLevelInst()->at(c->getIndex()).at(instanteSafety);
+      if(quantidadeAbastecer>t->getInicialQuantity()) quantidadeAbastecer= t->getInicialQuantity();
+      t->setInitialQuantity(t->getInicialQuantity()-quantidadeAbastecer);//atualiza a qtde de gas no trailer
+      ///tempo de ida da base ao cliente
+      double tempoIda = InputData::getInstance()->getTime(t->getBase()->getIndex(),c->getIndex());
+      ///tempo de volta do cliente à base
+      double tempoVolta = InputData::getInstance()->getTime(c->getIndex(), t->getBase()->getIndex());
+
+      ///TODO VERIFICAR OS INSTANTES DOS STOPS.
+      ///tempo de chegada no cliente (tem que ser pelo menos o tempo de ida ao cliente)
+      int arriveTime= instanteSafety<tempoIda? tempoIda: instanteSafety;
+      Stop* stopIda = new Stop(quantidadeAbastecer, arriveTime, c);
+      arriveTime += c->getSetupTime()+ tempoVolta;//atualiza o arrive time do próx stop
+      Stop* stopVolta = new Stop(0.0, arriveTime, t->getBase());
+
+      Shift* shift = new Shift(custoShift, d, t);
+      stopIda->setShift(shift);
+      stopVolta->setShift(shift);
+
+      ///***fazendo a inserção dessa forma acho que o controle de estoque vai funcionar corretamente
+      solAtual->insertShift(shift);
+      solAtual->insertStopInShift(shift,stopIda);
+      solAtual->insertStopInShift(shift,stopVolta);
+
+      ///se esvaziou o trailer, cria um shift base->source/source->base para encher o trailer
+      if(t->getInicialQuantity()< (t->getCapacity()*.3)){
+        Source* source= t->getBase()->getNeighborsSources()->at(0);
+        tempoIda= InputData::getInstance()->getTime(t->getBase()->getIndex(),source->getIndex());
+        arriveTime+= tempoIda+ d->getMinInterShift();
+        quantidadeAbastecer= t->getCapacity() - t->getInicialQuantity();
+        t->setInitialQuantity(quantidadeAbastecer);//enche o trailer
+        Stop* stopIdaSource = new Stop(quantidadeAbastecer,arriveTime, source);
+        tempoVolta= InputData::getInstance()->getTime(source->getIndex(),t->getBase()->getIndex());
+        arriveTime+= source->getSetupTime()+tempoVolta;
+        Stop* stopVoltaSource = new Stop(0.0,arriveTime, t->getBase());
+
+        Shift* shiftSource = new Shift(custoShift, d, t);
+        stopIdaSource->setShift(shiftSource);
+        stopVoltaSource->setShift(shiftSource);
+
+        solAtual->insertShift(shiftSource);
+        solAtual->insertStopInShift(shiftSource,stopIdaSource);
+        solAtual->insertStopInShift(shiftSource,stopVoltaSource);
+
+      }
+  }
 }
 
 void ILS::constructor(int maxInstant){
